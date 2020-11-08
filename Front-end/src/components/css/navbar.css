@@ -1,0 +1,47 @@
+.navbarItems{
+    height: 60px;
+    align-items: center;
+    display: flex;
+    position: sticky;
+    background-color: black;
+}
+.item-big{
+    display: flex;
+    position: relative;
+    left: 15%;
+    margin-bottom: 5px;
+}
+.home{
+    display: flex;
+    position: relative;
+    top: 7px;
+}
+li {
+    float: left;
+}
+.nav-item{
+    display: flex;
+    position: relative;
+    top: 7px;
+    margin-bottom: 10px ;
+    margin-left: 20px;
+    margin-right: 20px;
+    font-size: 17px;
+    font-weight: 600;
+    color: blanchedalmond;
+}
+.bar-icon{
+    margin-right: 5px ;
+    height: 25px !important;
+}
+.nav-link{
+    display: flex;
+    font-size: 17px;
+    font-weight: 600;
+    color: blanchedalmond;
+    padding: 0px;
+}
+.nav-link:hover{
+    color: blanchedalmond;;
+    text-decoration: none;
+}

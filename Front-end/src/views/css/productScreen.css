@@ -1,0 +1,16 @@
+.row{
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    left: 20%;
+}
+li{
+    float: left;
+}
+.medium{
+    max-width: 362.5px;
+    max-height: 487.5px;
+}
+.input{
+    margin: 5px;
+}
