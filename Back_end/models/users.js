@@ -37,6 +37,9 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.BOOLEAN,
             defaultValue: false,
         }
+    },{
+        createdAt: false,
+        updatedAt: false,
     });
     return users;
 };

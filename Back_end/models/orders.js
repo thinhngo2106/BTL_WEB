@@ -25,6 +25,9 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false,
         },
 
+    },{
+        createdAt: false,
+        updatedAt: false,
     });
     return orders;
 }

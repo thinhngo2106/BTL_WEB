@@ -27,7 +27,8 @@ app.get('/', (req, res) => {
 app.use(express.urlencoded({extends: true}));
 app.use(express.json());
 
-
+const apiRoutes = require("./routers/accountRouter");
+app.use('/api', apiRoutes);
 
 db.sequelize.sync().then(() => {
   app.listen(port, () => {

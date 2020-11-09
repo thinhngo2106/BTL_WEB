@@ -3,6 +3,11 @@ const sequelize = require("sequelize");
 
 module.exports = (sequelize, DataTypes) => {
     const productdetail = sequelize.define("productdetail", {
+        idProduct:{
+            type: DataTypes.INTEGER,
+            primaryKey: true,
+            allowNull: false,
+        },
         productDescription:{
             type: DataTypes.STRING,
             allowNull: false,
@@ -11,6 +16,9 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.BLOB("long"),
             allowNull: false,
         }
+    },{
+        createdAt: false,
+        updatedAt: false,
     });
     return productdetail;
 }

@@ -24,6 +24,9 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.INTEGER,
             allowNull: false,
         },
+    },{
+        createdAt: false,
+        updatedAt: false,
     });
     return products;
 }
