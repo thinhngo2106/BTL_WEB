@@ -3,7 +3,8 @@ const app = express()
 const port = 4000
 const mysql = require('mysql');
 const data = require('./data');
-
+const db = require('./models')
+const bodyParser = require('body-parser');
 
 app.get('/api/products/:id', (req,res) => {
   const product = data.products.find((x) => x._id === req.params.id);
@@ -18,22 +19,18 @@ app.get('/api/products', (req, res) => {
   res.send(data.products)
 });
 
-var con = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "010820",
-  database: "projectweb"
-});
-
-con.connect(function(err) {
-  if (err) throw err;
-  console.log("Connected!");
-});
 
 app.get('/', (req, res) => {
   res.send('Hello World!')
 })
 
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
-})
+app.use(express.urlencoded({extends: true}));
+app.use(express.json());
+
+
+
+db.sequelize.sync().then(() => {
+  app.listen(port, () => {
+    console.log(`Example app listening at http://localhost:${port}`)
+  });
+});
