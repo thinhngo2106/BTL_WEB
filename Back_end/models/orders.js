@@ -26,6 +26,7 @@ module.exports = (sequelize, DataTypes) => {
         },
 
     },{
+        tableName: 'orders',
         createdAt: false,
         updatedAt: false,
     });

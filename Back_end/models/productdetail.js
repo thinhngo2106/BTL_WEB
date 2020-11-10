@@ -9,14 +9,15 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false,
         },
         productDescription:{
-            type: DataTypes.STRING,
+            type: DataTypes.TEXT,
             allowNull: false,
         },
         image:{
-            type: DataTypes.BLOB("long"),
+            type: DataTypes.STRING,
             allowNull: false,
         }
     },{
+        tableName: 'productdetail',
         createdAt: false,
         updatedAt: false,
     });

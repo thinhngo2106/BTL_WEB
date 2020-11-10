@@ -13,6 +13,7 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false,
         },
     },{
+        tableName: 'brands',
         createdAt: false,
         updatedAt: false,
     });

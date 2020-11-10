@@ -23,6 +23,7 @@ module.exports = (sequelize, DataTypes) => {
         }
 
     },{
+        tableName: 'orderdetail',
         createdAt: false,
         updatedAt: false,
     });

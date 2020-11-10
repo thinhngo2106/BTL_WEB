@@ -38,6 +38,7 @@ module.exports = (sequelize, DataTypes) => {
             defaultValue: false,
         }
     },{
+        tableName: 'users',
         createdAt: false,
         updatedAt: false,
     });

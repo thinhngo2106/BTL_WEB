@@ -57,11 +57,11 @@ export default function ProductScreen(props) {
         <div className="col-lg-9 col-md-12 col-sm-12 col-xs-12">
             <div className="row">
                 <div className="product-detail-left product-images col-xs-12 col-sm-6 col-md-5 col-lg-5">
-                    <img className="medium" src={product.image} alt={product.name}/>
+                    <img className="medium" src={product.productdetail.image} alt={product.productName}/>
                 </div>
                 <div className = "col-xs-12 col-sm-6 col-md-7 col-lg-7 details-pro">
                             <h1 className="titleName">
-                                {product.name}
+                                {product.productName}
                             </h1>
 
                             <div >
@@ -73,12 +73,12 @@ export default function ProductScreen(props) {
                             </div>
                             <div className="product-des">
                                 <span>
-                                    {product.description}                                
+                                    {product.productdetail.productDescription}                                
                                 </span>
                             </div>
                         <div className="price-box">
                             <span className="productPrice">
-                                {product.price}
+                                {product.productPrice}
                             </span>
                         </div>
                     <div>

@@ -6,18 +6,7 @@ const data = require('./data');
 const db = require('./models')
 const bodyParser = require('body-parser');
 
-app.get('/api/products/:id', (req,res) => {
-  const product = data.products.find((x) => x._id === req.params.id);
-  if (product) {
-    res.send(product);
-  }else{
-    res.status(404).send({ message: 'Product not found'});
-  }
-});
 
-app.get('/api/products', (req, res) => {
-  res.send(data.products)
-});
 
 
 app.get('/', (req, res) => {
@@ -27,8 +16,17 @@ app.get('/', (req, res) => {
 app.use(express.urlencoded({extends: true}));
 app.use(express.json());
 
-const apiRoutes = require("./routers/accountRouter");
-app.use('/api', apiRoutes);
+const productRouter = require("./routers/productRouter");
+app.use('/api/products', productRouter);
+
+const userRouter = require("./routers/accountRouter");
+
+
+app.use('/api/users', userRouter);
+
+app.use((err, req, res, next) => {
+  res.status(500).send({ message: err.message });
+});
 
 db.sequelize.sync().then(() => {
   app.listen(port, () => {

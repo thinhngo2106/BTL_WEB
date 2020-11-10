@@ -28,7 +28,7 @@ export default function HomeScreen() {
                     src = "..//../image/background2.jpg" alt ="" />
                     <div className="home__row">
                         {products.map((product) => (
-                            <Product key={product._id} product={product}> </Product>
+                            <Product key={product.idProduct} product={product}> </Product>
                         ))}
                     </div>
                 </div>

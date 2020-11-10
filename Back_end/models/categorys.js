@@ -13,6 +13,7 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false,
         },
     },{
+        tableName: 'categories',
         createdAt: false,
         updatedAt: false,
     });

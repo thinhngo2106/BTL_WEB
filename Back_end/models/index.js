@@ -52,7 +52,7 @@ db.products.hasOne(db.productdetail,{
     }
 });
 
-db.products.belongsTo(db.brands, {as:'Brands',
+db.products.belongsTo(db.brands, {
   foreignKey:{
     name: 'idBrand',
     allowNull: false,
