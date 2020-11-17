@@ -5,17 +5,19 @@ const mysql = require('mysql');
 const data = require('./data');
 const db = require('./models')
 const bodyParser = require('body-parser');
+const dotenv = require('dotenv');
 
-
+dotenv.config();
 
 
 app.get('/', (req, res) => {
   res.send('Hello World!')
 })
 
-app.use(express.urlencoded({extends: true}));
-app.use(express.json());
-
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+    extended: true,
+}));
 const productRouter = require("./routers/productRouter");
 app.use('/api/products', productRouter);
 
@@ -27,6 +29,9 @@ app.use('/api/users', userRouter);
 app.use((err, req, res, next) => {
   res.status(500).send({ message: err.message });
 });
+const searchRouter = require("./routers/searchRouters");
+app.use('/api/search', searchRouter);
+
 
 db.sequelize.sync().then(() => {
   app.listen(port, () => {

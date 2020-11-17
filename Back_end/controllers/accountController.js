@@ -1,34 +1,34 @@
-var db = require('../config/db');
-
-exports.add = user => {
-    var sql = `insert into users(userEmail, userPassword, userFname, userLname, addressline1, phone, isAdmin) 
-    values('${user.email}', '${user.password}', '${user.fname}', '${user.lname}', '${user.address}', '${user.phone}','${user.role})`;
-    return db.save(sql);
-}
-
-exports.login = user => {
-    var sql = `select * from users where userEmail = '${user.email}' and f_Password = '${user.password}'`;
-    return db.load(sql);
-}
+const db = require('../models');
+const data = require('../dataimport');
+const expressAsyncHandler =  require('express-async-handler');
+const bcrypt = require('bcryptjs');
+const {generateToken} = require('../utlis');
 
 
-exports.single = id => {
-    return new Promise((resolve, reject) => {
-        var sql = `select * from users where iduser = ${id}`;
-        db.load(sql).then(rows => {
-            if (rows.length === 0) {
-                resolve(null);
-            }
-            else {
-                resolve(rows[0]);
-            }
-        }).catch(err => {
-            reject(err);
-        });
+module.exports.seed =  expressAsyncHandler(async (req, res) => {
+    const create = await db.users.bulkCreate(data.users);
+    res.send({create});
+});
+
+module.exports.singin =    expressAsyncHandler(async (req, res) => {
+    const user = await db.users.findOne({
+        where: {
+            userEmail: req.body.email
+        }
     });
+    if (user) {
+        if (bcrypt.compareSync(req.body.password, user.userPassword)){
+            res.send({
+                id: user.idUser,
+                Fname: user.userFname,
+                Lname: user.userLname,
+                email: user.userEmail,
+                isAdmin: user.isAdmin,
+                token: generateToken(user),
+            });
+            return;
+        }
+    }
+    res.status(401).send({message: "Không đúng tài khoản hoặc mật khẩu"});
 }
-
-exports.update = user => {
-    var sql=`update users set userPassword='${user.password}' where f_ID = ${user.id}`;
-    return db.save(sql);
-}
+)

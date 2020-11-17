@@ -5,7 +5,7 @@ import {
 } from './reducers/productReducers';
 
 import { cartReducer } from './reducers/cartReducers';
-
+import {searchKeywordReducer} from './reducers/searchReducers'
 
 import thunk from 'redux-thunk';
 
@@ -21,6 +21,7 @@ const reducer = combineReducers({
     productList: productListReducer,
     productDetails: productDetailsReducer,
     cart: cartReducer,
+    keywordSearch: searchKeywordReducer,
 });
 
 

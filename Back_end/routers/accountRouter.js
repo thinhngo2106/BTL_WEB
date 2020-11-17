@@ -3,15 +3,21 @@ const db = require('../models');
 const router = express.Router();
 const data = require('../dataimport');
 const expressAsyncHandler =  require('express-async-handler');
+const bcrypt = require('bcryptjs');
+const {generateToken} = require('../utlis');
+const userController = require('../controllers/accountController');
+
+
 
 router.get("/users", (req,res)=>{
     db.users.findAll().then(users => res.send(users));
 });
-router.get("/seed", expressAsyncHandler(async (req, res) => {
-    const create = await db.users.bulkCreate(data.users);
-    res.send({create});
-    })
-);
+router.get("/seed",userController.seed);
 
+router.post("/signin", userController.singin)
+
+router.post("/check", (req,res)=>{
+    res.send(req.body);
+});
 
 module.exports = router;
