@@ -22,19 +22,21 @@
 }
 
 .header__searchIcon {
-  padding: 3px;
+  padding: 5px;
   height: 35px !important;
   border: none;
   background-color: #cd9042; 
+  border-radius: 3px;
 }
 
 
 .header__searchInput {
   padding: 6px;
   margin-top: 8px;
-  font-size: 17px;
+  font-size: 16px;
   width: 100%;
   border: none;
+  border-radius: 3px;
 }
 .header__optionLineOne {
   font-size: 10px;
@@ -75,9 +77,11 @@
 .search-button{
   border: none;
   margin: 0px;
-  margin-bottom: 1px;
-  font-size: 17px;
+  margin-top: 10px;
+  height: 35px;
   padding: 0px;
+  border-radius: 3px;
+  
 }
 
 .dropdown{

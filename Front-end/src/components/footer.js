@@ -1,8 +1,8 @@
 import React  from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/footer.css';
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
-
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faFacebook,faTwitter, faInstagram, faYoutube  }from '@fortawesome/free-brands-svg-icons'
 
 function Footer() {
       return (
@@ -18,16 +18,16 @@ function Footer() {
                     <p>MiKuFu đem đến tiếng cười <br />sảng khoái cho mọi người</p>
                     <div className="fa-social">
                         <a href="https://www.facebook.com/camnhung13">
-                          <FontAwesomeIcon icon="facebook" />
+                          <FontAwesomeIcon icon={faFacebook} />
                         </a>
                         <a href="https://twitter.com/nanahah53755510">
-                          <FontAwesomeIcon icon="twitter" />  
+                          <FontAwesomeIcon icon={faTwitter} />  
                         </a>
                         <a href="https://www.instagram.com/khongphaithinhdau/">
-                          <FontAwesomeIcon icon="instagram" />
+                          <FontAwesomeIcon icon={faInstagram} />
                         </a>
                         <a href="https://www.youtube.com/channel/UCPRGrZCscuRJT_tUI2NTfzw/featured">
-                          <FontAwesomeIcon icon="youtube" />  
+                          <FontAwesomeIcon icon={faYoutube}/>  
                         </a>
                     </div>
                   </div>
