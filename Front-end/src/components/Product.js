@@ -11,7 +11,7 @@ export default function Product(props) {
       </Link>
       <div className="product__info">
         <Link to={`/product/${product.idProduct}`}>
-          <p>{product.productName}</p>
+          <p style={{color: 'black'}}>{product.productName}</p>
         </Link>
         <div className="product__price">$
         <strong>{product.productPrice}</strong></div>

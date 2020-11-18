@@ -22,11 +22,24 @@
   }
   
   .product > button {
-    background: #f0c14b;
+    cursor: pointer;
+    font-size: 15px;
+    padding: 14px 16px;
+    background: #000;
     border: 1px solid;
     margin-top: 10px;
-    border-color: #a88734 #9c7e31 #846a29;
-    color: #111;
+    border-color: rgba(155, 145, 145, 0.548);
+    border-radius: 8px;
+    color: rgb(243, 243, 243);
+  }
+
+  .product >button:hover {
+    background-color: rgb(22, 22, 22)
+  }
+
+  .product >button:active {
+    box-shadow: 0 2px rgb(90, 84, 84);
+    transform: translateY(1px);
   }
   
   .product__price {
