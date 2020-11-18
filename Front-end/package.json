@@ -1,9 +1,14 @@
 {
   "name": "bong_web",
   "version": "0.1.0",
-  "proxy":"http://127.0.0.1:4000",
+  "proxy": "http://127.0.0.1:4000",
   "private": true,
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.32",
+    "@fortawesome/free-brands-svg-icons": "^5.15.1",
+    "@fortawesome/free-regular-svg-icons": "^5.15.1",
+    "@fortawesome/free-solid-svg-icons": "^5.15.1",
+    "@fortawesome/react-fontawesome": "^0.1.12",
     "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "^4.9.1",
     "@stripe/react-stripe-js": "^1.1.2",
@@ -15,6 +20,7 @@
     "react": "^16.14.0",
     "react-bootstrap": "^1.4.0",
     "react-dom": "^16.14.0",
+    "react-fontawesome": "^1.7.1",
     "react-redux": "^7.2.1",
     "react-responsive": "^8.1.0",
     "react-router": "^5.2.0",
