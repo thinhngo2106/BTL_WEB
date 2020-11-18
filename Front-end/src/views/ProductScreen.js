@@ -64,7 +64,7 @@ export default function ProductScreen(props) {
                             </h1>
 
                             <div >
-                                {product.countInStock > 0 ?(
+                                {product.quantityInStock > 0 ?(
                                     <span className="productStatus">    Tình trạng: Còn hàng </span>    
                                 ) : (
                                     <span className="productStatus"> Tình trạng: Hết hàng </span>
@@ -87,10 +87,17 @@ export default function ProductScreen(props) {
                             <button onClick={incNum} className="inc-Button" > <AddIcon/> </button>
                         </div>
 
-
+                        {product.quantityInStock > 0 ?(
                         <button onClick={addToCartHandler} className="primary block">
                             Thêm vào giỏ hàng
                         </button>
+                        ) : (
+                            <button className="primary block over">
+                            Không thể thêm vào giỏ hàng
+                        </button>
+                        )
+
+                        }
                     </div>
                 </div>
 

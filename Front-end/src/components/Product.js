@@ -1,9 +1,17 @@
-import React from 'react';
+import React,{useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
-import './css/product.css'
+import './css/product.css';
+import { addToCart} from '../actions/cartActions';
+import { useDispatch, useSelector } from 'react-redux';
+
 
 export default function Product(props) {
+  const dispatch = useDispatch();
   const { product } = props;
+  const addToCartHandler = () => {
+    dispatch(addToCart(product.idProduct, 1));
+  };
+
   return (
     <div key={product.idProduct} className="product">
       <Link to={`/product/${product.idProduct}`}>
@@ -16,7 +24,7 @@ export default function Product(props) {
         <div className="product__price">$
         <strong>{product.productPrice}</strong></div>
       </div>
-      <button>Thêm vào giỏ hàng</button>
+      <button onClick={addToCartHandler} className="primary block">Thêm vào giỏ hàng</button>
     </div>
   );
 }

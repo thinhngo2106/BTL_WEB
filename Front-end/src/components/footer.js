@@ -18,7 +18,7 @@ function Footer() {
                     <p>MiKuFu đem đến tiếng cười <br />sảng khoái cho mọi người</p>
                     <div className="fa-social">
                         <a href="https://www.facebook.com/camnhung13">
-                          <FontAwesomeIcon icon={faFacebook} />
+                          <FontAwesomeIcon icon={faFacebook} className="footer-icon" />
                         </a>
                         <a href="https://twitter.com/nanahah53755510">
                           <FontAwesomeIcon icon={faTwitter} />  
