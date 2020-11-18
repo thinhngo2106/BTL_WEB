@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import data from '../product/data';
 import './css/productScreen.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useDispatch, useSelector } from 'react-redux';

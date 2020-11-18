@@ -5,7 +5,11 @@ import HomeScreen from "./views/HomeScreen";
 import ProductScreen from './views/ProductScreen';
 import CartScreen from './views/CartScreen';
 import SearchScreen from './views/SearchScreen';
+
 import Footer from './components/footer';
+
+import SigninScreen from './views/SigninScreen';
+
 function App(){
        return (
           <Router>
@@ -16,6 +20,7 @@ function App(){
                <Route path="/" component ={HomeScreen} exact ></Route>
                <Route path="/product/:id" component={ProductScreen} exact></Route>
                <Route path="/search" component={SearchScreen}></Route>
+               <Route path="/signin" component={SigninScreen}></Route>
             </main>
             <Footer />
             </div>
