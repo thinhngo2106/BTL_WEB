@@ -33,7 +33,6 @@
   border: none;
   width: 100%;
 }
-
 .header__optionLineOne {
   font-size: 10px;
 }
@@ -54,6 +53,7 @@
   align-items: center;
   font-size: 25px;
   color: white;
+  margin-top: 5px;
   margin-left: 10px;
   margin-right: 10px;
 }
@@ -75,4 +75,28 @@
   margin-bottom: 1px;
   font-size: 17px;
   padding: 0px;
+}
+
+.dropdown{
+  display: inline-block;
+  position: relative;
+}
+.dropdown-content {
+  font-size: 15px;
+  position: absolute;
+  display: none;
+  right: 0;
+  min-width: 8rem;
+  padding: 15px;
+  z-index: 1;
+  background-color:#cd9042;
+  margin: 0;
+  margin-top: 0.4rem;
+  border-radius: 0.5rem;
+}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+.dropdown-signout{
+  color: white;
 }
