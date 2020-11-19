@@ -98,5 +98,7 @@
 	border-radius: 0 2px 2px 0;
 }
 .footer-icon{
-	padding:5px;
+	padding: 3px;
+	padding-top: 6px ;
+	font-size: 35px;
 }

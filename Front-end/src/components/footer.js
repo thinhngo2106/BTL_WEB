@@ -21,13 +21,13 @@ function Footer() {
                           <FontAwesomeIcon icon={faFacebook} className="footer-icon" />
                         </a>
                         <a href="https://twitter.com/nanahah53755510">
-                          <FontAwesomeIcon icon={faTwitter} />  
+                          <FontAwesomeIcon icon={faTwitter} className="footer-icon" />  
                         </a>
                         <a href="https://www.instagram.com/khongphaithinhdau/">
-                          <FontAwesomeIcon icon={faInstagram} />
+                          <FontAwesomeIcon icon={faInstagram} className="footer-icon" />
                         </a>
                         <a href="https://www.youtube.com/channel/UCPRGrZCscuRJT_tUI2NTfzw/featured">
-                          <FontAwesomeIcon icon={faYoutube}/>  
+                          <FontAwesomeIcon icon={faYoutube} className="footer-icon" />  
                         </a>
                     </div>
                   </div>

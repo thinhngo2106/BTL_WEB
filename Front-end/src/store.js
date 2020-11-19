@@ -1,14 +1,15 @@
 import {createStore, compose, applyMiddleware, combineReducers} from 'redux';
+import thunk from 'redux-thunk';
 import {
     productListReducer,
     productDetailsReducer,
 } from './reducers/productReducers';
-
 import { cartReducer } from './reducers/cartReducers';
 import {searchKeywordReducer} from './reducers/searchReducers'
-
-import thunk from 'redux-thunk';
-import { userSigninReducer } from './reducers/userReducers';
+import {
+    userSigninReducer,
+    userRegisterReducer, 
+} from './reducers/userReducers';
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const initialState = {
@@ -16,7 +17,12 @@ const initialState = {
         cartItems: localStorage.getItem('cartItems')
         ? JSON.parse(localStorage.getItem('cartItems'))
         : [], 
-    }
+    },
+    userSignin: {
+        userInfo: localStorage.getItem('userInfo')
+          ? JSON.parse(localStorage.getItem('userInfo'))
+          : null,
+      },
 };
 const reducer = combineReducers({
     productList: productListReducer,
@@ -24,6 +30,7 @@ const reducer = combineReducers({
     cart: cartReducer,
     keywordSearch: searchKeywordReducer,
     userSignin: userSigninReducer,
+    userRegister: userRegisterReducer,
 });
 
 

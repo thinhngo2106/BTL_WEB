@@ -7,7 +7,7 @@ import CartScreen from './views/CartScreen';
 import SearchScreen from './views/SearchScreen';
 
 import Footer from './components/footer';
-
+import SignupScreen from './views/SignupScreen';
 import SigninScreen from './views/SigninScreen';
 
 function App(){
@@ -21,6 +21,7 @@ function App(){
                <Route path="/product/:id" component={ProductScreen} exact></Route>
                <Route path="/search" component={SearchScreen}></Route>
                <Route path="/signin" component={SigninScreen}></Route>
+               <Route path="/register" component={SignupScreen}></Route>
             </main>
             <Footer />
             </div>

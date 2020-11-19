@@ -2,3 +2,65 @@ img.small {
     max-width: 5rem;
     width: 100%;
   }
+.cart{
+  position: relative;
+  left:50px;
+}
+
+.cart-items{
+  position: relative;
+  left: 20px;
+}
+.cart-item{
+  position: relative;
+  left: 50px;
+  margin: 5px;
+  margin-right: 0px;
+  border: groove;
+}
+span.item-attribute{
+  padding: 5px;
+  text-align: center;
+  position: relative;
+  top:20px;
+}
+.item-attribute-name{
+  padding: 5px;
+  text-align: center;
+  position: relative;
+  top:20px;
+}
+
+.item-quantity{
+  position: relative;
+  top:20px;
+}
+.remove-item{
+  position: relative;
+  top:20px;
+}
+@media screen and (max-width: 1000px) {
+  .item-attribute-name{
+    position: relative;
+    top:0px;
+  }
+  .item-attribute{
+    margin-right: 10px;
+  }
+  .item-quantity{
+    top: 25px;
+    left:5px ;
+  }
+  .remove-item{
+    margin-left: 15px;
+  }
+  .col{
+    padding:5px;
+  }
+}
+@media screen and (max-width: 1000px){
+  .col-md-9 {
+      flex: 0 0 75%;
+      max-width: 90%;
+  }
+}
