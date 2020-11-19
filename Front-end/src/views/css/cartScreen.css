@@ -39,6 +39,16 @@ span.item-attribute{
   position: relative;
   top:20px;
 }
+.cart-empty{
+  margin-top: 15px;
+  height: 400px;
+
+}
+.message-empty{
+  margin-left: 30px;
+  text-align: left;
+}
+
 @media screen and (max-width: 1000px) {
   .item-attribute-name{
     position: relative;

@@ -32,6 +32,13 @@ module.exports = (sequelize, DataTypes) => {
         tableName: 'products',
         createdAt: false,
         updatedAt: false,
+        indexes: [
+            {
+                type:'FULLTEXT',
+                name: 'productName',
+                fields: ['productName']
+            }
+        ]
     });
     return products;
 }

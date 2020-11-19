@@ -13,15 +13,18 @@ router.get('/', expressAsyncHandler(async( req,res) => {
         include:[{
             model: db.productdetail
         }],
-        where:{
-            productName:  {[Op.like]: '%'+ term+'%'}
-        }
+        where:
+            Sequelize.literal('MATCH (productName) AGAINST (:name)')
+        ,
+        replacements: {
+            name: term
+          }
     })
     if (products.length > 0) {
             res.send(products)
     }
     else {
-        
+        res.send(term);
         res.status(404).send({message: 'Không tìm thấy sản phẩm', term})
     }
 }));

@@ -30,9 +30,14 @@ export default function CartScreen(props) {
         <div className="row cart col-md-11">
             <div className="col-md-12">
                 <h2>Giỏ hàng</h2>
-                {cartItems.length ===0 ? <MessageBox> Giỏ hàng đang trống
+                {cartItems.length ===0 ?( 
+                <div className="cart-empty">
+                <MessageBox className="messagebox"> <div className="message-empty">Giỏ hàng đang trống</div>
+                <div className="message-empty">  
                     <Link to ="/">Quay về trang chủ</Link>
+                </div>
                 </MessageBox>
+                </div>)
                 : (
                     <div className="cart-items col-sm-12">
                         {cartItems.map((item) => (
