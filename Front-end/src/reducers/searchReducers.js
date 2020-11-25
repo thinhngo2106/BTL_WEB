@@ -2,9 +2,6 @@ const {
     SEARCH_KEYWORD_REQUEST,
     SEARCH_KEYWORD_SUCCESS,
     SEARCH_KEYWORD_FAIL,
-    SEARCH_CATEGORY_REQUEST,
-    SEARCH_CATEGORY_SUCCESS,
-    PRODUCT_DETAILS_FAIL,
 
   } = require('../constants/searchConstants');
 

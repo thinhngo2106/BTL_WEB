@@ -2,9 +2,7 @@ import {
     SEARCH_KEYWORD_REQUEST,
     SEARCH_KEYWORD_SUCCESS,
     SEARCH_KEYWORD_FAIL,
-    SEARCH_CATEGORY_REQUEST,
-    SEARCH_CATEGORY_SUCCESS,
-    SEARCH_CATEGORY_FAIL,
+
 } from "../constants/searchConstants";
 import Axios from "axios";
 
