@@ -31,7 +31,8 @@ app.use((err, req, res, next) => {
 });
 const searchRouter = require("./routers/searchRouters");
 app.use('/api/search', searchRouter);
-
+const orderRouter = require("./routers/orderRouter");
+app.use('/api/order',orderRouter);
 
 db.sequelize.sync().then(() => {
   app.listen(port, () => {

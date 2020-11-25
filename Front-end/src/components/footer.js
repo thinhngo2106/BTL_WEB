@@ -48,7 +48,7 @@ function Footer() {
                     <p>Nhận tin từ chúng mình</p>
                     <form action="#" className="fn-form">
                       <input type="text" placeholder="Email" />
-                      <button type="submit"><FontAwesomeIcon icon="send" /></button>
+                      <button type="submit"><FontAwesomeIcon icon="send"/></button>
                     </form>
                   </div>
                 </div>

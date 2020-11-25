@@ -24,7 +24,14 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false,
         },
-
+        shippingPrice:{
+            type: DataTypes.DECIMAL(10,2),
+            allowNull: false,
+        }, 
+        paymentMethod:{
+            type: DataTypes.STRING,
+            allowNull:false,
+        }
     },{
         tableName: 'orders',
         createdAt: false,

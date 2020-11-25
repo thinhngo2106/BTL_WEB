@@ -10,3 +10,46 @@
   display: flex;
   
 }
+.checkout-steps{
+  max-width:  58rem ;
+}
+
+.checkout-steps > div {
+  text-align: center;
+  border-top: 0.3rem #c0c0c0 solid;
+  color: #c0c0c0;
+  flex: 1;
+  padding: 1rem;
+  font-weight: bold;
+}
+.checkout-steps > div.active {
+  border-top-color: #f08000;
+  color: #f08000;
+}
+
+.form {
+  max-width: 60rem;
+  margin: 0 auto;
+}
+.form > div {
+  display: flex;
+  flex-direction: column;
+  margin: 0.5rem !important;
+}
+.form label {
+  margin: 0.5rem 0 ;
+}
+input, button{  
+  padding: 5px;
+  border-radius: 0.5rem;
+  border: 0.1rem #a4a4a4 solid;
+  font-size: 1rem;
+  font-family: Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+@media screen and (max-width: 1000px){
+  .checkout-steps{
+    max-width:  60% ;
+  }
+}

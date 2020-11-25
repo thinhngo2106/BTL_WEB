@@ -13,7 +13,7 @@
     height: 75%;
 }
 .footer-section .footer-text .ft-about .logo a {
-	display: inline-block;
+	display: flex;
 }
 .footer-section .footer-text .ft-about p {
     color: #aaaab3;
