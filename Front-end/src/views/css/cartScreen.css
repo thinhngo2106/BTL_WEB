@@ -11,12 +11,14 @@ img.small {
   position: relative;
   left: 20px;
   margin-right: 20px !important;
+  
 }
 .cart-item{
   position: relative;
   left: 50px;
   margin: 5px;
   border: groove;
+  height: 10%;
 }
 span.item-attribute{
   padding: 5px;

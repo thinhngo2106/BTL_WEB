@@ -43,7 +43,7 @@ export default function CartScreen(props) {
                     </div>)
                     : (
                         <div className="cart-check">
-                            <div className="cart-items col-sm-12 col-md-10">
+                            <div className="cart-items col-sm-12 col-md-11">
                                 {cartItems.map((item) => (
                                     <div className="row cart-item col-sm-12 col-md-11" key={item.id}>
                                         <div className="col col-sm-2 col-md-2">
@@ -56,10 +56,10 @@ export default function CartScreen(props) {
                                             <Link to={`/product/${item.product}`}>
                                                 <span className="item-attribute-name">{item.name} </span></Link>
                                         </div>
-                                        <div>
-                                            <span>{item.size}</span>    
+                                        <div className="col col-md-2">
+                                            <span className="item-attribute-name">{item.size}</span>    
                                         </div>
-                                        <div className="col col-sm-1 col-md-2">
+                                        <div className="col col-sm-1 col-md-1">
                                             <select className="item-quantity"
                                                 value={item.qty}
                                                 onChange={(e) =>
@@ -77,7 +77,7 @@ export default function CartScreen(props) {
                                         </div>
                                         <div className="col col-sm-1 col-md-2">
                                             <span className="item-attribute">${item.price} </span></div>
-                                        <div className="col col-sm-2 col-md-2">
+                                        <div className="col col-sm-2 col-md-1">
                                             <button
                                             className="remove-item"
                                             type="button"
