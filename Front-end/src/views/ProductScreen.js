@@ -8,6 +8,9 @@ import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
 import AddIcon from '@material-ui/icons/Add';
 import RemoveIcon from '@material-ui/icons/Remove';
+import { addToCart } from '../actions/cartActions';
+
+
 
 
 
@@ -18,12 +21,13 @@ export default function ProductScreen(props) {
     const { loading, error, product } = productDetails;
     
     const [qty, setQty] = useState(1);
+    const [size, setSize] = useState(1);
     const incNum = () => {
-        if (qty < product.countInStock){
+        if (qty < product.quantityInStock){
         setQty(qty+1);
         }
         else {
-            setQty(product.countInStock);
+            setQty(product.quantityInStock);
         }
 
     };
@@ -42,7 +46,9 @@ export default function ProductScreen(props) {
     }, [dispatch, productId]);
 
     const addToCartHandler = () => {
-        props.history.push(`/cart/${productId}?qty=${qty}`);
+        dispatch(addToCart(productId,qty,size));
+        props.history.push(`/cart/${productId}?qty=${qty}?size=${size}`);
+        
     };
 
 
@@ -79,6 +85,19 @@ export default function ProductScreen(props) {
                             <span className="productPrice">
                                 {product.productPrice}
                             </span>
+                        </div>
+                        <div>
+                        <select className="item-sizes" 
+                        value={size}
+                        onChange={(e) => setSize(e.target.value)}
+                            >
+                                {product.productsizes.map((x)  => (
+                                  <option key={x.idSize} value={x.idSize}>
+                                      {x.productSize}
+                                  </option>
+                                )
+                              )}
+                                </select>      
                         </div>
                     <div>
                         <div>

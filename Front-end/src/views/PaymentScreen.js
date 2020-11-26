@@ -47,7 +47,7 @@ export default function PaymentMethodScreen(props) {
               required
               onChange={(e) => setPaymentMethod(e.target.value)}
             ></input>
-            <label htmlFor="stripe">Stripe</label>
+            <label htmlFor="stripe">TIền mặt</label>
           </div>
         </div>
         <div>

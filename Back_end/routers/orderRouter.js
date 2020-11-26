@@ -32,7 +32,22 @@ orderRouter.post(  '/',
 
       }
       }
-)
-  );
+  )
+);
+orderRouter.get(
+    '/mine',
+
+    expressAsyncHandler(async (req, res) => {
+      const orders = await db.orders.findAll({
+      include:[{
+          model: db.orderdetail
+      }],
+      where:{
+          idUser: req.user.id
+      },
+    }
+  )
+  res.send(orders)
+}));
   
   module.exports = orderRouter; 

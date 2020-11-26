@@ -7,6 +7,9 @@ module.exports.productdetail = expressAsyncHandler(async( req,res) => {
     const product = await db.products.findOne({
         include:[{
             model: db.productdetail
+        },
+        {
+            model: db.productsizes
         }],
         where:{
             idProduct: req.params.id
@@ -36,6 +39,7 @@ module.exports.postProducts =  expressAsyncHandler(async (req, res) => {
     const createb =   await db.brands.bulkCreate(data.brands);
     const createpd = await db.products.bulkCreate(data.products);
     const createp =   await db.productdetail.bulkCreate(data.productdetail);
+    const createps = await db.productsizes.bulkCreate(data.productsizes)
     res.send({createc, createb, createp,createpd});
 
     

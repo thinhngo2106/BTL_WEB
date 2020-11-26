@@ -68,7 +68,7 @@ db.products.belongsTo(db.categories,{
 
 
 
-db.orders.hasOne(db.orderdetail, {
+db.orders.hasMany(db.orderdetail, {
     foreignKey:{
       name:'idOrder',
       primaryKey: true,
@@ -82,7 +82,13 @@ db.products.hasOne(db.orderdetail,{
     allowNull: false,
   }
 })
-
+db.products.hasMany(db.productsizes,{
+  foreignKey:{
+    name:'idProduct',
+    primaryKey: true,
+    allowNull: false,
+  }
+})
 
 
 

@@ -6,6 +6,7 @@ module.exports = (sequelize, DataTypes) => {
         idProduct:{
             type: DataTypes.INTEGER(11),
             primaryKey: true,
+            autoIncrement: true,
         },
         productName:{
             type: DataTypes.STRING,

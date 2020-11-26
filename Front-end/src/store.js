@@ -13,7 +13,10 @@ import {
 
 import {
     orderCreateReducer,
+    orderMineListReducer,
   } from './reducers/orderReducers';
+
+
 
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -42,6 +45,7 @@ const reducer = combineReducers({
     userSignin: userSigninReducer,
     userRegister: userRegisterReducer,
     orderCreate: orderCreateReducer,
+    orderMineList: orderMineListReducer,
 });
 
 

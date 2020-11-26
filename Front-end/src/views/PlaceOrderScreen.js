@@ -23,7 +23,7 @@ export default function PlaceOrderScreen(props) {
   cart.totalPrice = cart.itemsPrice + cart.shippingPrice + cart.taxPrice;
   const today = new Date();
   cart.orderDate = today.getFullYear() +'-'+ (today.getMonth()+1)+'-'+(today.getDate());
-  cart.shippedDate=today.getFullYear() +'-'+ (today.getMonth()+1)+'-'+(today.getDate()+5);
+  cart.shippedDate=today.getFullYear() +'-'+ (today.getMonth()+1)+'-'+(today.getDate()+4);
   cart.status = 'Đang xử lý';
   cart.shipAddress =  cart.shippingAddress.address + " " +  cart.shippingAddress.ward 
             +" "+ cart.shippingAddress.district + " "+ cart.shippingAddress.city;
@@ -31,8 +31,7 @@ export default function PlaceOrderScreen(props) {
   const dispatch = useDispatch();
   const placeOrderHandler = () => {
     dispatch(createOrder({ ...cart, orderItems: cart.cartItems }));
-
-
+    console.log(cart);
   };
   useEffect(() => {
     if (success) {

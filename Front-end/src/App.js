@@ -12,7 +12,7 @@ import SigninScreen from './views/SigninScreen';
 import ShippingAddressScreen from './views/ShippingAddressScreen';
 import PaymentScreen from './views/PaymentScreen';
 import PlaceOrderScreen from './views/PlaceOrderScreen';
-
+import OrderHistoryScreen from './views/OrderHistoryScreen';
 function App(){
        return (
           <Router>
@@ -28,6 +28,7 @@ function App(){
                <Route path="/shipping" component={ShippingAddressScreen}></Route>
                <Route path="/payment" component={PaymentScreen}></Route>
                <Route path="/placeorder" component={PlaceOrderScreen}></Route>
+               <Route path="/orderhistory" component={OrderHistoryScreen}></Route>
             </main>
             <Footer />
             </div>

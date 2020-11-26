@@ -10,12 +10,12 @@ img.small {
 .cart-items{
   position: relative;
   left: 20px;
+  margin-right: 20px !important;
 }
 .cart-item{
   position: relative;
   left: 50px;
   margin: 5px;
-  margin-right: 0px;
   border: groove;
 }
 span.item-attribute{
@@ -49,6 +49,17 @@ span.item-attribute{
   text-align: left;
 }
 
+
+.checkout{
+  margin: 5px;
+}
+#button-checkout{
+  font-size: 20px;
+  width: 30%;
+}
+.total-price{
+  margin: 10px;
+}
 @media screen and (max-width: 1000px) {
   .item-attribute-name{
     position: relative;
