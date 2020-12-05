@@ -8,9 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 export default function Product(props) {
   const dispatch = useDispatch();
   const { product } = props;
-  const addToCartHandler = () => {
-    dispatch(addToCart(product.idProduct, 1));
-  };
+
 
   return (
     <div key={product.idProduct} className="product">
@@ -24,7 +22,9 @@ export default function Product(props) {
         <div className="product__price">$
         <strong>{product.productPrice}</strong></div>
       </div>
-      <button onClick={addToCartHandler} className="primary block">Thêm vào giỏ hàng</button>
+      <Link to={`/product/${product.idProduct}`} className="link">
+      <button className="primary block" >Tùy chọn</button>
+      </Link>
     </div>
   );
 }

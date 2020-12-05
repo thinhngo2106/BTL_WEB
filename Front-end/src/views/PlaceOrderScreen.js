@@ -8,9 +8,14 @@ import { createOrder } from '../actions/orderActions';
 import { ORDER_CREATE_RESET } from '../constants/orderConstants';
 import 'bootstrap/dist/css/bootstrap.min.css';
 export default function PlaceOrderScreen(props) {
+  const userSignin = useSelector((state) => state.userSignin);
+  const { userInfo } = userSignin;
   const cart = useSelector((state) => state.cart);
   if (!cart.paymentMethod) {
     props.history.push('/payment');
+  }
+  if (!userInfo) {
+    props.history.push('/signin');
   }
   const orderCreate = useSelector((state) => state.orderCreate);
   const { loading, success, error, order } = orderCreate;
@@ -23,7 +28,8 @@ export default function PlaceOrderScreen(props) {
   cart.totalPrice = cart.itemsPrice + cart.shippingPrice + cart.taxPrice;
   const today = new Date();
   cart.orderDate = today.getFullYear() +'-'+ (today.getMonth()+1)+'-'+(today.getDate());
-  cart.shippedDate=today.getFullYear() +'-'+ (today.getMonth()+1)+'-'+(today.getDate()+4);
+  today.setDate(today.getDate() + 5);
+  cart.shippedDate=today.getFullYear() +'-'+ (today.getMonth()+1)+'-'+(today.getDate());
   cart.status = 'Đang xử lý';
   cart.shipAddress =  cart.shippingAddress.address + " " +  cart.shippingAddress.ward 
             +" "+ cart.shippingAddress.district + " "+ cart.shippingAddress.city;
@@ -31,7 +37,7 @@ export default function PlaceOrderScreen(props) {
   const dispatch = useDispatch();
   const placeOrderHandler = () => {
     dispatch(createOrder({ ...cart, orderItems: cart.cartItems }));
-    console.log(cart);
+    console.log(cart.shippedDate);
   };
   useEffect(() => {
     if (success) {

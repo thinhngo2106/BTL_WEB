@@ -8,23 +8,22 @@ const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
 
 router.get('/', expressAsyncHandler(async( req,res) => {
-    const term = req.query.query;
+    const term = req.query.query + "*";
     const products = await db.products.findAll({
         include:[{
             model: db.productdetail
         }],
         where:
-            Sequelize.literal('MATCH (productName) AGAINST (:name)')
+            Sequelize.literal('MATCH (productName) AGAINST (:name IN BOOLEAN MODE) ')
         ,
         replacements: {
             name: term
-          }
+        }
     })
     if (products.length > 0) {
             res.send(products)
     }
-    else {
-        res.send(term);
+    else {  
         res.status(404).send({message: 'Không tìm thấy sản phẩm', term})
     }
 }));

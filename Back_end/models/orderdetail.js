@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false,
         },
         priceEach:{
-            type: DataTypes.DECIMAL(10,2),
+            type: DataTypes.INTEGER,
             allowNull: false,
         },
         quantityOrder:{

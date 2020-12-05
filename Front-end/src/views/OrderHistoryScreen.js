@@ -5,17 +5,27 @@ import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
 
 export default function OrderHistoryScreen(props) {
+  const userSignin = useSelector((state) => state.userSignin);
+  const { userInfo } = userSignin;
+  if (!userInfo) {
+    props.history.push('/signin');
+  }
+
   const orderMineList = useSelector((state) => state.orderMineList);
   const { loading, error, orders } = orderMineList;
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(listOrderMine());
   }, [dispatch]);
+  function numberWithCommas(order) {
+    const x = order.orderdetails.reduce((a, c) => a + c.quantityOrder * c.priceEach,0);
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
 
 
   return (
-    <div>
-      <h1>Order History</h1>
+    <div className="order-history">
+      <h1 className="order-title">Order History</h1>
       {loading ? (
         <LoadingBox></LoadingBox>
       ) : error ? (
@@ -24,19 +34,30 @@ export default function OrderHistoryScreen(props) {
         <table className="table">
           <thead>
             <tr>
-              <th>ID</th>
-              <th>DATE</th>
-              <th>TOTAL</th>
-              <th>PAID</th>
-              <th>DELIVERED</th>
-              <th>ACTIONS</th>
+              <th>Mã đơn hàng</th>
+              <th>Ngày đặt hàng</th>
+              <th>Số tiền</th>
+              <th>Ngày giao hàng</th>
+              <th>Tình trạng</th>
+              <th>Chi tiết đơn hàng</th>
             </tr>
           </thead>
           <tbody>
             {orders.map((order) => (
-              <tr key={order.id}>
+              <tr key={order.idOrder}>
                 <td>{order.idOrder}</td>
                 <td>{order.orderDate.substring(0, 10)}</td>
+                <td>
+                <span className="total-price"> 
+                  {numberWithCommas(order)} ₫
+                </span>
+                </td>
+                <td>
+                  {order.shippedDate}
+                </td>
+                <td>
+                  {order.status}
+                </td>
                 <td>
                   <button
                     type="button"

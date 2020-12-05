@@ -11,14 +11,12 @@ export const searchKeyword = (queryKey) => async (dispatch) => {
     dispatch({
       type: SEARCH_KEYWORD_REQUEST, payload: queryKey,
     });
-    try {
-
-      
+    try {      
       const { data } = await Axios.get('/api/search/', {params:{
         query: queryKey
       }});
       dispatch({ type: SEARCH_KEYWORD_SUCCESS, payload: data });
     } catch (error) {
-      dispatch({ type: SEARCH_KEYWORD_FAIL, payload: error.message });
+      dispatch({type: SEARCH_KEYWORD_FAIL, payload: error.message });
     }
 };
