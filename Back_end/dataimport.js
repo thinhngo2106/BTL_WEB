@@ -11,6 +11,7 @@ const data = {
         phone: '094607186',
         isAdmin: true,
       },
+
       {
         userEmail: 'ngothinh2106@gmail.com',
         userPassword: bcrypt.hashSync('010820', 8), 
@@ -28,7 +29,16 @@ const data = {
         address:'',
         phone: '0123456789',
         isAdmin: false,
-      },                
+      },   
+      {
+        userEmail: 'ngothinh2107@gmail.com',
+        userPassword: bcrypt.hashSync('0108201', 8), 
+        userFname: 'Ngo',
+        userLname: 'Thinh',
+        address:'',
+        phone: '0123456789',
+        isAdmin: true,
+        },             
     ],
     products:[
         {

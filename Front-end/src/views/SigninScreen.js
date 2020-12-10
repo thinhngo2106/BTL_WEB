@@ -26,6 +26,9 @@ export default function SigninScreen(props) {
     if (userInfo) {
       props.history.push(redirect);
     }
+    if (userInfo && userInfo.isAdmin){
+      props.history.push(redirect)
+    }
   }, [props.history, redirect, userInfo]);
   return (
     <div>

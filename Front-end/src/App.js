@@ -1,10 +1,12 @@
 import React from 'react';
-import { BrowserRouter as Router, Route} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Header from "./components/header";
+import HeaderAdmin from "./components/HeaderAdmin";
 import HomeScreen from "./views/HomeScreen";
 import ProductScreen from './views/ProductScreen';
 import CartScreen from './views/CartScreen';
 import SearchScreen from './views/SearchScreen';
+import AdminRoute from './components/AdminRoute';
 import './App.css'
 import Footer from './components/footer';
 import SignupScreen from './views/SignupScreen';
@@ -13,12 +15,27 @@ import ShippingAddressScreen from './views/ShippingAddressScreen';
 import PaymentScreen from './views/PaymentScreen';
 import PlaceOrderScreen from './views/PlaceOrderScreen';
 import OrderHistoryScreen from './views/OrderHistoryScreen';
+import AdminScreen from './views/AdminScreen';
+import { useSelector } from 'react-redux';
+
+
+
 function App(){
+   const userSignin = useSelector((state) => state.userSignin);
+   const { userInfo } = userSignin;
        return (
           <Router>
              <div>
-             <Header />
+              {userInfo && userInfo.isAdmin ? (
+                 <HeaderAdmin/>
+              ) : (
+             <Header /> 
+              )}
              <main>
+             {userInfo && userInfo.isAdmin ? (
+                 <AdminRoute path="/" component={AdminScreen}></AdminRoute>
+              ) : (
+               <Switch>
                <Route path="/cart/:id?" component={CartScreen}></Route>
                <Route path="/" component ={HomeScreen} exact ></Route>
                <Route path="/product/:id" component={ProductScreen} exact></Route>
@@ -29,7 +46,10 @@ function App(){
                <Route path="/payment" component={PaymentScreen}></Route>
                <Route path="/placeorder" component={PlaceOrderScreen}></Route>
                <Route path="/orderhistory" component={OrderHistoryScreen}></Route>
+               </Switch>
+              )}
             </main>
+            
             <Footer />
             </div>
           </Router>
