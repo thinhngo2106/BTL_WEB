@@ -31,6 +31,7 @@ export default function ProductScreen(props) {
         }
 
     };
+    
     const decNum = () => {
         if (qty > 1) {
         setQty(qty-1);
@@ -50,6 +51,9 @@ export default function ProductScreen(props) {
         props.history.push(`/cart/${productId}?qty=${qty}?size=${size}`);
         
     };
+    function numberWithCommas(number) {
+        return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
 
 
 
@@ -102,7 +106,7 @@ export default function ProductScreen(props) {
 
                     <div className="price-box">
                         <span className="productPrice">
-                            {product.productPrice}
+                            {numberWithCommas(product.productPrice) } ₫
                         </span>
                         <p/>
                     </div>

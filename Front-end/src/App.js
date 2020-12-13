@@ -43,7 +43,6 @@ function App(){
                <Route path="/signin" component={SigninScreen}></Route>
                <Route path="/register" component={SignupScreen}></Route>
                <Route path="/shipping" component={ShippingAddressScreen}></Route>
-               <Route path="/payment" component={PaymentScreen}></Route>
                <Route path="/placeorder" component={PlaceOrderScreen}></Route>
                <Route path="/orderhistory" component={OrderHistoryScreen}></Route>
                </Switch>

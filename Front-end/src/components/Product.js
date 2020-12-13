@@ -8,6 +8,9 @@ import { useDispatch, useSelector } from 'react-redux';
 export default function Product(props) {
   const dispatch = useDispatch();
   const { product } = props;
+  function numberWithCommas(number) {
+    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
 
 
   return (
@@ -20,7 +23,7 @@ export default function Product(props) {
           <p style={{color: 'black'}}>{product.productName}</p>
         </Link>
         <div className="product__price">$
-        <strong>{product.productPrice}</strong></div>
+        <strong> {numberWithCommas(product.productPrice)} ₫</strong></div>
       </div>
       <Link to={`/product/${product.idProduct}`} className="link">
       <button className="primary block" >Tùy chọn</button>
