@@ -76,7 +76,7 @@ export default function CartScreen(props) {
                                             </select>
                                         </div>
                                         <div className="col col-sm-1 col-md-2">
-                                            <span className="item-attribute">${item.price}  style={{textAlign: 'center'}} </span></div>
+                                            <span className="item-attribute" style={{textAlign: 'center'}}>${item.price}  </span></div>
                                         <div className="col col-sm-2 col-md-1">
                                             <button
                                             className="remove-item"
