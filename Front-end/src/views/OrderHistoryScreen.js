@@ -25,7 +25,7 @@ export default function OrderHistoryScreen(props) {
 
   return (
     <div className="order-history">
-      <h1 className="order-title">Order History</h1>
+      <h1 className="order-title">Lịch sử đơn hàng</h1>
       {loading ? (
         <LoadingBox></LoadingBox>
       ) : error ? (
@@ -66,7 +66,7 @@ export default function OrderHistoryScreen(props) {
                       props.history.push(`/order/${order._id}`);
                     }}
                   >
-                    Details
+                    Chi tiết
                   </button>
                 </td>
               </tr>
