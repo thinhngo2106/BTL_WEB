@@ -27,7 +27,7 @@ function Header(props) {
   }
   
         return(
-            <nav className="header">
+            <nav className="navbar navbar-expand-md sticky-top header">
               <Link to="/">
               <img className="header__logo" src= {process.env.PUBLIC_URL+ "/image/logo.png"} alt="background-img" width={144} height={81} />
               </Link>
@@ -40,7 +40,7 @@ function Header(props) {
               </Link>
             </div>
             <div className="header__nav">
-                <Link to = "/orderhistory">
+                <Link to = "/orderhistory" style={{textDecoration: 'none'}}>
                 <div className="header__option">
                   <span className="header__optionLineOne">Kiểm tra</span>
                   <span className="header__optionLineTwo">Đơn hàng</span>
@@ -50,21 +50,21 @@ function Header(props) {
                 {
                   userInfo ? (
                     <div className ="dropdown">
-                    <Link to="#">
+                    <Link to="#" style={{textDecoration: 'none'}}>
                     <div className="header__option">
                     <span className="header__optionLineOne">Xin chào</span>
                     <span className="header__optionLineTwo">{userInfo.Fname} {userInfo.Lname}</span>     
                     </div>                 
                     </Link>
                     <ul className="dropdown-content">
-                      <Link to="#signout" onClick={signoutHandler}>
+                      <Link to="#signout" onClick={signoutHandler} style={{textDecoration: 'none'}}>
                         <span className="dropdown-signout"> Đăng xuất </span>
                         </Link>
                     </ul>
                     </div>
                   ) : (
                
-                  <Link to ="/signin">
+                  <Link to ="/signin" style={{textDecoration: 'none'}}>
                     <div className="header__option">
                     <span className="header__optionLineOne">Hello Thinh</span>
                     <span className="header__optionLineTwo">Đăng nhập</span>     
@@ -74,7 +74,7 @@ function Header(props) {
                   )
                 }
                 </div>
-                <Link to="/cart">
+                <Link to="/cart" style={{textDecoration: 'none'}}>
                 <div className="header__optionBasket">
                 <AddShoppingCartIcon/>
                 <span className="header__optionLineTwo header__basketCount">{cartItems.length}</span>
