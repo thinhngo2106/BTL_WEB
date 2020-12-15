@@ -24,31 +24,7 @@ module.exports.productdetail = expressAsyncHandler(async( req,res) => {
 });
 
 module.exports.products =  expressAsyncHandler(async(req,res)=>{
-    const pageSize = 3;
-    const page = Number(req.query.pageNumber) || 1;
-    const name = req.query.name || '';
-    const category = req.query.category || '';
-    const order = req.query.order || '';
-    const min =
-      req.query.min && Number(req.query.min) !== 0 ? Number(req.query.min) : 0;
-    const max =
-      req.query.max && Number(req.query.max) !== 0 ? Number(req.query.max) : 0;
-    const rating =
-      req.query.rating && Number(req.query.rating) !== 0
-        ? Number(req.query.rating)
-        : 0;
-    const nameFilter = name ? { name: { $regex: name, $options: 'i' } } : {};
-    const categoryFilter = category ? { category } : {};
-    const priceFilter = min && max ? { price: { $gte: min, $lte: max } } : {};
-    const ratingFilter = rating ? { rating: { $gte: rating } } : {};    
-
-
     const products = await db.products.findAll({
-        where:{
-            ...nameFilter,
-            ...categoryFilter,
-
-        },
         include: [
             {
                 model: db.productdetail

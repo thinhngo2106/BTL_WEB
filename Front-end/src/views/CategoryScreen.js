@@ -4,20 +4,20 @@ import {useDispatch, useSelector} from 'react-redux';
 import Product from '../components/Product';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
-import {searchKeyword} from '../actions/searchActions';
+import {searchCategory} from '../actions/searchActions';
 
 
 export default function CategoryScreen(props) {
-    const dispatch = useDispatch();
+    
     const param = new URLSearchParams(props.location.search);
-    const query = param.get("query")
-    const keywordSearch  = useSelector((state) => state.keywordSearch );
-    const { loading, error, products } = keywordSearch;
-
-  
+    const name = param.get("name");
+    const categorySearch  = useSelector((state) => state.categorySearch );
+    const { loading, error, data} = categorySearch;
+    const dispatch = useDispatch();
     useEffect(() => {
-      dispatch(searchKeyword(query));
-    }, [dispatch, query]);
+      dispatch(searchCategory(name));
+      
+    }, [dispatch, name]);
     return (
         <div>
             { loading ? (
@@ -28,9 +28,14 @@ export default function CategoryScreen(props) {
             <div className="home">    
                 <div className="home__container">
                     <div className="home__row">
-                        {products.map((product) => (
-                            <Product key={product.idProduct} product={product}> </Product>
-                        ))}
+                        {
+                            data.length > 0 ? (
+                                data[0].products.map((product) => (
+                                    <Product key={product.idProduct} product={product}> </Product>
+                                ))
+                            ) : (
+                                <MessageBox variant="danger"> "Không có sản phẩm theo yêu cầu"</MessageBox>
+                            )}
                     </div>
                 </div>
             </div>

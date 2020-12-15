@@ -44,13 +44,14 @@ db.orders.belongsTo(db.users, {
   }
 });
 
-db.products.hasOne(db.productdetail,{
+db.products.hasMany(db.productdetail,{
     foreignKey:{
       name: 'idProduct',
       primaryKey: true,
       allowNull: false,
     }
 });
+
 
 db.products.belongsTo(db.brands, {
   foreignKey:{
@@ -59,7 +60,7 @@ db.products.belongsTo(db.brands, {
   }
 });
 
-db.products.belongsTo(db.categories,{
+db.categories.hasMany(db.products,{
   foreignKey:{
     name:'idCategory',
     allowNull:false,

@@ -28,4 +28,27 @@ router.get('/', expressAsyncHandler(async( req,res) => {
     }
 }));
 
+
+router.get('/categories', 
+    expressAsyncHandler(async (req, res) => {
+    const term = req.query.name
+    const products = await db.categories.findAll({
+        where:{
+           categoryName : req.query.name
+        },
+        include:[{
+            model: db.products,
+            include:[{
+                model: db.productdetail,
+            }]
+        }]
+    })
+    if (products){
+        res.send(products)
+    }
+    else {
+        res.send(term);   
+}}));
+
+
 module.exports = router;

@@ -3,9 +3,10 @@ import thunk from 'redux-thunk';
 import {
     productListReducer,
     productDetailsReducer,
+    productCategoryListReducer,
 } from './reducers/productReducers';
 import { cartReducer } from './reducers/cartReducers';
-import {searchKeywordReducer} from './reducers/searchReducers'
+import {searchCategoryReducer, searchKeywordReducer} from './reducers/searchReducers'
 import {
     userSigninReducer,
     userRegisterReducer, 
@@ -46,6 +47,8 @@ const reducer = combineReducers({
     userRegister: userRegisterReducer,
     orderCreate: orderCreateReducer,
     orderMineList: orderMineListReducer,
+    categorySearch: searchCategoryReducer,
+    listCategory: productCategoryListReducer,
 });
 
 
