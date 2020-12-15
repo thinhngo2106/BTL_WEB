@@ -1,45 +1,46 @@
-import React, { Component }  from "react";
-import './navbar.css';
+
+import React, { useEffect, useState}  from "react";
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import HorizontalSplitIcon from '@material-ui/icons/HorizontalSplit';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
+import { useDispatch, useSelector } from 'react-redux';
+import LoadingBox from '../components/LoadingBox';
+import MessageBox from '../components/MessageBox';
 import {Link} from "react-router-dom";
-class Navbar extends Component {
+import {listProductCategories} from "../actions/productActions";
 
-    render(){
+
+
+export default function NavBar(pros) {    
+    const listCategory = useSelector((state) => state.listCategory);
+    const {loading, error, categories} = listCategory;
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(listProductCategories());
+      }, [dispatch]);
         return(
-            <nav className= "navbarItems">
-                <ul className="item-big">
-                    <li className="nav-item home">
-                    <HorizontalSplitIcon className="bar-icon"/>
-                    <span>Danh mục sản phẩm</span>
-                    </li>
-                    <li className="nav-item">
-                    <Link to="/" className="nav-link">
-                    <span>Converse</span>
-                    </Link>
-                    </li>
-                    
-                    <li className="nav-item">
-                    <Link to="/" className="nav-link">   
-                    <span>Vans</span>
-                    </Link>
-                    </li>
+            <div>
+            {loading ? (
+                <LoadingBox></LoadingBox>
+              ) : error ? (
+                <MessageBox variant="danger">{error}</MessageBox>
+              ) : (
+
+            <div className= "navbarItems">
+                <div className="item-big">
+                    {categories.map((category) => (
+                        <Link to={`/category?name=${category.categoryName}`}>
     
-                    <li className="nav-item">
-                    <Link to="/" className="nav-link">
-                    <span>Phụ kiện Converse</span>
-                    </Link>
-                    </li>
-                    <li className="nav-item">
-                    <Link to="/" className="nav-link">
-                    <span>Phụ kiện Vans</span>
-                    </Link>
-                    </li>
-                </ul>
-            </nav>
-        );
-    }   
+                           <a> <span> {category.categoryName} </span> </a>
+            
+                        </Link>
+                    ))
+                    }
+                </div>
+            </div>
+            )}
+         </div>
+    );
 }
 
-export default Navbar

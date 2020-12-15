@@ -1,0 +1,12 @@
+.order-title {
+    margin-left: 50px;
+    padding: 20px 0px;
+}
+
+.table {
+    text-align: center;
+} 
+
+.table .thead {
+    background-color: green;
+}

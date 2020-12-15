@@ -17,6 +17,8 @@ import PlaceOrderScreen from './views/PlaceOrderScreen';
 import OrderHistoryScreen from './views/OrderHistoryScreen';
 import AdminScreen from './views/AdminScreen';
 import { useSelector } from 'react-redux';
+import CategoryScreen from './views/CategoryScreen';
+import NavBar from './components/navbar';
 
 
 
@@ -29,7 +31,10 @@ function App(){
               {userInfo && userInfo.isAdmin ? (
                  <HeaderAdmin/>
               ) : (
-             <Header /> 
+               <div>
+             <Header />
+             <NavBar></NavBar> 
+             </div>
               )}
              <main>
              {userInfo && userInfo.isAdmin ? (
@@ -45,6 +50,7 @@ function App(){
                <Route path="/shipping" component={ShippingAddressScreen}></Route>
                <Route path="/placeorder" component={PlaceOrderScreen}></Route>
                <Route path="/orderhistory" component={OrderHistoryScreen}></Route>
+               <Route path="/category" component={CategoryScreen}></Route>
                </Switch>
               )}
             </main>

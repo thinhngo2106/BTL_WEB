@@ -94,7 +94,7 @@ export default function ShippingAddressScreen(props) {
         </div>
         <div className="payment-method">
           <div>
-          <h1>Payment Method</h1>
+          <h1>Phương thức thanh toán</h1>
           </div>
           <div>
             <div>
@@ -127,7 +127,7 @@ export default function ShippingAddressScreen(props) {
         <div>
           <label />
           <button className="primary" type="submit">
-            Continue
+            Tiếp tục
           </button>
         </div>
       </form>

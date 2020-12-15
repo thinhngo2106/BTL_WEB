@@ -81,7 +81,7 @@ export default function ProductScreen(props) {
                 {/* <div className="product-detail-left product-images col-xs-12 col-sm-6 col-md-5 col-lg-5"> */}
                 <div className="product-detail-left product-images col-xs-12 col-sm-5 col-md-5 col-lg-5">
                     {/* <div className="lens"/> */}
-                    <img className="medium" src={product.productdetail.image} alt={product.productName}/>
+                    <img className="medium" src={product.productdetails[0].image} alt={product.productName}/>
                     {/* <button
                         onMouseEnter={(imageMagnifier)}
                         // onMouseLeave={()}
@@ -113,7 +113,7 @@ export default function ProductScreen(props) {
 
                     <div className="product-des">
                         <span>
-                            {product.productdetail.productDescription}
+                            {product.productdetails[0].productDescription}
                             <p/>                                
                         </span>
                     </div>
