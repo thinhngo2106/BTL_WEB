@@ -1,6 +1,7 @@
 .footer-section {
     background: #222736;
 	left: 5%;
+	display: flex;
 
 }
 .footer-section .footer-text {

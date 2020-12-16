@@ -22,6 +22,8 @@ import NavBar from './components/navbar';
 import Home from './views/pages/Home';
 import Reports from './views/pages/Reports';
 import Products from './views/pages/Products';
+import AdminNavbar from './components/Admin_Navbar';
+
 
 
 function App(){
@@ -31,7 +33,10 @@ function App(){
           <Router>
              <div>
               {userInfo && userInfo.isAdmin ? (
+               <div>
                  <HeaderAdmin/>
+                 <AdminNavbar></AdminNavbar>
+               </div>
               ) : (
                <div>
              <Header />
@@ -40,12 +45,11 @@ function App(){
               )}
              <main>
              {userInfo && userInfo.isAdmin ? (
-                <Switch>
-                 <AdminRoute path="/" component={AdminScreen}></AdminRoute>
-                 <Route path='/' exact component={Home} />
-                 <Route path='/reports' component={Reports} />
-                 <Route path='/products' component={Products} />
-                 </Switch>
+               <Switch>
+               <AdminRoute path="/" component={AdminScreen} exact></AdminRoute>
+               <AdminRoute path='/reports' component={Reports} ></AdminRoute>
+               <AdminRoute path='/products' component={Products} ></AdminRoute>
+               </Switch>
               ) : (
                <Switch>
                <Route path="/cart/:id?" component={CartScreen}></Route>
