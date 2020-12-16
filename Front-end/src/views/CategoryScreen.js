@@ -12,10 +12,11 @@ export default function CategoryScreen(props) {
     const param = new URLSearchParams(props.location.search);
     const name = param.get("name");
     const categorySearch  = useSelector((state) => state.categorySearch );
-    const { loading, error, data} = categorySearch;
+    const { loading, error, data, pages} = categorySearch;
     const dispatch = useDispatch();
     useEffect(() => {
       dispatch(searchCategory(name));
+      console.log(data);
       
     }, [dispatch, name]);
     return (

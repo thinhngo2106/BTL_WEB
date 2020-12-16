@@ -34,6 +34,7 @@ export const searchCategory = (nameCategory) => async (dispatch) => {
       name: nameCategory,
     }});
     
+    
     dispatch({ type: SEARCH_CATEGORY_SUCCESS, payload: data});
   } catch (error) {
     dispatch({type: SEARCH_CATEGORY_FAIL, payload: error.message });

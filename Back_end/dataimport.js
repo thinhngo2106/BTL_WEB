@@ -73,6 +73,30 @@ const data = {
             idBrand:1,
             idCategory:1,
         },
+        {
+            idProduct: 5,
+            productName: 'Giày Vans Era Flame',
+            productPrice:1500000,
+            quantityInStock: 10,
+            idBrand:2,
+            idCategory:2,
+        },
+        {
+            idProduct: 6,
+            productName: 'Giày Vans Style 36 Crew Checkerboard',
+            productPrice:1750000,
+            quantityInStock: 10,
+            idBrand:2,
+            idCategory:2,
+        },
+        {
+            idProduct: 7,
+            productName: 'Giày Vans Style 36 Marshmallow Racing Red',
+            productPrice:1850000,
+            quantityInStock: 10,
+            idBrand:2,
+            idCategory:2,
+        },
         
     ],
     productdetail: [
@@ -95,7 +119,22 @@ const data = {
             idProduct: 4,
             productDescription:"Sau nhiều năm sáng tạo không ngừng nghỉ, Converse Renew luôn kiên định với mục tiêu tái chế từ những chất thải ra môi trường để sản xuất nên những đôi giày mới vừa chất vừa đẹp vừa độc đáo. Không chỉ phát triển thêm những công nghệ mới để có thể tái chế đa dạng vật liệu cũng như tối ưu hóa",
             image: "..//../image/Product/Converse/166070c-1.jpg",
-        }
+        },
+        {
+            idProduct: 5,
+            productDescription:"Được ưa chuộng ở thị trường Mỹ vào những năm 1990, phiên bản giày Vans với họa tiết hình lửa hay còn gọi là giày Vans Flame đã chinh phục không biết bao nhiêu thế hệ người dùng.",
+            image: "..//../image/Product/Vans/vans1.jpg",
+        },
+        {
+            idProduct: 6,
+            productDescription:"THÔNG TIN SẢN PHẨM Thương hiệu Vans Xuất xứ thương hiệu Mỹ Sản xuất tại Việt Nam ...",
+            image: "..//../image/Product/Vans/vans2.jpg",
+        },
+        {
+            idProduct: 7,
+            productDescription:"Không phải lần đầu tiên xuất hiện, nhưng sản phẩm mang tên giày Vans Style 36 Marshmallow đã từng khuấy đảo được làng thời trang những năm trước. Đây cũng là sản phẩm có mức giá “đội” lên rất nhiều bởi sức hút của nhiều ngôi sao đình đám cũng sử dụng giày Vans Style 36 Marshmallow như anh chàng G-Dragon của Big Bang.",
+            image: "..//../image/Product/Vans/vans3.jpg",
+        },
     ],
     brands:[
         {
@@ -381,7 +420,203 @@ const data = {
             idSize: 13,
             idProduct:4,
             productSize:"Size 10 US - Size 43.0VN - 28.0CM"
+        },  
+        {
+            idSize: 1,
+            idProduct:5,
+            productSize:"Size 4.0US - Size 35.0VN - 22.0CM",
+        },
+        {
+            idSize: 2,
+            idProduct:5,
+            productSize:"Size 4.5US - Size 36.0VN - 22.5CM"
+        },
+        {
+            idSize: 3,
+            idProduct:5,
+            productSize:"Size 5.0US - Size 36.5VN - 23.0CM"
+        },
+        {
+            idSize: 4,
+            idProduct:5,
+            productSize:"Size 5.5US - Size 37.0VN - 23.5CM"
+        },
+        {
+            idSize: 5,
+            idProduct:5,
+            productSize:"Size 6.0US - Size 38.0VN - 24.0CM"
+        },
+        {
+            idSize: 6,
+            idProduct:5,
+            productSize:"Size 6.5US - Size 38.5VN - 24.5CM"
+        },
+        {
+            idSize: 7,
+            idProduct:5,
+            productSize:"Size 7.0US - Size 39.0VN - 25.0CM"
+        },
+        {
+            idSize: 8,
+            idProduct:5,
+            productSize:"Size 7.5US - Size 40.0VN - 25.5CM"
+        },
+        {
+            idSize: 9,
+            idProduct:5,
+            productSize:"Size 8.0US - Size 40.5VN - 26.0CM"
+        },
+        {
+            idSize: 10,
+            idProduct:5,
+            productSize:"Size 8.5US - Size 41.0VN - 26.5CM"
+        },
+        {
+            idSize: 11,
+            idProduct:5,
+            productSize:"Size 9.0US - Size 42.0VN - 27.0CM"
+        },
+        {
+            idSize: 12,
+            idProduct:5,
+            productSize:"Size 9.5US - Size 42.5VN - 27.5CM"
+        },
+        {
+            idSize: 13,
+            idProduct:5,
+            productSize:"Size 10 US - Size 43.0VN - 28.0CM"
         },        
+        {
+            idSize: 1,
+            idProduct:6,
+            productSize:"Size 4.0US - Size 35.0VN - 22.0CM",
+        },
+        {
+            idSize: 2,
+            idProduct:6,
+            productSize:"Size 4.5US - Size 36.0VN - 22.5CM"
+        },
+        {
+            idSize: 3,
+            idProduct:6,
+            productSize:"Size 5.0US - Size 36.5VN - 23.0CM"
+        },
+        {
+            idSize: 4,
+            idProduct:6,
+            productSize:"Size 5.5US - Size 37.0VN - 23.5CM"
+        },
+        {
+            idSize: 5,
+            idProduct:6,
+            productSize:"Size 6.0US - Size 38.0VN - 24.0CM"
+        },
+        {
+            idSize: 6,
+            idProduct:6,
+            productSize:"Size 6.5US - Size 38.5VN - 24.5CM"
+        },
+        {
+            idSize: 7,
+            idProduct:6,
+            productSize:"Size 7.0US - Size 39.0VN - 25.0CM"
+        },
+        {
+            idSize: 8,
+            idProduct:6,
+            productSize:"Size 7.5US - Size 40.0VN - 25.5CM"
+        },
+        {
+            idSize: 9,
+            idProduct:6,
+            productSize:"Size 8.0US - Size 40.5VN - 26.0CM"
+        },
+        {
+            idSize: 10,
+            idProduct:6,
+            productSize:"Size 8.5US - Size 41.0VN - 26.5CM"
+        },
+        {
+            idSize: 11,
+            idProduct:6,
+            productSize:"Size 9.0US - Size 42.0VN - 27.0CM"
+        },
+        {
+            idSize: 12,
+            idProduct:6,
+            productSize:"Size 9.5US - Size 42.5VN - 27.5CM"
+        },
+        {
+            idSize: 13,
+            idProduct:6,
+            productSize:"Size 10 US - Size 43.0VN - 28.0CM"
+        }
+        ,
+        {
+            idSize: 1,
+            idProduct:7,
+            productSize:"Size 4.0US - Size 35.0VN - 22.0CM",
+        },
+        {
+            idSize: 2,
+            idProduct:7,
+            productSize:"Size 4.5US - Size 36.0VN - 22.5CM"
+        },
+        {
+            idSize: 3,
+            idProduct:7,
+            productSize:"Size 5.0US - Size 36.5VN - 23.0CM"
+        },
+        {
+            idSize: 4,
+            idProduct:7,
+            productSize:"Size 5.5US - Size 37.0VN - 23.5CM"
+        },
+        {
+            idSize: 5,
+            idProduct:7,
+            productSize:"Size 6.0US - Size 38.0VN - 24.0CM"
+        },
+        {
+            idSize: 6,
+            idProduct:7,
+            productSize:"Size 6.5US - Size 38.5VN - 24.5CM"
+        },
+        {
+            idSize: 7,
+            idProduct:7,
+            productSize:"Size 7.0US - Size 39.0VN - 25.0CM"
+        },
+        {
+            idSize: 8,
+            idProduct:7,
+            productSize:"Size 7.5US - Size 40.0VN - 25.5CM"
+        },
+        {
+            idSize: 9,
+            idProduct:7,
+            productSize:"Size 8.0US - Size 40.5VN - 26.0CM"
+        },
+        {
+            idSize: 10,
+            idProduct:7,
+            productSize:"Size 8.5US - Size 41.0VN - 26.5CM"
+        },
+        {
+            idSize: 11,
+            idProduct:7,
+            productSize:"Size 9.0US - Size 42.0VN - 27.0CM"
+        },
+        {
+            idSize: 12,
+            idProduct:7,
+            productSize:"Size 9.5US - Size 42.5VN - 27.5CM"
+        },
+        {
+            idSize: 13,
+            idProduct:7,
+            productSize:"Size 10 US - Size 43.0VN - 28.0CM"
+        },  
     ]
 };
   

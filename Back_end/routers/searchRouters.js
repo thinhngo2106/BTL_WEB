@@ -2,7 +2,7 @@ const express = require("express");
 const db = require('../models');
 const router = express.Router();
 const expressAsyncHandler =  require('express-async-handler');
-const data = require("../dataimport");
+
 const productController = require('../controllers/productController');
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
@@ -29,10 +29,17 @@ router.get('/', expressAsyncHandler(async( req,res) => {
 }));
 
 
+
+
+
+
 router.get('/categories', 
     expressAsyncHandler(async (req, res) => {
     const term = req.query.name
-    const products = await db.categories.findAll({
+    const page = req.query.page
+    const limit = 2;
+    const offset = page ? page * limit : 0;
+    const data = await db.categories.findAll({
         where:{
            categoryName : req.query.name
         },
@@ -40,15 +47,34 @@ router.get('/categories',
             model: db.products,
             include:[{
                 model: db.productdetail,
-            }]
-        }]
+                required: true
+            }],
+            offset: offset,
+            limit: limit,
+        }],
+
     })
-    if (products){
-        res.send(products)
+    const pages = await db.categories.count({
+        where:{
+            categoryName : req.query.name
+        },
+        include: [{
+            model: db.products, attributes: []
+        }],
+    })
+    const totalPages = Math.ceil(pages/ limit);
+    
+    if (data){
+        res.send({data, totalPages});
     }
     else {
-        res.send(term);   
+        res.status(404).send({message: 'Không tìm thấy sản phẩm'})
 }}));
+
+
+
+
+
 
 
 module.exports = router;
