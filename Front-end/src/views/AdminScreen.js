@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import "./css/sb-admin-2.css";
-import './vendor/fontawesome-free/css/all.min.css';
+import './vendor/fontawesome-free/all.min.css';
 
 export default function AdminScreen(){
     return(

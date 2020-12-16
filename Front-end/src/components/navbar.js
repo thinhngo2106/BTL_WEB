@@ -32,7 +32,7 @@ export default function NavBar(pros) {
                     {categories.map((category) => (
                         <Link to={`/category?name=${category.categoryName}`}>
     
-                           <a> <span> {category.categoryName} </span> </a>
+                           <a key={category.idCategory}> <span> {category.categoryName} </span> </a>
             
                         </Link>
                     ))
