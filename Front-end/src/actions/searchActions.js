@@ -24,7 +24,7 @@ export const searchKeyword = (queryKey) => async (dispatch) => {
     }
 };
 
-export const searchCategory = (nameCategory) => async (dispatch) => {
+export const searchCategory = (nameCategory, pageNumber) => async (dispatch) => {
   
   dispatch({
     type: SEARCH_CATEGORY_REQUEST, payload: nameCategory,
@@ -32,6 +32,7 @@ export const searchCategory = (nameCategory) => async (dispatch) => {
   try {      
     const { data } = await Axios.get('/api/search/categories/', {params:{
       name: nameCategory,
+      page: pageNumber ? pageNumber : 0,
     }});
     
     

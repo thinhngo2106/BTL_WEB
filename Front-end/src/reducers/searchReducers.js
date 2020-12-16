@@ -31,7 +31,7 @@ export const searchCategoryReducer =  (
         case SEARCH_CATEGORY_REQUEST:
             return {loading: true};
         case SEARCH_CATEGORY_SUCCESS: 
-        console.log(action.payload.data);
+     
             return {loading: false,
             data: action.payload.data,
             pages: action.payload.totalPages,

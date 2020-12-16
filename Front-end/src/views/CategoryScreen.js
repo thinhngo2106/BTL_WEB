@@ -5,20 +5,24 @@ import Product from '../components/Product';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
 import {searchCategory} from '../actions/searchActions';
-
+import {Link} from "react-router-dom";
 
 export default function CategoryScreen(props) {
     
     const param = new URLSearchParams(props.location.search);
     const name = param.get("name");
+    const page = param.get("page");
     const categorySearch  = useSelector((state) => state.categorySearch );
     const { loading, error, data, pages} = categorySearch;
     const dispatch = useDispatch();
     useEffect(() => {
-      dispatch(searchCategory(name));
-      console.log(data);
-      
-    }, [dispatch, name]);
+      dispatch(searchCategory(name,page));
+    }, [dispatch, name, page]);
+    const getFilterUrl = (filter) => {
+        const filterPage = filter.page || page;
+        return `/category?name=${name}&page=${filterPage-1}`;
+    }
+
     return (
         <div>
             { loading ? (
@@ -39,7 +43,21 @@ export default function CategoryScreen(props) {
                             )}
                     </div>
                 </div>
+                <div className="row center pagination">
+                {[...Array(pages).keys()].map((x) => (
+                  <Link
+                    className={x === page ? 'active' : ''}
+                    key={x}
+                    to={getFilterUrl({page: x+1})}
+                  >
+                    <a>
+                    {x+1}
+                    </a>
+                  </Link>
+                ))}
+                </div>
             </div>
+            
             )}
         </div>
     );
