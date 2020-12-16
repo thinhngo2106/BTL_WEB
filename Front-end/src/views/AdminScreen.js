@@ -1,8 +1,3 @@
-
-import React, {useEffect, useState} from "react";
-import "./css/sb-admin-2.css";
-import './vendor/fontawesome-free/all.min.css';
-
 import React from 'react';
 import './css/Admin.css';
 import Navbar from '../components/Admin_Navbar';
@@ -17,11 +12,7 @@ export default function AdminScreen(){
     <>
       <Router>
         <Navbar />
-        <Switch>
-          <Route path='/' exact component={Home} />
-          <Route path='/reports' component={Reports} />
-          <Route path='/products' component={Products} />
-        </Switch>
+
       </Router>
     </>
         

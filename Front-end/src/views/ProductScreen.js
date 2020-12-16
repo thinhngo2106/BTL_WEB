@@ -77,7 +77,7 @@ export default function ProductScreen(props) {
           <MessageBox variant="danger">{error}</MessageBox>
         ) : (
         <div className="col-lg-9 col-md-12 col-sm-12 col-xs-12">
-            <div className="row">
+            <div className="row-product">
                 {/* <div className="product-detail-left product-images col-xs-12 col-sm-6 col-md-5 col-lg-5"> */}
                 <div className="product-detail-left product-images col-xs-12 col-sm-5 col-md-5 col-lg-5">
                     {/* <div className="lens"/> */}

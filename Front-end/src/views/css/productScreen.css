@@ -1,8 +1,8 @@
-.row {
+.row-product {
     display: flex;
     flex-wrap: wrap;
     position: relative;
-    /* left: 20%; */
+    left: 5%; 
 }
 li {
     float: left;
@@ -17,7 +17,7 @@ li {
 
 /* Product image */
 .product-detail-left {
-    margin-left: -135px;
+   
     /* width: 200px;
     height: 200px; */
     overflow: hidden;

@@ -19,7 +19,9 @@ import AdminScreen from './views/AdminScreen';
 import { useSelector } from 'react-redux';
 import CategoryScreen from './views/CategoryScreen';
 import NavBar from './components/navbar';
-
+import Home from './views/pages/Home';
+import Reports from './views/pages/Reports';
+import Products from './views/pages/Products';
 
 
 function App(){
@@ -38,7 +40,12 @@ function App(){
               )}
              <main>
              {userInfo && userInfo.isAdmin ? (
+                <Switch>
                  <AdminRoute path="/" component={AdminScreen}></AdminRoute>
+                 <Route path='/' exact component={Home} />
+                 <Route path='/reports' component={Reports} />
+                 <Route path='/products' component={Products} />
+                 </Switch>
               ) : (
                <Switch>
                <Route path="/cart/:id?" component={CartScreen}></Route>
