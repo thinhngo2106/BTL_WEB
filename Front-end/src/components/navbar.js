@@ -1,6 +1,5 @@
-
 import React, { useEffect, useState}  from "react";
-
+import './css/navbar.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import HorizontalSplitIcon from '@material-ui/icons/HorizontalSplit';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
@@ -30,10 +29,12 @@ export default function NavBar(pros) {
             <div className= "navbarItems">
                 <div className="item-big">
                     {categories.map((category) => (
-                        <Link to={`/category?name=${category.categoryName}`}>
-    
-                           <a key={category.idCategory}> <span> {category.categoryName} </span> </a>
-            
+                        <Link to={`/category?name=${category.categoryName}`} style={{textDecoration: 'none'}}>
+                          <a key={category.idCategory}> 
+                            <button> 
+                              {category.categoryName} 
+                            </button>
+                          </a>
                         </Link>
                     ))
                     }

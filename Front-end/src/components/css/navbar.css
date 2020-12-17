@@ -1,17 +1,17 @@
 .navbarItems{
-    height: 60px;
+    height: 65px;
     align-items: center;
     display: flex;
     position: sticky;
-    background-color: black;
+    background-color: #393a44;
 }
 .item-big{
     display: flex;
     position: relative;
-    left: 15%;
-    margin-bottom: 5px;
+    
+    
 }
-.home{
+/* .home{
     display: flex;
     position: relative;
     top: 7px;
@@ -44,4 +44,17 @@ li {
 .nav-link:hover{
     color: blanchedalmond;;
     text-decoration: none;
+} */
+
+button {
+    cursor: pointer;
+    font-size: 17px;
+    font-weight: bold;
+    padding: 0px 50px;
+    background: #393a44;
+    border: none;
+    color: rgb(236, 236, 236);
+}
+button:hover {
+    color: rgb(10, 10, 10)
 }

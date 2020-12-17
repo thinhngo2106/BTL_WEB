@@ -10,6 +10,8 @@
     max-width: 400px;
     background-color: white;
     z-index: 1;
+    column-count: 5;
+    column-width: 50px;
   }
   
 

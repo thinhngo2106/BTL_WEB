@@ -7,6 +7,10 @@ import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import {useDispatch, useSelector} from 'react-redux';
 import { searchKeyword } from '../actions/searchActions';
 import { signout } from '../actions/userActions';
+import { Dropdown } from 'react-bootstrap';
+import SplitButton from 'react-bootstrap/SplitButton';
+import DropdownButton from 'react-bootstrap/DropdownButton'
+
 
 function Header(props) {
 
@@ -27,7 +31,7 @@ function Header(props) {
   }
   
         return(
-            <nav className="navbar navbar-expand-md sticky-top header">
+            <nav className="navbar navbar-expand-md header">
               <Link to="/">
               <img className="header__logo" src= {process.env.PUBLIC_URL+ "/image/logo.png"} alt="background-img" width={144} height={81} />
               </Link>
@@ -49,18 +53,39 @@ function Header(props) {
                 <div className="header__option">
                 {
                   userInfo ? (
-                    <div className ="dropdown">
-                    <Link to="#" style={{textDecoration: 'none'}}>
+                    // <div className ="dropdown">
+                    // <Link to="#" style={{textDecoration: 'none'}}>
+                    // <div className="header__option">
+                    // <span className="header__optionLineOne">Xin chào</span>
+                    // <span className="header__optionLineTwo">{userInfo.Fname} {userInfo.Lname}</span>     
+                    // </div>                 
+                    // </Link>
+                    // <ul className="dropdown-content">
+                    //   <Link to="#signout" onClick={signoutHandler} style={{textDecoration: 'none'}}>
+                    //     <span className="dropdown-signout"> Đăng xuất </span>
+                    //     </Link>
+                    // </ul>
+                    // </div>
+                    <div>
                     <div className="header__option">
-                    <span className="header__optionLineOne">Xin chào</span>
+                    {/* <span className="header__optionLineOne">Xin chào</span> */}
+
                     <span className="header__optionLineTwo">{userInfo.Fname} {userInfo.Lname}</span>     
-                    </div>                 
-                    </Link>
-                    <ul className="dropdown-content">
-                      <Link to="#signout" onClick={signoutHandler} style={{textDecoration: 'none'}}>
-                        <span className="dropdown-signout"> Đăng xuất </span>
-                        </Link>
-                    </ul>
+                  </div>  
+                    <Dropdown>
+                      
+                      <Dropdown.Toggle id="dropdown-basic" >
+                        
+                      </Dropdown.Toggle>
+
+                      <Dropdown.Menu  className="dropdown-signout"> 
+                        <Dropdown.Item > 
+                          <Link to="#signout" onClick={signoutHandler} style={{textDecoration: 'none'}, {border: 'none'}}>
+                            <span className='dropdown-content'> Đăng xuất </span>
+                            </Link>
+                        </Dropdown.Item>
+                      </Dropdown.Menu>
+                    </Dropdown>
                     </div>
                   ) : (
                

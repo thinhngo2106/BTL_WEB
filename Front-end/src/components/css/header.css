@@ -1,9 +1,9 @@
 .header {
-  height: 80px;
+  height: 100px;
   display: flex;
   align-items: center;
   background-color: rgba(244,203,36,09);
-  position: sticky;
+  /* position: sticky; */
   top: 0;
   z-index: 100;
 }
@@ -19,6 +19,7 @@
   flex: 1;
   align-items: center;
   border-radius: 24px; 
+  width: 50%;
 }
 
 .header__searchIcon {
@@ -39,12 +40,20 @@
   border-radius: 3px;
 }
 .header__optionLineOne {
-  font-size: 10px;
+  font-size: 11px;
+  font-weight: 700;
+  text-align: left;
 }
 
 .header__optionLineTwo {
   font-size: 13px;
   font-weight: 800;
+  display:inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 9ch;
+  text-align: left;
 }
 
 .header__nav {
@@ -75,6 +84,7 @@
   color: rgb(0, 88, 0);
   text-decoration: none; 
 }
+
 .search-button{
   border: none;
   margin: 0px;
@@ -85,26 +95,47 @@
   
 }
 
+#dropdown-basic {
+  display: inline-block;
+  position: relative;
+  background-color: rgba(244,203,36,09);
+  border: none;
+  padding: 0px;
+}
+
 .dropdown{
   display: inline-block;
   position: relative;
 }
 .dropdown-content {
-  font-size: 15px;
+  /* font-size: 15px;
   position: absolute;
   display: none;
   right: 0;
   min-width: 8rem;
-  padding: 15px;
+  padding: 0px;
   z-index: 1;
   background-color:#cd9042;
   margin: 0;
   margin-top: 0.4rem;
-  border-radius: 0.5rem;
-}
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-.dropdown-signout{
+  border-radius: 0.5rem; */
   color: rgb(0, 88, 0);
 }
+.dropdown-basic:active {
+  border: none;
+}
+.dropdown-signout{
+  font-size: 15px;
+  background-color:#cd9042;
+  color: rgb(0, 88, 0);
+}
+
+/* @media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 568px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: landscape) {
+    .header__nav{
+      display: none;
+    }
+} */
