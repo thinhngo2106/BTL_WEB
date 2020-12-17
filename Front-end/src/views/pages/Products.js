@@ -1,12 +1,26 @@
   
 import React from 'react';
 
-function Products() {
+export const Products = () => {
   return (
-    <div className='admin-products'>
+    <div className='products'>
       <h1>Products</h1>
     </div>
   );
-}
+};
 
-export default Products;
+export const ProductsManage = () => {
+  return (
+    <div className='admin-products'>
+      <h1> Products Manage</h1>
+    </div>
+  );
+};
+
+export const AddProducts = () => {
+  return (
+    <div className='admin-products'>
+      <h1>Add Products</h1>
+    </div>
+  );
+};

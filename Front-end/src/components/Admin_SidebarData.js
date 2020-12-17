@@ -2,6 +2,7 @@ import React from 'react';
 import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
 import * as IoIcons from 'react-icons/io';
+import * as RiIcons from 'react-icons/ri';
 
 export const SidebarData = [
   {
@@ -11,16 +12,48 @@ export const SidebarData = [
     cName: 'nav-text'
   },
   {
-    title: 'Reports',
-    path: '/reports',
+    title: 'Orders',
+    path: '/orders',
     icon: <IoIcons.IoIosPaper />,
-    cName: 'nav-text'
+    iconClosed: <RiIcons.RiArrowDownSFill />,
+    iconOpened: <RiIcons.RiArrowUpSFill />,
+
+    subNav: [
+      {
+        title: 'Orders Manage',
+        path: '/orders/ordersManage',
+        icon: <IoIcons.IoIosPaper />,
+        cName: 'sub-nav'
+      },
+      {
+        title: 'Delete Orders',
+        path: '/reports/deleteOrders',
+        icon: <IoIcons.IoIosPaper />,
+        cName: 'sub-nav'
+      }
+    ]
   },
   {
     title: 'Products',
     path: '/products',
     icon: <FaIcons.FaCartPlus />,
-    cName: 'nav-text'
+    iconClosed: <RiIcons.RiArrowDownSFill />,
+    iconOpened: <RiIcons.RiArrowUpSFill />,
+
+    subNav: [
+      {
+        title: 'Products Manage',
+        path: '/products/productsManage',
+        icon: <FaIcons.FaCartPlus />,
+        cName: 'sub-nav'
+      },
+      {
+        title: 'Add Products',
+        path: '/products/addProducts',
+        icon: <FaIcons.FaCartPlus />,
+        cName: 'sub-nav'
+      }
+    ]
   },
   {
     title: 'Team',
