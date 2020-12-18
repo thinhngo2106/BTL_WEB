@@ -61,7 +61,7 @@ router.get('/categories',
         include: [{
             model: db.products, attributes: []
         }],
-    })
+    })  
     const totalPages = Math.ceil(pages/ limit);
     
     if (data){
