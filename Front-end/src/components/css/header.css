@@ -95,7 +95,7 @@
   
 }
 
-#dropdown-basic {
+.dropdown-basic {
   display: inline-block;
   position: relative;
   background-color: rgba(244,203,36,09);
@@ -121,9 +121,10 @@
   border-radius: 0.5rem; */
   color: rgb(0, 88, 0);
 }
-.dropdown-basic:active {
-  border: none;
-}
+/* .dropdown:focus {
+  outline: none;
+} */
+
 .dropdown-signout{
   font-size: 15px;
   background-color:#cd9042;

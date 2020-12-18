@@ -2,12 +2,11 @@
     height: 65px;
     align-items: center;
     display: flex;
-    position: sticky;
+    /* position: sticky; */
     background-color: #393a44;
 }
 .item-big{
     display: flex;
-    position: relative;
     
     
 }
@@ -46,7 +45,7 @@ li {
     text-decoration: none;
 } */
 
-button {
+#navbar-button {
     cursor: pointer;
     font-size: 17px;
     font-weight: bold;
@@ -54,7 +53,11 @@ button {
     background: #393a44;
     border: none;
     color: rgb(236, 236, 236);
+    
 }
-button:hover {
+#navbar-button:hover {
     color: rgb(10, 10, 10)
+}
+#navbar-button:focus {
+    outline: none;
 }

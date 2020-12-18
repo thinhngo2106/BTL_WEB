@@ -18,7 +18,7 @@ export default function Product(props) {
 
   return (
     // <div className='col-xs-12 col-sm-6 col-md-6 col-lg-3'>
-      <div className='col-xs-12 col-sm-6 col-md-6 col-lg-3'>
+      
         <div key={product.idProduct} className="product">
           <div>
             <Link to={`/product/${product.idProduct}`}>
@@ -29,16 +29,17 @@ export default function Product(props) {
           <div className="product__info">
             <Link to={`/product/${product.idProduct}`} style={{textDecoration: 'none'}}>
               <p style={{color: 'black'}}>{product.productName}</p>
-            </Link>
+            </Link>   
+
             <div className="product__price">$
               <strong> {numberWithCommas(product.productPrice)} ₫</strong>
             </div>
-          </div>
-          <Link to={`/product/${product.idProduct}`} className="link">
-          <button className="primary block" >Tùy chọn</button>
-          </Link>
-        </div>
-      </div>
+            
+            </div>
+              <Link to={`/product/${product.idProduct}`} className="link">
+                <button className="primary block" >Tùy chọn</button>
+              </Link>
+            </div>
     // </div>
     
     

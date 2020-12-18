@@ -66,21 +66,21 @@ function Header(props) {
                     //     </Link>
                     // </ul>
                     // </div>
-                    <div>
-                    <div className="header__option">
-                    {/* <span className="header__optionLineOne">Xin chào</span> */}
-
-                    <span className="header__optionLineTwo">{userInfo.Fname} {userInfo.Lname}</span>     
-                  </div>  
-                    <Dropdown>
+                  <div>
+                    <Dropdown className="dropdown">
                       
-                      <Dropdown.Toggle id="dropdown-basic" >
-                        
+                      <Dropdown.Toggle className="dropdown-basic" >
+                      
+                        <div className="header__option">
+                          <span className="header__optionLineOne">Xin chào</span>
+
+                          <span className="header__optionLineTwo">{userInfo.Fname} {userInfo.Lname}</span>     
+                        </div> 
                       </Dropdown.Toggle>
 
                       <Dropdown.Menu  className="dropdown-signout"> 
                         <Dropdown.Item > 
-                          <Link to="#signout" onClick={signoutHandler} style={{textDecoration: 'none'}, {border: 'none'}}>
+                          <Link to="#signout" onClick={signoutHandler} style={{textDecoration: 'none'}}>
                             <span className='dropdown-content'> Đăng xuất </span>
                             </Link>
                         </Dropdown.Item>

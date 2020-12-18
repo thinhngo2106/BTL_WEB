@@ -1,5 +1,6 @@
 import React, {useEffect}  from 'react';
 import "./css/home.css";
+import './css/CategoryScreen.css';
 import {useDispatch, useSelector} from 'react-redux';
 import Product from '../components/Product';
 import LoadingBox from '../components/LoadingBox';
@@ -43,16 +44,19 @@ export default function CategoryScreen(props) {
                             )}
                     </div>
                 </div>
-                <div className="row center pagination">
+                <div className="row center pagination pagination-sm">
                 {[...Array(pages).keys()].map((x) => (
                   <Link
                     className={x === page ? 'active' : ''}
                     key={x}
                     to={getFilterUrl({page: x+1})}
                   >
-                    <a>
-                    {x+1}
-                    </a>
+                    <li className='page-item'>
+                        <a>
+                            {x+1}
+                        </a>
+                    </li>
+                    
                   </Link>
                 ))}
                 </div>

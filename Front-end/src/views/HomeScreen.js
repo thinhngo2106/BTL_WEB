@@ -1,5 +1,6 @@
 import React, {useEffect}  from 'react';
 import "./css/home.css";
+import './css/HomeScreen.css';
 import {useDispatch, useSelector} from 'react-redux';
 import Product from '../components/Product';
 import LoadingBox from '../components/LoadingBox';
