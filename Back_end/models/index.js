@@ -59,6 +59,20 @@ db.products.belongsTo(db.brands, {
     allowNull: false,
   }
 });
+db.brands.hasMany(db.products,{
+  foreignKey:{
+    name: 'idBrand',
+    allowNull: false,
+  }
+});
+
+
+db.products.belongsTo(db.categories,{
+  foreignKey:{
+    name:'idCategory',
+    allowNull:false,
+  }
+});
 
 db.categories.hasMany(db.products,{
   foreignKey:{

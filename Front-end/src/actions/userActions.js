@@ -32,6 +32,7 @@ export const signout = () => (dispatch) => {
     localStorage.removeItem('cartItems');
     dispatch({ type: USER_SIGNOUT });
     dispatch({type: USER_REGISTER_FAIL})
+    
 };
 
 export const register = (fname, lname, email, password) => async (dispatch) => {

@@ -27,7 +27,12 @@ module.exports.products =  expressAsyncHandler(async(req,res)=>{
     const products = await db.products.findAll({
         include: [
             {
-                model: db.productdetail
+                model: db.productdetail,
+            },{
+                model: db.brands,
+            },
+            {
+                model: db.categories,
             }
         ]
     })
