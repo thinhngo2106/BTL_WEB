@@ -55,12 +55,13 @@ function AdminSidebar() {
           </NavIcon>
         </Nav>
         <SidebarNav sidebar={sidebar}>
-          <SidebarWrap>
+          <SidebarWrap >
             <NavIcon to='#'>
               <AiIcons.AiOutlineClose onClick={showSidebar} />
             </NavIcon>
             {SidebarData.map((item, index) => {
-              return <SubMenu item={item} key={index} />;
+              return <SubMenu item={item} key={index}/>;
+            
             })}
           </SidebarWrap>
         </SidebarNav>

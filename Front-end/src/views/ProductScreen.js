@@ -159,7 +159,7 @@ export default function ProductScreen(props) {
                         <p/> 
 
                         {product.quantityInStock > 0 ?(
-                            <button onClick={addToCartHandler} className="cart">
+                            <button onClick={addToCartHandler} className="addtocart">
                                 Thêm vào giỏ hàng
                             </button>
                             

@@ -21,7 +21,7 @@
     margin-bottom: 15px;
   }
   
-  .product > .link > button {
+  .details {
     cursor: pointer;
     font-size: 15px;
     padding: 14px 16px;
@@ -33,11 +33,11 @@
     color: rgb(243, 243, 243);
   }
 
-  .product > .link > button:hover {
+  .details:hover {
     background-color: rgb(22, 22, 22)
   }
 
-  .product >.link > button:active {
+  .details:active {
     box-shadow: 0 2px rgb(90, 84, 84);
     transform: translateY(1px);
   }

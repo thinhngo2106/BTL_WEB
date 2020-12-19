@@ -36,59 +36,59 @@ export default function RegisterScreen(props) {
   }, [props.history, redirect, userInfo]);
 
   return (
-    <div>
+    <div className="signin-up ">
       <form className="form" onSubmit={submitHandler}>
-        <div>
-          <h1>Create Account</h1>
+        <div className="head">
+          <h1>Đăng ký</h1>
         </div>
         {loading && <LoadingBox></LoadingBox>}
         {error && <MessageBox variant="danger">{error}</MessageBox>}
         <div>
-          <label htmlFor="fname">First Name</label>
+          <label htmlFor="fname">Họ</label>
           <input
             type="text"
             id="fname"
-            placeholder="Enter name"
+            placeholder="Họ"
             required
             onChange={(e) => setFname(e.target.value)}
           ></input>
         </div>
         <div>
-          <label htmlFor="lname">Last Name</label>
+          <label htmlFor="lname">Tên</label>
           <input
             type="text"
             id="lname"
-            placeholder="Enter name"
+            placeholder="Tên"
             required
             onChange={(e) => setLname(e.target.value)}
           ></input>
         </div>
         <div>
-          <label htmlFor="email">Email address</label>
+          <label htmlFor="email">Email</label>
           <input
             type="email"
             id="email"
-            placeholder="Enter email"
+            placeholder="Email"
             required
             onChange={(e) => setEmail(e.target.value)}
           ></input>
         </div>
         <div>
-          <label htmlFor="password">Password</label>
+          <label htmlFor="password">Mật khẩu</label>
           <input
             type="password"
             id="password"
-            placeholder="Enter password"
+            placeholder="Mật khẩu"
             required
             onChange={(e) => setPassword(e.target.value)}
           ></input>
         </div>
         <div>
-          <label htmlFor="confirmPassword">Confirm Password</label>
+          <label htmlFor="confirmPassword">Xác thực mật khẩu</label>
           <input
             type="password"
             id="confirmPassword"
-            placeholder="Enter confirm password"
+            placeholder="Xác thực mật khẩu"
             required
             onChange={(e) => setConfirmPassword(e.target.value)}
           ></input>
@@ -96,14 +96,14 @@ export default function RegisterScreen(props) {
         <div>
           <label />
           <button className="primary" type="submit" >
-            Register
+            Đăng ký
           </button>
         </div>
         <div>
           <label />
-          <div>
-            Already have an account?{' '}
-            <Link to={`/signin?redirect=${redirect}`}>Sign-In</Link>
+          <div className="account">
+            Đã có tài khoản?{' '}
+            <Link to={`/signin?redirect=${redirect}`} style={{textDecoration: 'none'}}>Đăng nhập</Link>
           </div>
         </div>
       </form>
