@@ -5,6 +5,7 @@ const expressAsyncHandler =  require('express-async-handler');
 const data = require("../dataimport");
 const productController = require('../controllers/productController');
 const { isAdmin, isAuth} = require('../utlis');
+const { route } = require("./uploadRouter");
 
 router.get("/categories", 
 expressAsyncHandler(async (req, res) => {
@@ -31,6 +32,25 @@ router.delete(
         }
   })
 );
+
+router.post("/",
+    
+    expressAsyncHandler(async (req, res) => {
+        const createdProduct = await db.products.create({
+            productName: req.body.name,
+            productPrice: req.body.price,
+            quantityInStock: req.body.quantityInStock,
+            idBrand: req.body.brand,
+            idCategory: req.body.category,
+        });
+        const createdetail = await db.productdetail.create({
+            idProduct: createdProduct.idProduct,
+            productDescription:"ss",
+            image: req.body.image,
+        })
+        res.send({ message: 'Product Created', product: createdProduct });
+    }
+));
 
 
 router.get('/', productController.products);

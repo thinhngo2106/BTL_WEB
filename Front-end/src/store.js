@@ -5,6 +5,8 @@ import {
     productDetailsReducer,
     productCategoryListReducer,
     productDeleteReducer,
+    productCreateReducer,
+    productUpdateReducer,
 } from './reducers/productReducers';
 import { cartReducer } from './reducers/cartReducers';
 import {searchCategoryReducer, searchKeywordReducer} from './reducers/searchReducers'
@@ -51,6 +53,8 @@ const reducer = combineReducers({
     categorySearch: searchCategoryReducer,
     listCategory: productCategoryListReducer,
     productDelete: productDeleteReducer,
+    productCreate: productCreateReducer,
+    productUpdate: productUpdateReducer,
 });
 
 

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import {
@@ -13,7 +13,7 @@ import {
   PRODUCT_DELETE_RESET,
 } from '../../constants/productConstants';
 
-
+import Axios from 'axios';
 
 
 
@@ -81,6 +81,7 @@ export const ProductsManage = (props) => {
             <thead>
               <tr>
                 <th>ID</th>
+                <th>Image</th>
                 <th>NAME</th>
                 <th>PRICE</th>
                 <th>CATEGORY</th>
@@ -92,6 +93,7 @@ export const ProductsManage = (props) => {
               {products.map((product) => (
                 <tr key={product.idProduct}>
                   <td>{product.idProduct}</td>
+                  <td> <img id="image-product-manage" src ={product.productdetails[0].image} alt={product.productName}/></td>
                   <td>{product.productName}</td>
                   <td>{numberWithCommas(product.productPrice)}</td>
                   <td>{product.category.categoryName}</td>
@@ -124,10 +126,160 @@ export const ProductsManage = (props) => {
   );
 };
 
-export const AddProducts = () => {
+export const AddProducts = (props) => {
+
+  const [image, setImage] = useState('');
+  const [name, setName] = useState('');
+  const [price, setPrice] = useState('');
+  const [quantityInStock, setQuantityInStock] = useState('');
+  const [loadingUpload, setLoadingUpload] = useState(false);
+  const [category, setCategory] = useState('');
+  const [brand, setBrand] = useState('');
+  const [errorUpload, setErrorUpload] = useState('');
+  const userSignin = useSelector((state) => state.userSignin);
+  const { userInfo } = userSignin;
+  const productCreate = useSelector((state) => state.productCreate);
+  const {
+    loading: loadingCreate,
+    error: errorCreate,
+    success: successCreate,
+    product: createdProduct,
+  } = productCreate;
+  const dispatch = useDispatch();
+  useEffect(() => {
+    if (successCreate) {
+      dispatch({ type: PRODUCT_CREATE_RESET });
+      props.history.push('/products/productsManage');
+    }
+
+  }, [dispatch, successCreate, props.history]);
+  const submitHandler = (e) => {
+    e.preventDefault();
+    // TODO: dispatch update product
+    dispatch(
+      createProduct({
+        name,
+        price,
+        quantityInStock,
+        image,
+        category,
+        brand,
+      })
+    );
+  };
+
+
+
+
+  const uploadFileHandler = async (e) => {
+    const file = e.target.files[0];
+    const bodyFormData = new FormData();
+    bodyFormData.append('image', file);
+    setLoadingUpload(true);
+    try {
+      const { data } = await Axios.post('/api/uploads', bodyFormData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+          Authorization: `Bearer ${userInfo.token}`,
+        },
+      });
+      setImage(subString(replaceStr(data)));
+      setLoadingUpload(false);
+    } catch (error) {
+      setErrorUpload(error.message);
+      setLoadingUpload(false);
+    }
+  };
+  function replaceStr(x) {
+    return x.replace(/\\/g, "/");
+  }
+  function subString(x){
+    const index = x.indexOf("image");
+    const pathImage = x.slice(index, x.length);
+    return  "..//../" + pathImage;
+  }
+
   return (
     <div className='admin-products'>
-      <h1>Add Products</h1>
+        
+      <form className="form" onSubmit={submitHandler}> 
+        <div>
+            <label htmlFor="name">Name</label>
+              <input
+                id="name"
+                type="text"
+                placeholder="Enter name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              ></input>
+        </div>      
+        <div>
+              <label htmlFor="price">Price</label>
+              <input
+                id="price"
+                type="text"
+                placeholder="Enter price"
+                value={price}
+                onChange={(e) => setPrice(parseInt(e.target.value))}
+              ></input>
+        </div>
+        <div>
+            <label htmlFor="quantityInStock">Count In Stock</label>
+              <input
+                id="quantityInStock"
+                type="text"
+                placeholder="Enter quantityInStock"
+                value={quantityInStock}
+                onChange={(e) => setQuantityInStock(parseInt(e.target.value))}
+              ></input>  
+        </div>    
+        <div>
+              <label htmlFor="category">Category</label>
+              <input
+                id="category"
+                type="text"
+                placeholder="Enter category"
+                value={category}
+                onChange={(e) => setCategory(parseInt(e.target.value))}
+              ></input>
+            </div>
+            <div>
+              <label htmlFor="brand">Brand</label>
+              <input
+                id="brand"
+                type="text"
+                placeholder="Enter brand"
+                value={brand}
+                onChange={(e) => setBrand(parseInt(e.target.value))}
+              ></input>
+            </div>
+      <div>
+          <label htmlFor="imageFile">Image</label>
+          {
+              image ? (
+                <img src={subString(replaceStr(image))} alt =""/>
+              ) : (
+                <div></div>
+              )
+            }
+              <input
+                type="file"
+                id="imageFile"
+                label="Choose Image"
+                onChange={uploadFileHandler}
+              ></input>
+              {loadingUpload && <LoadingBox></LoadingBox>}
+              {errorUpload && (
+                <MessageBox variant="danger">{errorUpload}</MessageBox>
+              )}
+        </div>
+      <div>
+        <label></label>
+        <button className="primary" type="submit">
+        Add
+        </button>
+      </div>
+    </form>
     </div>
   );
 };

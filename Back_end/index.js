@@ -6,6 +6,9 @@ const data = require('./data');
 const db = require('./models')
 const bodyParser = require('body-parser');
 const dotenv = require('dotenv');
+const uploadRouter = require('./routers/uploadRouter');
+
+
 
 dotenv.config();
 
@@ -33,6 +36,7 @@ const searchRouter = require("./routers/searchRouters");
 app.use('/api/search', searchRouter);
 const orderRouter = require("./routers/orderRouter");
 app.use('/api/orders',orderRouter);
+app.use('/api/uploads', uploadRouter);
 
 db.sequelize.sync().then(() => {
   app.listen(port, () => {
