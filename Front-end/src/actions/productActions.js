@@ -17,6 +17,9 @@ import {
         PRODUCT_UPDATE_REQUEST,
         PRODUCT_UPDATE_SUCCESS,
         PRODUCT_UPDATE_FAIL,
+        PRODUCT_BRAND_LIST_REQUEST,
+        PRODUCT_BRAND_LIST_SUCCESS,
+        PRODUCT_BRAND_LIST_FAIL,
     } from "../constants/productConstants";
 import Axios from "axios";
 
@@ -55,11 +58,27 @@ export const listProductCategories = () => async (dispatch) => {
   });
   try {
     const { data } = await Axios.get(`/api/products/categories`);
+    console.log(data);
     dispatch({ type: PRODUCT_CATEGORY_LIST_SUCCESS, payload: data });
   } catch (error) {
     dispatch({ type: PRODUCT_CATEGORY_LIST_FAIL, payload: error.message });
   }
 };  
+
+export const listProductBrands= () => async (dispatch) => {
+  dispatch({
+    type: PRODUCT_BRAND_LIST_REQUEST,
+  });
+  try {
+    const { data } = await Axios.get(`/api/products/brands`);
+    console.log(data);
+    dispatch({ type: PRODUCT_BRAND_LIST_SUCCESS, payload: data });
+  } catch (error) {
+    dispatch({ type: PRODUCT_BRAND_LIST_FAIL, payload: error.message });
+  }
+};  
+
+
 
 export const deleteProduct = (productId) => async (dispatch, getState) => {
   dispatch({ type: PRODUCT_DELETE_REQUEST, payload: productId });
@@ -93,6 +112,7 @@ export const createProduct = (product) => async (dispatch, getState) => {
         headers: { Authorization: `Bearer ${userInfo.token}` },
       }
     );
+    console.log(data);
     dispatch({
       type: PRODUCT_CREATE_SUCCESS,
       payload: data,

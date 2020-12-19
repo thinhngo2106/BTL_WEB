@@ -113,7 +113,7 @@ export default function ProductScreen(props) {
 
                     <div className="product-des">
                         <span>
-                            {product.productdetails[0].productDescription}
+                            {product.productDescription}
                             <p/>                                
                         </span>
                     </div>

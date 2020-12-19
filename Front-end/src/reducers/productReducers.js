@@ -20,6 +20,9 @@ const {
     PRODUCT_UPDATE_SUCCESS,
     PRODUCT_UPDATE_FAIL,
     PRODUCT_UPDATE_RESET,
+    PRODUCT_BRAND_LIST_REQUEST,
+    PRODUCT_BRAND_LIST_SUCCESS,
+    PRODUCT_BRAND_LIST_FAIL,
 
   } = require('../constants/productConstants');
 
@@ -52,7 +55,7 @@ export const productDetailsReducer = (state = { loading: true }, action) => {
     }
   };
 
-  export const productCategoryListReducer = (
+export const productCategoryListReducer = (
     state = { loading: true, categories: [] },
     action
   ) => {
@@ -67,6 +70,22 @@ export const productDetailsReducer = (state = { loading: true }, action) => {
         return state;
     }
   };
+export const productBrandListReducer = (
+    state = { loading: true, brands: [] },
+    action
+  ) => {
+    switch (action.type) {
+      case PRODUCT_BRAND_LIST_REQUEST:
+        return { loading: true };
+      case PRODUCT_BRAND_LIST_SUCCESS:
+        return { loading: false, brands: action.payload };
+      case PRODUCT_BRAND_LIST_FAIL:
+        return { loading: false, error: action.payload };
+      default:
+        return state;
+    }
+  };
+    
   
 export const productDeleteReducer = (state = {}, action) => {
     switch (action.type) {

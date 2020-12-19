@@ -23,6 +23,7 @@ import Home from './views/pages/Home';
 import {Orders, OrdersManage, DeleteOrders} from './views/pages/Orders';
 import {Products, ProductsManage, AddProducts} from './views/pages/Products';
 import AdminSidebar from './components/Admin_Sidebar';
+import ProductEditScreen from './views/pages/EditProductScreen';
 
 
 
@@ -51,9 +52,9 @@ function App(){
                <AdminRoute path='/orders/ordersManage' exact component={OrdersManage} ></AdminRoute>
                <AdminRoute path='/reports/deleteOrders' exact component={DeleteOrders} ></AdminRoute>
                <AdminRoute path='/products' exact component={Products} ></AdminRoute>
-               <AdminRoute path='/products/productsManage' exact component={ProductsManage} ></AdminRoute>
-               <AdminRoute path='/products/addProducts' exact component={AddProducts} ></AdminRoute>
-
+               <AdminRoute path='/products/productsManage'  component={ProductsManage} ></AdminRoute>
+               <AdminRoute path='/products/addProducts'  component={AddProducts} ></AdminRoute>
+               <AdminRoute path='/:id/edit' exact component = {ProductEditScreen}></AdminRoute>
 
                </Switch>
               ) : (
