@@ -125,6 +125,7 @@ export const createProduct = (product) => async (dispatch, getState) => {
     dispatch({ type: PRODUCT_CREATE_FAIL, payload: message });
   }
 };
+
 export const updateProduct = (product) => async (dispatch, getState) => {
   dispatch({ type: PRODUCT_UPDATE_REQUEST, payload: product });
   const {

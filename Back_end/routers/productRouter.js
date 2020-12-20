@@ -40,7 +40,8 @@ router.delete(
 );
 
 router.post("/",
-    
+    isAuth,
+    isAdmin,
     expressAsyncHandler(async (req, res) => {
         const createdProduct = await db.products.create({
             productName: req.body.name,
