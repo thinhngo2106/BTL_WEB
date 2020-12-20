@@ -17,6 +17,10 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false,
 
         },
+        productDescription:{
+            type: DataTypes.TEXT,
+            allowNull: false,
+        },
         quantityInStock:{
             type: DataTypes.INTEGER,
             allowNull: false,

@@ -12,10 +12,8 @@ import {
   PRODUCT_CREATE_RESET,
   PRODUCT_DELETE_RESET,
 } from '../../constants/productConstants';
-
+import {listProductCategories, listProductBrands} from "../../actions/productActions";
 import Axios from 'axios';
-
-
 
 
 
@@ -58,7 +56,7 @@ export const ProductsManage = (props) => {
   ]);
   const deleteHandler = (product) => {
     if (window.confirm('Are you sure to delete?')) {
-      dispatch(deleteProduct(product._id));
+      dispatch(deleteProduct(product.idProduct));
     }
   };
   function numberWithCommas(x) {
@@ -103,7 +101,7 @@ export const ProductsManage = (props) => {
                       type="button"
                       className="small"
                       onClick={() =>
-                        props.history.push(`/product/${product.idProduct}/edit`)
+                        props.history.push(`/${product.idProduct}/edit`)
                       }
                     >
                       Edit
@@ -138,6 +136,10 @@ export const AddProducts = (props) => {
   const [errorUpload, setErrorUpload] = useState('');
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo } = userSignin;
+  const listCategory = useSelector((state) => state.listCategory);
+  const {loading: loadingCategory, error: errorCateory, categories} = listCategory;
+  const listBrand = useSelector((state) => state.listBrand);
+  const {loading: loadingBrand, error: errorBrand, brands} = listBrand;
   const productCreate = useSelector((state) => state.productCreate);
   const {
     loading: loadingCreate,
@@ -151,10 +153,14 @@ export const AddProducts = (props) => {
       dispatch({ type: PRODUCT_CREATE_RESET });
       props.history.push('/products/productsManage');
     }
-
+    dispatch(listProductCategories());
+    
+    dispatch(listProductBrands())
   }, [dispatch, successCreate, props.history]);
   const submitHandler = (e) => {
+  
     e.preventDefault();
+    
     // TODO: dispatch update product
     dispatch(
       createProduct({
@@ -166,11 +172,7 @@ export const AddProducts = (props) => {
         brand,
       })
     );
-  };
-
-
-
-
+  };  
   const uploadFileHandler = async (e) => {
     const file = e.target.files[0];
     const bodyFormData = new FormData();
@@ -201,9 +203,12 @@ export const AddProducts = (props) => {
 
   return (
     <div className='admin-products'>
-        
+    
+ 
+
       <form className="form" onSubmit={submitHandler}> 
         <div>
+        <h1>ADD Product</h1>
             <label htmlFor="name">Name</label>
               <input
                 id="name"
@@ -235,24 +240,44 @@ export const AddProducts = (props) => {
         </div>    
         <div>
               <label htmlFor="category">Category</label>
-              <input
-                id="category"
-                type="text"
-                placeholder="Enter category"
-                value={category}
-                onChange={(e) => setCategory(parseInt(e.target.value))}
-              ></input>
+              <select className="categories-list" 
+                      value={category}  
+                      onChange={(e) => setCategory(e.target.value)}
+              >
+              <option value="" disabled hidden>Choose here</option>
+              { categories ? (
+              categories.map((category) => (
+                 <option className= "category-select" key ={category.idCategory} value={category.idCategory}>
+                   {category.categoryName}
+                 </option>
+              ))) : (
+                <div></div>
+              )
+              }
+              </select>
+              {loadingCategory && <LoadingBox></LoadingBox>}
+              {errorCateory && <MessageBox variant="danger">{errorCateory}</MessageBox>} 
             </div>
-            <div>
+          <div>
               <label htmlFor="brand">Brand</label>
-              <input
-                id="brand"
-                type="text"
-                placeholder="Enter brand"
-                value={brand}
-                onChange={(e) => setBrand(parseInt(e.target.value))}
-              ></input>
-            </div>
+              <select className="categories-list" 
+                      value={brand}  
+                      onChange={(e) => setBrand(e.target.value)}
+              >
+              <option value=""  disabled hidden>Choose here</option>
+              { brands ? (
+              brands.map((brand) => (
+                 <option  className= "category-select" key ={brand.idBrand} value={brand.idBrand}>
+                   {brand.brandName}
+                 </option>
+              ))) : (
+                <option value=""></option>
+              )
+              }
+              </select>
+              {loadingBrand && <LoadingBox></LoadingBox>}
+              {errorBrand && <MessageBox variant="danger">{errorBrand}</MessageBox>} 
+          </div>
       <div>
           <label htmlFor="imageFile">Image</label>
           {
@@ -283,3 +308,6 @@ export const AddProducts = (props) => {
     </div>
   );
 };
+
+
+

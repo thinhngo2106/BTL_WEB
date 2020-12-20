@@ -86,7 +86,7 @@ li {
     text-align: center;
 }
 
-.cart  {
+.addtocart  {
     cursor: pointer;
     font-size: 15px;
     padding: 14px 16px;
@@ -97,10 +97,10 @@ li {
     border-radius: 8px;
     color: rgb(243, 243, 243);
 }
-.cart:hover {
+.addtocart:hover {
     background-color: rgb(0, 80, 0)
 }
-.cart:active {
+.addtocart:active {
 box-shadow: 0 2px rgb(90, 84, 84);
 transform: translateY(1px);
 }

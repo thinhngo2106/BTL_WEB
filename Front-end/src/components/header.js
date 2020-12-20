@@ -14,6 +14,7 @@ import DropdownButton from 'react-bootstrap/DropdownButton'
 
 function Header(props) {
 
+
   const cart = useSelector((state) => state.cart);
   const { cartItems } = cart;
   const [query, setQuery] = useState('');
@@ -21,6 +22,7 @@ function Header(props) {
   const {userInfo} = userSignin;
   const dispatch = useDispatch();
   
+  //var name = userInfo.Fname + userInfo.Lname
   const signoutHandler = () => {
     dispatch(signout());
   };
@@ -30,6 +32,8 @@ function Header(props) {
 
   }
   
+
+
         return(
             <nav className="navbar navbar-expand-md header">
               <Link to="/">
@@ -66,6 +70,8 @@ function Header(props) {
                     //     </Link>
                     // </ul>
                     // </div>
+
+                  //test 1  
                   <div>
                     <Dropdown className="dropdown">
                       
@@ -87,6 +93,18 @@ function Header(props) {
                       </Dropdown.Menu>
                     </Dropdown>
                     </div>
+
+                  // <div>
+                  // <span className="header__optionLineOne">Xin chào</span>
+                  // <br/>
+                  // <DropdownButton id="dropdown-basic-button" title={name}>
+                  //   <Dropdown.Item > <Link to="#signout" onClick={signoutHandler} style={{textDecoration: 'none'}}>
+                  //            <span className='dropdown-content'> Đăng xuất </span>
+                  //            </Link></Dropdown.Item>
+                  //   <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
+                  //   <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+                  // </DropdownButton>
+                  // </div>
                   ) : (
                
                   <Link to ="/signin" style={{textDecoration: 'none'}}>

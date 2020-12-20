@@ -13,6 +13,12 @@ expressAsyncHandler(async (req, res) => {
     res.send(categories);
 
 }));
+router.get("/brands", 
+expressAsyncHandler(async (req, res) => {
+    const brands = await db.brands.findAll();
+    res.send(brands);
+
+}));
 
 router.delete(
     '/:id',
@@ -39,13 +45,13 @@ router.post("/",
         const createdProduct = await db.products.create({
             productName: req.body.name,
             productPrice: req.body.price,
+            productDescription:"ss",
             quantityInStock: req.body.quantityInStock,
             idBrand: req.body.brand,
             idCategory: req.body.category,
         });
         const createdetail = await db.productdetail.create({
             idProduct: createdProduct.idProduct,
-            productDescription:"ss",
             image: req.body.image,
         })
         res.send({ message: 'Product Created', product: createdProduct });

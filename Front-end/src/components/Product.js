@@ -37,7 +37,7 @@ export default function Product(props) {
             
             </div>
               <Link to={`/product/${product.idProduct}`} className="link">
-                <button className="primary block" >Tùy chọn</button>
+                <button className="details" >Chi tiết</button>
               </Link>
             </div>
     // </div>

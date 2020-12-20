@@ -113,7 +113,7 @@ export default function ProductScreen(props) {
 
                     <div className="product-des">
                         <span>
-                            {product.productdetails[0].productDescription}
+                            {product.productDescription}
                             <p/>                                
                         </span>
                     </div>
@@ -159,7 +159,7 @@ export default function ProductScreen(props) {
                         <p/> 
 
                         {product.quantityInStock > 0 ?(
-                            <button onClick={addToCartHandler} className="cart">
+                            <button onClick={addToCartHandler} className="addtocart">
                                 Thêm vào giỏ hàng
                             </button>
                             

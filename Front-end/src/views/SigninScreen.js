@@ -31,29 +31,29 @@ export default function SigninScreen(props) {
     }
   }, [props.history, redirect, userInfo]);
   return (
-    <div>
+    <div className="signin-up ">
       <form className="form" onSubmit={submitHandler}>
-        <div>
-          <h1>Sign In</h1>
+        <div className="head">
+          <h1>Đăng nhập</h1>
         </div>
         {loading && <LoadingBox></LoadingBox>}
         {error && <MessageBox variant="danger">{error}</MessageBox>}
-        <div>
-          <label htmlFor="email">Email address</label>
+        <div className="info">
+          <label htmlFor="email">Email</label>
           <input
             type="email"
             id="email"
-            placeholder="Enter email"
+            placeholder="Email"
             required
             onChange={(e) => setEmail(e.target.value)}
           ></input>
         </div>
         <div>
-          <label htmlFor="password">Password</label>
+          <label htmlFor="password">Mật khẩu</label>
           <input
             type="password"
             id="password"
-            placeholder="Enter password"
+            placeholder="Mật khẩu"
             required
             onChange={(e) => setPassword(e.target.value)}
           ></input>
@@ -61,19 +61,20 @@ export default function SigninScreen(props) {
         <div>
           <label />
           <button className="primary" type="submit">
-            Sign In
+            Đăng nhập
           </button>
         </div>
         <div>
           <label />
-          <div>
-            New customer?{' '}
-            <Link to={`/register?redirect=${redirect}`}>
-              Create your account
+          <div className="account">
+            Chưa có tài khoản?{' '}
+            <Link to={`/register?redirect=${redirect}`} style={{textDecoration: 'none'}}>
+              Đăng ký ngay!
             </Link>
           </div>
         </div>
       </form>
+   
     </div>
   );
 }
