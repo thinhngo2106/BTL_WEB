@@ -137,7 +137,7 @@ export const AddProducts = (props) => {
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo } = userSignin;
   const listCategory = useSelector((state) => state.listCategory);
-  const {loading: loadingCategory, error: errorCateory, categories} = listCategory;
+  const {loading: loadingCategory, error: errorCategory, categories} = listCategory;
   const listBrand = useSelector((state) => state.listBrand);
   const {loading: loadingBrand, error: errorBrand, brands} = listBrand;
   const productCreate = useSelector((state) => state.productCreate);
@@ -256,7 +256,7 @@ export const AddProducts = (props) => {
               }
               </select>
               {loadingCategory && <LoadingBox></LoadingBox>}
-              {errorCateory && <MessageBox variant="danger">{errorCateory}</MessageBox>} 
+              {errorCategory && <MessageBox variant="danger">{errorCategory}</MessageBox>} 
             </div>
           <div>
               <label htmlFor="brand">Brand</label>

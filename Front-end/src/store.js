@@ -10,7 +10,11 @@ import {
     productBrandListReducer,
 } from './reducers/productReducers';
 import { cartReducer } from './reducers/cartReducers';
-import {searchCategoryReducer, searchKeywordReducer} from './reducers/searchReducers'
+import {
+    searchCategoryReducer, 
+    searchKeywordReducer,
+    productRecommendReducer,
+    } from './reducers/searchReducers'
 import {
     userSigninReducer,
     userRegisterReducer, 
@@ -63,6 +67,7 @@ const reducer = combineReducers({
     orderList: orderListReducer,
     orderDelete: orderDeleteReducer,
     orderUpdate: orderUpdateReducer,
+    productsRecommend: productRecommendReducer,
 });
 
 

@@ -6,15 +6,21 @@ import Product from '../components/Product';
 import LoadingBox from '../components/LoadingBox';
 import MessageBox from '../components/MessageBox';
 import {listProducts} from '../actions/productActions';
-
+import {recommendProducts} from '../actions/searchActions';
 
 export default function HomeScreen() {
     const dispatch = useDispatch();
     const productList = useSelector((state) => state.productList);
     const { loading, error, products } = productList;
+    const productsRecommend  = useSelector((state) => state.productsRecommend);
+    const {
+        loading: loadingProduct,
+        error: errorProduct,
+        data}  = productsRecommend;
   
     useEffect(() => {
-      dispatch(listProducts());
+        dispatch(listProducts());
+        dispatch(recommendProducts(4));
     }, [dispatch]);
     return (
         <div>
@@ -31,6 +37,28 @@ export default function HomeScreen() {
                         {products.map((product) => (
                             <Product key={product.idProduct} product={product}> </Product>
                         ))}
+                    </div>
+                    <div>
+ 
+                    {loadingProduct ? (<LoadingBox></LoadingBox>) : 
+                    errorProduct ? ( <MessageBox variant="danger">{errorProduct}</MessageBox>) : (
+                    <div>
+
+                        <div>
+                            {data.map((data) => ( 
+                            <div>  
+                            <div> 
+                                <span>{data.categoryName}</span>
+                            </div>
+                            <div className="home__row">
+                                {data.products.map((product) => (
+                                 <Product key={product.idProduct} product={product}> </Product>
+                            ))}
+                            </div>
+                            </div>))}
+                        </div>
+                    </div>
+                        )}
                     </div>
                 </div>
             </div>

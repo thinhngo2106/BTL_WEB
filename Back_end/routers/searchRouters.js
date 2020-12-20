@@ -37,7 +37,8 @@ router.get('/categories',
     expressAsyncHandler(async (req, res) => {
     const term = req.query.name
     const page = req.query.page
-    const limit = 2;
+    const limitProduct = req.query.limit
+    const limit = limitProduct ? parseInt(limitProduct) : 3; 
     const offset = page ? page * limit : 0;
     const data = await db.categories.findAll({
         where:{
@@ -73,6 +74,29 @@ router.get('/categories',
 
 
 
+router.get('/category', 
+    expressAsyncHandler(async (req, res) => {
+    const limitProduct = req.query.limit
+    const limit = limitProduct ? parseInt(limitProduct) : 3; 
+    const offset = 0;
+    const data = await db.categories.findAll({
+        include:[{
+            model: db.products,
+            include:[{
+                model: db.productdetail,
+                required: true
+            }],
+            offset: offset,
+            limit: limit,
+        }],
+
+    })
+    if (data){
+        res.send({data});
+    }
+    else {
+        res.status(404).send({message: 'Không tìm thấy sản phẩm'})
+}}));
 
 
 

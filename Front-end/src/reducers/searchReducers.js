@@ -5,6 +5,9 @@ const {
     SEARCH_CATEGORY_REQUEST,
     SEARCH_CATEGORY_SUCCESS,
     SEARCH_CATEGORY_FAIL,
+    PRODUCTS_RECOMMEND_REQUEST,
+    PRODUCTS_RECOMMEND_SUCCESS,
+    PRODUCTS_RECOMMEND_FAIL,
   } = require('../constants/searchConstants');
 
 export const searchKeywordReducer =  (
@@ -37,6 +40,26 @@ export const searchCategoryReducer =  (
             pages: action.payload.totalPages,
             };
         case SEARCH_CATEGORY_FAIL:
+            return {loading: false, error: action.payload};
+        default:
+            return state;
+    }
+};
+
+export const productRecommendReducer =  (
+    state = { loading: true, data: [] },
+    action
+  ) => {
+    switch (action.type) {
+        case PRODUCTS_RECOMMEND_REQUEST:
+            return {loading: true};
+        case PRODUCTS_RECOMMEND_SUCCESS: 
+     
+            return {loading: false,
+            data: action.payload.data
+            };
+            
+        case PRODUCTS_RECOMMEND_FAIL:
             return {loading: false, error: action.payload};
         default:
             return state;
