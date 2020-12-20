@@ -56,20 +56,20 @@ export const SidebarData = [
     ]
   },
   {
-    title: 'Team',
-    path: '/team',
+    title: 'Users Manage',
+    path: '/usersManage',
     icon: <IoIcons.IoMdPeople />,
     cName: 'nav-text'
   },
   {
-    title: 'Messages',
-    path: '/messages',
+    title: 'Products Type',
+    path: '/productsType',
     icon: <FaIcons.FaEnvelopeOpenText />,
     cName: 'nav-text'
   },
   {
-    title: 'Support',
-    path: '/support',
+    title: 'Brands Manage',
+    path: '/brandsManage',
     icon: <IoIcons.IoMdHelpCircle />,
     cName: 'nav-text'
   }
