@@ -203,10 +203,7 @@ export const AddProducts = (props) => {
 
   return (
     <div className='admin-products'>
-    
- 
-
-      <form className="form" onSubmit={submitHandler}> 
+      <form className="form a" onSubmit={submitHandler}> 
         <div>
         <h1>ADD Product</h1>
             <label htmlFor="name">Name</label>

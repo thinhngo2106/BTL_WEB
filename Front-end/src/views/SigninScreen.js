@@ -37,7 +37,6 @@ export default function SigninScreen(props) {
           <h1>Đăng nhập</h1>
         </div>
         {loading && <LoadingBox></LoadingBox>}
-        {error && <MessageBox variant="danger">{error}</MessageBox>}
         <div className="info">
           <label htmlFor="email">Email</label>
           <input
@@ -58,6 +57,7 @@ export default function SigninScreen(props) {
             onChange={(e) => setPassword(e.target.value)}
           ></input>
         </div>
+        {error && <MessageBox variant="danger">{error}</MessageBox>}
         <div>
           <label />
           <button className="primary" type="submit">

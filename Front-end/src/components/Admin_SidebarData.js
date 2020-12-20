@@ -12,26 +12,11 @@ export const SidebarData = [
     cName: 'nav-text'
   },
   {
-    title: 'Orders',
-    path: '/orders',
+    
+    title: 'Orders Manage',
+    path: '/ordersManage',
     icon: <IoIcons.IoIosPaper />,
-    iconClosed: <RiIcons.RiArrowDownSFill />,
-    iconOpened: <RiIcons.RiArrowUpSFill />,
-
-    subNav: [
-      {
-        title: 'Orders Manage',
-        path: '/orders/ordersManage',
-        icon: <IoIcons.IoIosPaper />,
-        cName: 'sub-nav'
-      },
-      {
-        title: 'Delete Orders',
-        path: '/reports/deleteOrders',
-        icon: <IoIcons.IoIosPaper />,
-        cName: 'sub-nav'
-      }
-    ]
+    cName: 'sub-nav'
   },
   {
     title: 'Products',

@@ -7,14 +7,6 @@ import { ORDER_DELETE_RESET, ORDER_UPDATE_RESET } from '../../constants/orderCon
 import DoneIcon from '@material-ui/icons/Done';
 
 
-export const Orders = () => {
-  return (
-    <div className='orders'>
-      <h1>Reports</h1>
-    </div>
-  );
-};
-
 export const OrdersManage = (props) => {
   const orderList = useSelector((state) => state.orderList);
   const { loading, error, orders } = orderList;
@@ -123,10 +115,3 @@ export const OrdersManage = (props) => {
   );
 };
 
-export const DeleteOrders = () => {
-  return (
-    <div className='admin-orders'>
-      <h1>Reports/reports2</h1>
-    </div>
-  );
-};
