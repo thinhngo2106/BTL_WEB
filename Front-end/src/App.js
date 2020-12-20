@@ -68,10 +68,7 @@ function App() {
             </>
           ) : (
             <>
-              <div className="row">
-                <AdminSidebar></AdminSidebar>
-              </div>
-              <div className="row">
+              <div>
                 <Switch>
                   <Route path="/cart/:id?" component={CartScreen}></Route>
                   <Route path="/" component={HomeScreen} exact></Route>
