@@ -60,6 +60,43 @@ router.post("/",
 ));
 
 
+router.put(
+    '/:id',
+    isAuth,
+    isAdmin,
+    expressAsyncHandler(async (req, res) =>{
+        const productId = req.params.id;
+        const product = await db.products.findOne({
+            where:{
+                idProduct: productId
+            }
+        })
+        const productImage = await db.productdetail.findOne({
+            where:[{
+                idProduct: productId
+                
+            },{
+                idImage: 1
+            }]
+        })
+        if (product) {
+            product.productName = req.body.name;
+            product.productPrice = req.body.price;
+            product.productDescription = req.body.description;
+            product.quantityInStock = req.body.quantityInStock;
+            product.idBrand = req.body.brand;
+            product.idCategory = req.body.category;
+        } 
+        if (productImage) {
+            productImage.image = req.body.image;
+        }
+
+        await product.save();
+        await productImage.save();
+        res.send(product);
+    })
+
+);
 router.get('/', productController.products);
 router.get("/seed", productController.postProducts);    
 router.get('/:id',productController.productdetail);

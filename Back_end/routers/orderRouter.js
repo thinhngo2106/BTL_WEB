@@ -2,7 +2,7 @@ const express = require("express");
 const db = require('../models');
 const orderRouter = express.Router();
 const expressAsyncHandler =  require('express-async-handler');
-const { isAdmin, isAuth} = require('../utlis');
+const {isAuth, isAdmin} = require('../utlis');
 
 orderRouter.post(  '/',
     isAuth,
@@ -69,19 +69,19 @@ res.send(orders)
 
 orderRouter.put(
   "/:id",
-
   expressAsyncHandler(async (req, res) => {
       const today = new Date();
+      const orderId = req.params.id
       dateShip = today.getFullYear() +'-'+ (today.getMonth()+1)+'-'+(today.getDate());
-      const order = await db.orders.update(
-        {
-          status: "Đã hoàn thành",
-          shippedDate: dateShip, 
-        },
-        {where:{ 
-          idOrder: req.params.id}}
-  
-)
+      const order = await db.orders.findOne({
+        where: {
+          idOrder: orderId
+        }
+      }
+  )
+      order.status = "Đã hoàn thành";
+      order.shippedDate = dateShip;
+      order.save();
   res.send(order)
 }));
 

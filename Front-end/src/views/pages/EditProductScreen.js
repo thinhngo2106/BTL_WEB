@@ -12,7 +12,7 @@ export default function ProductEditScreen(props) {
   const [price, setPrice] = useState('');
   const [image, setImage] = useState('');
   const [category, setCategory] = useState('');
-  const [countInStock, setCountInStock] = useState('');
+  const [quantityInStock, setQuantityInStock] = useState('');
   const [brand, setBrand] = useState('');
   const [description, setDescription] = useState('');
   const productDetails = useSelector((state) => state.productDetails);
@@ -27,9 +27,10 @@ export default function ProductEditScreen(props) {
   const dispatch = useDispatch();
   useEffect(() => {
     if (successUpdate) {
-      props.history.push('/productManage');
+      props.history.push('/products/productsManage');
     }
     if (!product || successUpdate) {
+        dispatch({ type: PRODUCT_UPDATE_RESET })
         dispatch(detailsProduct(productId));
     } else {
         console.log(product)
@@ -37,9 +38,9 @@ export default function ProductEditScreen(props) {
         setPrice(product.productPrice);
         setImage(product.productdetails[0].image);
         setCategory(product.category);
-        setCountInStock(product.quantityInStock);
+        setQuantityInStock(product.quantityInStock);
         setBrand(product.brand);
-        setDescription(product.description);
+        setDescription(product.productDescription);
     }
   }, [product, dispatch, productId, successUpdate, props.history]);
   const submitHandler = (e) => {
@@ -53,7 +54,7 @@ export default function ProductEditScreen(props) {
         image,
         category,
         brand,
-        countInStock,
+        quantityInStock,
         description,
       })
     );
@@ -95,7 +96,7 @@ export default function ProductEditScreen(props) {
     <div>
       <form className="form" onSubmit={submitHandler}>
         <div>
-          <h1>Edit Product {productId}</h1>
+          <h1>Edit Product {name}</h1>
         </div>
 
         {loadingUpdate && <LoadingBox></LoadingBox>}
@@ -182,8 +183,8 @@ export default function ProductEditScreen(props) {
                 id="countInStock"
                 type="text"
                 placeholder="Enter countInStock"
-                value={countInStock}
-                onChange={(e) => setCountInStock(parseInt(e.target.value))}
+                value={quantityInStock}
+                onChange={(e) => setQuantityInStock(parseInt(e.target.value))}
               ></input>
             </div>
             <div>

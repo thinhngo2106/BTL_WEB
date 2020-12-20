@@ -58,6 +58,7 @@ function App() {
                     <AdminRoute path="/products" exact component={Products}></AdminRoute>
                     <AdminRoute path="/products/productsManage" exact component={ProductsManage}></AdminRoute>
                     <AdminRoute path="/products/addProducts" exact component={AddProducts}></AdminRoute>
+                    <AdminRoute path="/:id/edit" component={ProductEditScreen}></AdminRoute>
                     <AdminRoute path="/usersManage" exact component={Users}></AdminRoute>
                     <AdminRoute path="/productsType" exact component={ProductsType}></AdminRoute>
                     <AdminRoute path="/brandsManage" exact component={Brands}></AdminRoute>
