@@ -43,6 +43,12 @@ db.orders.belongsTo(db.users, {
     allowNull: false,
   }
 });
+db.users.hasMany(db.orders,{
+  foreignKey:{
+    name: 'idUser',
+    allowNull: false,
+  }
+})
 
 db.products.hasMany(db.productdetail,{
     foreignKey:{

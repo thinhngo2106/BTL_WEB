@@ -35,18 +35,58 @@ orderRouter.post(  '/',
   )
 );
 orderRouter.get(
-  '/mine',
+    '/mine',
+    isAuth,
+    expressAsyncHandler(async (req, res) => {
+      const orders = await db.orders.findAll({
+      include:[{
+          model: db.orderdetail
+      }],
+      where:{
+          idUser: req.user.id
+      },
+    }
+  )
+  res.send(orders)
+}));
+
+orderRouter.get(
+  '/',
   isAuth,
+  isAdmin,
   expressAsyncHandler(async (req, res) => {
     const orders = await db.orders.findAll({
     include:[{
         model: db.orderdetail
-    }],
-    where:{
-        idUser: req.user.id
-    },
+    },{
+      model: db.users
+    }
+  ],
   }
 )
 res.send(orders)
 }));
-  module.exports = orderRouter; 
+
+orderRouter.put(
+  "/:id",
+
+  expressAsyncHandler(async (req, res) => {
+      const today = new Date();
+      dateShip = today.getFullYear() +'-'+ (today.getMonth()+1)+'-'+(today.getDate());
+      const order = await db.orders.update(
+        {
+          status: "Đã hoàn thành",
+          shippedDate: dateShip, 
+        },
+        {where:{ 
+          idOrder: req.params.id}}
+  
+)
+  res.send(order)
+}));
+
+
+
+
+
+module.exports = orderRouter; 
