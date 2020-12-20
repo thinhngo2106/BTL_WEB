@@ -51,32 +51,41 @@ export default function CartScreen(props) {
                         <table className="cart-table">
                             <thead>
                                 <tr>
-                                <th>#</th>
+                                <th><input type="checkbox"/></th>
                                 <th>Ảnh</th>
                                 <th>Tên sản phẩm</th>
                                 <th>Kích cỡ</th>
-                                <th>Số lượng</th>
                                 <th>Giá tiền</th>
+                                <th>Số lượng</th>
+                                <th>Thành tiền</th>
                                 <th></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {cartItems.map((item) => (
                                 <tr>
-                                <td></td>
+                                <td><input type="checkbox"/></td>
+
                                 <td>
                                     <Link to={`/product/${item.product}`}>
                                         <img src={item.image} alt={item.name} className="small"></img>
                                     </Link>
                                 </td>
+
                                 <td>
                                     <Link to={`/product/${item.product}`}  style={{textDecoration: 'none'}}>
                                         <span className="item-attribute-name">{item.name}</span>
                                     </Link>
                                 </td>
+
                                 <td>
                                     <span className="item-attribute-name"  style={{textAlign: 'center'}}>{item.size}</span>
                                 </td>
+
+                                <td>
+                                    <span className="item-attribute" style={{textAlign: 'center'}}>${item.price}  </span>
+                                </td>
+
                                 <td>
                                     <select className="item-quantity"
                                         value={item.qty}
@@ -95,10 +104,12 @@ export default function CartScreen(props) {
                                     }
                                     </select>
                                 </td>
-                                <td>
-                                    <span className="item-attribute" style={{textAlign: 'center'}}>${item.price}  </span>
 
+                                <td>
+                                    Thành tiền nhưng chưa biết để tn
+                                    {cartItems.reduce((a, c) => c.price * c.qty, 0)}
                                 </td>
+
                                 <td>
                                     <button
                                         className="remove-item"
