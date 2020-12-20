@@ -26,26 +26,6 @@ import AdminSidebar from "./components/Admin_Sidebar";
 import Users from "./views/pages/UsersManage";
 import ProductsType from "./views/pages/ProductsType";
 import Brands from "./views/pages/Brands";
-import ProductScreen from './views/ProductScreen';
-import CartScreen from './views/CartScreen';
-import SearchScreen from './views/SearchScreen';
-import AdminRoute from './components/AdminRoute';
-import './App.css'
-import Footer from './components/footer';
-import SignupScreen from './views/SignupScreen';
-import SigninScreen from './views/SigninScreen';
-import ShippingAddressScreen from './views/ShippingAddressScreen';
-import PaymentScreen from './views/PaymentScreen';
-import PlaceOrderScreen from './views/PlaceOrderScreen';
-import OrderHistoryScreen from './views/OrderHistoryScreen';
-import AdminScreen from './views/AdminScreen';
-import { useSelector } from 'react-redux';
-import CategoryScreen from './views/CategoryScreen';
-import NavBar from './components/navbar';
-import Home from './views/pages/Home';
-import {Orders, OrdersManage, DeleteOrders} from './views/pages/Orders';
-import {Products, ProductsManage, AddProducts} from './views/pages/Products';
-import AdminSidebar from './components/Admin_Sidebar';
 import ProductEditScreen from './views/pages/EditProductScreen';
 
 function App() {
