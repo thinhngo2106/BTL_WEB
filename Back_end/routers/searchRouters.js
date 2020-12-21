@@ -35,17 +35,24 @@ router.get('/', expressAsyncHandler(async( req,res) => {
 
 router.get('/categories', 
     expressAsyncHandler(async (req, res) => {
-    const term = req.query.name
-    const page = req.query.page
+    const term = req.query.name;
+    const page = req.query.page >= 0 ? req.query.page : 0;
+    const min = req.query.min;
+    const minPrice = parseInt(min);
+    const max = req.query.max;
+    const maxPrice = parseInt(max);
     const limitProduct = req.query.limit
     const limit =  parseInt(limitProduct); 
-    const offset = page ? page * limit : 0;
+    const offset = page ? parseInt(page * limit) : 0;
+ 
+    const priceFilter = minPrice && maxPrice ? [minPrice,maxPrice] : [1,50000000];
     const data = await db.categories.findAll({
         where:{
-           categoryName : req.query.name
+           categoryName : req.query.name,
         },
         include:[{
             model: db.products,
+
             include:[{
                 model: db.productdetail,
                 required: true,
@@ -54,6 +61,9 @@ router.get('/categories',
             }],
             offset: offset,
             limit: limit,
+            where:{
+                productPrice: {[Op.between]: priceFilter}
+            },
  
         }],
 
@@ -63,7 +73,11 @@ router.get('/categories',
             categoryName : req.query.name
         },
         include: [{
-            model: db.products, attributes: []
+            model: db.products,
+            where:{
+                productPrice: {[Op.between]: priceFilter}
+            },
+            attributes: []
         }],
     })  
     const totalPages = Math.ceil(pages/ limit);

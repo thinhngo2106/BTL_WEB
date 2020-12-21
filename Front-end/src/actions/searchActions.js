@@ -26,7 +26,7 @@ export const searchKeyword = (queryKey) => async (dispatch) => {
   }
 };
 
-export const searchCategory = (nameCategory, pageNumber, limitProducts) => async (dispatch) => {
+export const searchCategory = (nameCategory, pageNumber, limitProducts, minPrice, maxPrice) => async (dispatch) => {
 
 dispatch({
   type: SEARCH_CATEGORY_REQUEST, payload: nameCategory,
@@ -35,7 +35,9 @@ try {
   const { data } = await Axios.get('/api/search/categories/', {params:{
     name: nameCategory,
     page: pageNumber ? pageNumber : 0,
-    limit: limitProducts
+    limit: limitProducts,
+    min: minPrice,
+    max: maxPrice
   }});
   
   dispatch({ type: SEARCH_CATEGORY_SUCCESS, payload: data});

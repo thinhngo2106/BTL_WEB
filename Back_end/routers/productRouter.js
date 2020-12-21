@@ -6,6 +6,10 @@ const data = require("../dataimport");
 const productController = require('../controllers/productController');
 const { isAdmin, isAuth} = require('../utlis');
 const { route } = require("./uploadRouter");
+const Sequelize = require('sequelize');
+const Op = Sequelize.Op;
+
+
 
 router.get("/categories", 
 expressAsyncHandler(async (req, res) => {
@@ -97,6 +101,25 @@ router.put(
     })
 
 );
+
+router.get("/test",
+    expressAsyncHandler(async (req, res) => {
+        const min = req.query.min;
+        const minPrice = parseInt(min);
+        const max = req.query.max;
+        const maxPrice = parseInt(max);
+        const priceFilter = min && max ? [min,max] : [1,50000000];
+        const product = await db.products.findAll({
+            where:{
+                productPrice: {[Op.between]: priceFilter}
+            }
+        })
+        res.send({product});
+    }));
+   
+
+
+
 router.get('/', productController.products);
 router.get("/seed", productController.postProducts);    
 router.get('/:id',productController.productdetail);
