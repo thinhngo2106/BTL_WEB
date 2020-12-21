@@ -9,6 +9,8 @@ import {searchCategory} from '../actions/searchActions';
 import {Link} from "react-router-dom";
 import {prices} from "../utils"
 
+import Pagination from 'react-bootstrap/Pagination'
+import PageItem from 'react-bootstrap/PageItem'
 
 export default function CategoryScreen(props) {
     
@@ -63,27 +65,55 @@ export default function CategoryScreen(props) {
                             ) : (
                                 <MessageBox variant="danger"> "Không có sản phẩm theo yêu cầu"</MessageBox>
                             )}
+
                     </div>
-                </div>
-                <div className="row center pagination pagination-sm">
-                {[...Array(pages).keys()].map((x) => (
-                  <Link
-                    className={x === page ? 'active' : ''}
-                    key={x}
-                    to={getFilterUrl({page: x+1})}
-                  >
-                    <li className='page-item'>
-                        <span>
-                            {x+1}
-                        </span>
-                    </li>
-                    
-                  </Link>
-                ))}
                 </div>
             </div>
             
             )}
+{/* <div className="pagination-container">
+
+<Pagination className="pagination">
+    <Pagination.First />
+    <Pagination.Prev />
+    <Pagination.Item>{[...Array(pages).keys()].map((x) => (
+        <Link
+            className={x === page ? 'active' : ''}
+            key={x}
+            to={getFilterUrl({page: x+1})}
+            >
+                <li className='page-item'>
+                <span>
+                    {x+1}
+                </span>
+            </li>
+            
+            </Link>
+    ))}
+    </Pagination.Item>
+    <Pagination.Ellipsis />
+    <Pagination.Next />
+    <Pagination.Last />
+</Pagination>
+</div> */}
+            <div className="pagination-container">
+                <div className="row center pagination">
+                    {[...Array(pages).keys()].map((x) => (
+                    <Link
+                        className={x === page ? 'active' : ''}
+                        key={x}
+                        to={getFilterUrl({page: x+1})}
+                    >
+                        <li className='page-item'>
+                            <span>
+                                {x+1} 
+                            </span>
+                        </li>
+                        
+                    </Link>
+                    ))}
+                </div>
+            </div>
         </div>
     );
 }
