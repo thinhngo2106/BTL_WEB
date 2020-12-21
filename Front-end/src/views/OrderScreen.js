@@ -40,87 +40,94 @@ export default function OrderScreen(props) {
   ) : (
     <div>
       <h1>Order {order.idOrder}</h1>
-      <div className="row top">
-        <div className="col-2">
-          <ul>
-            <li>
+      <div className="order-detail row top">
+        <div className="col-md-6 ">
+          {/* <ul>
+            <li> */}
               <div className="card card-body">
                 <h2>Shipping</h2>
                 <p>
                   <strong>Name:</strong> {order.customerName} <br />
-                  <strong>Address: </strong> {order.address}
-                </p>
-                <p><strong>Date: </strong> {order.orderDate} <br/>
+                  <strong>Address: </strong> {order.address} <br />
+                  <strong>Date: </strong> {order.orderDate}
                 </p>
               </div>
-            </li>
-            <li>
+            {/* </li>
+            <li> */}
               <div className="card card-body">
                 <h2>Payment</h2>
                 <p>
                   <strong>Method:</strong> {order.paymentMethod}
                 </p>
               </div>
-            </li>
-            <li>
+            {/* </li>
+            <li> */}
               <div className="card card-body">
                 <h2>Order Items</h2>
-                <ul>
+                {/* <ul> */}
                   {order.orderdetails.map((item) => (
-                    <li key={item.idProduct}>
-                      <div className="row">
-                        <div>
-                          <img
-                            src={item.product.productdetails[0].image}
-                            alt={item.product.productName}
-                            className="small"
-                          ></img>
+                    // <li key={item.idProduct}>
+                    <div className="card card-body">
+                      <div className={`row orderItem ${item.product}`}>
+                        <div className="col-md-6">
+                          <div>
+                            <img
+                              src={item.product.productdetails[0].image}
+                              alt={item.product.productName}
+                              className="small1"
+                            ></img>
+                          </div>
                         </div>
-                        <div className="min-30">
-                          <Link to={`/product/${item.idProduct}`}>
-                            {item.product.productName}
-                          </Link>
+                        <div className="col-md-6">
+                          <div className="min-30">
+                            <Link to={`/product/${item.idProduct}`}>
+                              {item.product.productName}
+                            </Link>
+                          </div>
+                          <div>
+                            {item.quantityOrder} x ${converToPrice(item.priceEach)} = ${converToPrice(item.quantityOrder * item.priceEach)}
+                          </div>
                         </div>
-                        <div>
-                          {item.quantityOrder} x ${converToPrice(item.priceEach)} = ${converToPrice(item.quantityOrder * item.priceEach)}
                         </div>
                       </div>
-                    </li>
+          
+                    //</li>
                     ))}
-                </ul>
+                {/* </ul> */}
               </div>
-            </li>
-          </ul>
+            {/* </li> */}
+          {/* </ul> */}
         </div>
-        <div className="col-1">
+        <div className="col-md-3">
           <div className="card card-body">
-            <ul>
-              <li>
+            <div className="row">
+            {/* <ul>
+              <li> */}
                 <h2>Order Summary</h2>
-              </li>
-              <li>
+              {/* </li>
+              <li> */}
+              <div className="col-md-8">
                 <div className="row">
-                  <div>Items</div>
-                  <div>{numberWithCommas(order)}</div>
+                  <div><p>Items: {numberWithCommas(order)}</p></div>
+                  
                 </div>
-              </li>
-              <li>
+              {/* </li>
+              <li> */}
                 <div className="row">
-                  <div>Shipping</div>
-                  <div>${order.shippingPrice}</div>
+                  <div><p>Shipping: ${order.shippingPrice}</p></div>
+                  
                 </div>
-              </li>
-              <li>
+              {/* </li>
+              <li> */}
                 <div className="row">
                   <div>
-                    <strong> Order Total</strong>
-                  </div>
-                  <div>
-                    <strong>{sum(parseInt(priceOrder(order)), parseInt(order.shippingPrice))}</strong>
+                    <strong> <p>Order Total: {sum(parseInt(priceOrder(order)), parseInt(order.shippingPrice))}</p></strong>
                   </div>
                 </div>
-              </li>
-            </ul>
+              {/* </li>
+            </ul> */}
+              </div>
+            </div>
           </div>
         </div>
       </div>
