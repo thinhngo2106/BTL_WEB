@@ -50,12 +50,42 @@ export const SidebarData = [
     title: 'Phân loại sản phẩm',
     path: '/productsType',
     icon: <FaIcons.FaEnvelopeOpenText />,
-    cName: 'nav-text'
+    iconClosed: <RiIcons.RiArrowDownSFill />,
+    iconOpened: <RiIcons.RiArrowUpSFill />,
+    subNav: [
+      {
+        title: 'Quản lý loại hàng',
+        path: '/productsType/productsTypeManage',
+        icon: <FaIcons.FaEnvelopeOpenText />,
+        cName: 'sub-nav'
+      },
+      {
+        title: 'Thêm loại hàng',
+        path: '/productsType/addProductsType',
+        icon: <FaIcons.FaEnvelopeOpenText />,
+        cName: 'sub-nav'
+      }
+    ]
   },
   {
-    title: 'Quản lý nhãn hàng',
-    path: '/brandsManage',
+    title: 'Nhãn hàng',
+    path: '/brands',
     icon: <IoIcons.IoMdHelpCircle />,
-    cName: 'nav-text'
+    iconClosed: <RiIcons.RiArrowDownSFill />,
+    iconOpened: <RiIcons.RiArrowUpSFill />,
+    subNav: [
+      {
+        title: 'Quản lý nhãn hàng',
+        path: '/brands/brandsManage',
+        icon: <FaIcons.FaEnvelopeOpenText />,
+        cName: 'sub-nav'
+      },
+      {
+        title: 'Thêm nhãn hàng',
+        path: '/brands/addBrands',
+        icon: <FaIcons.FaEnvelopeOpenText />,
+        cName: 'sub-nav'
+      }
+    ]
   }
 ];
