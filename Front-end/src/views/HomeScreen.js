@@ -48,12 +48,7 @@ export default function HomeScreen() {
                             {data.map((data) => ( 
                             <div  key={data.idCategory}>  
                             <div key={data.idCategory}> 
-                                {/* <span>{data.categoryName}</span> */}
-                                <nav class="navbar navbar-dark bg-dark nav"> 
-                                    <a class="navbar-brand" href="#"> 
-                                    {data.categoryName}
-                                    </a> 
-                                </nav> 
+                                <span className="nav">{data.categoryName}</span>
                             </div>
                             <div className="home__row" >
                                 {data.products.map((product) => (
