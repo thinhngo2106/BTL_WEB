@@ -109,4 +109,62 @@ orderRouter.delete(
 );
 
 
+orderRouter.get(
+  '/detail',
+  expressAsyncHandler(async (req, res) => {
+    const idOrder = req.query.idOrder;
+    const idUser = req.query.idUser;
+    const user = await db.users.findOne({
+      where:{
+        idUser: idUser,
+      }
+    })
+    if (user.isAdmin) {
+    const order = await db.orders.findOne({
+      where:{
+        idOrder:  idOrder,
+      },
+      include:[{
+        model: db.orderdetail,
+        include:[{
+          model: db.products,
+          include:[{
+            model: db.productdetail,
+          }]
+        }]
+      }]
+    });
+    if (order) {
+      res.send(order);
+    } else {
+      res.status(404).send({ message: 'Order Not Found' });
+    }}
+    else {
+      const order = await db.orders.findOne({
+        where:{
+          idOrder:  idOrder,
+          idUser: idUser,
+        },
+        include:[{
+          model: db.orderdetail,
+          include:[{
+            model: db.products,
+            include:[{
+              model: db.productdetail,
+            }]
+          }]
+        }]
+      });
+      if (order) {
+        res.send(order);
+      } else {
+        res.status(404).send({ message: 'Order Not Found' });
+      }
+    }
+
+  })
+);
+
+
+
 module.exports = orderRouter; 

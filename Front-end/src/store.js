@@ -28,6 +28,7 @@ import {
     orderListReducer,
     orderDeleteReducer,
     orderUpdateReducer,
+    orderDetailsReducer,
   } from './reducers/orderReducers';
 
 
@@ -72,6 +73,7 @@ const reducer = combineReducers({
     productsRecommend: productRecommendReducer,
     userList: userListReducer,
     userDelete: userDeleteReducer,
+    orderDetails: orderDetailsReducer,
 });
 
 

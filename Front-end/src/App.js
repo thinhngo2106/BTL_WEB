@@ -27,6 +27,7 @@ import Users from "./views/pages/UsersManage";
 import {ProductsType, ProductsTypeManage, AddProductsType} from "./views/pages/ProductsType";
 import {Brands, BrandsManage, AddBrands} from "./views/pages/Brands";
 import ProductEditScreen from './views/pages/EditProductScreen';
+import OrderScreen from "./views/OrderScreen";
 
 function App() {
   const userSignin = useSelector((state) => state.userSignin);
@@ -45,6 +46,7 @@ function App() {
           </div>
         )}
         <main>
+          <Route path="/order/:id" component={OrderScreen}></Route>
           {userInfo && userInfo.isAdmin ? (
             <>
               <div className="row">

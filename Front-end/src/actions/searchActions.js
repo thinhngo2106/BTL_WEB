@@ -37,8 +37,6 @@ try {
     page: pageNumber ? pageNumber : 0,
     limit: limitProducts
   }});
-  console.log(data);
-  
   
   dispatch({ type: SEARCH_CATEGORY_SUCCESS, payload: data});
 } catch (error) {

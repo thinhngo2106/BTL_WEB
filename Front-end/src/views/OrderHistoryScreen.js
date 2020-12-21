@@ -63,7 +63,7 @@ export default function OrderHistoryScreen(props) {
                     type="button"
                     className="small"
                     onClick={() => {
-                      props.history.push(`/order/${order._id}`);
+                      props.history.push(`/order/${order.idOrder}`);
                     }}
                   >
                     Chi tiết

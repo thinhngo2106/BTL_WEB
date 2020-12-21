@@ -58,7 +58,7 @@ export const listProductCategories = () => async (dispatch) => {
   });
   try {
     const { data } = await Axios.get(`/api/products/categories`);
-    console.log(data);
+
     dispatch({ type: PRODUCT_CATEGORY_LIST_SUCCESS, payload: data });
   } catch (error) {
     dispatch({ type: PRODUCT_CATEGORY_LIST_FAIL, payload: error.message });
@@ -71,7 +71,6 @@ export const listProductBrands= () => async (dispatch) => {
   });
   try {
     const { data } = await Axios.get(`/api/products/brands`);
-    console.log(data);
     dispatch({ type: PRODUCT_BRAND_LIST_SUCCESS, payload: data });
   } catch (error) {
     dispatch({ type: PRODUCT_BRAND_LIST_FAIL, payload: error.message });
@@ -112,7 +111,6 @@ export const createProduct = (product) => async (dispatch, getState) => {
         headers: { Authorization: `Bearer ${userInfo.token}` },
       }
     );
-    console.log(data);
     dispatch({
       type: PRODUCT_CREATE_SUCCESS,
       payload: data,
