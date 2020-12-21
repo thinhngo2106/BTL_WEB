@@ -3,9 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/header.css';
 import { Link } from 'react-router-dom';
 import SearchIcon from "@material-ui/icons/Search";
-import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import {useDispatch, useSelector} from 'react-redux';
-import { searchKeyword } from '../actions/searchActions';
 import { signout } from '../actions/userActions';
 
 function Header(props) {
@@ -57,7 +55,7 @@ function Header(props) {
                     </div>                 
                     </Link>
                     <ul className="dropdown-content">
-                      <Link to="#signout" onClick={signoutHandler}>
+                      <Link to="/" onClick={signoutHandler}>
                         <span className="dropdown-signout"> Đăng xuất </span>
                         </Link>
                     </ul>

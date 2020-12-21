@@ -20,6 +20,11 @@ module.exports = (sequelize, DataTypes) => {
         quantityOrder:{
             type: DataTypes.INTEGER,
             allowNull: false,
+        },
+        sizeProduct:
+        {
+            type: DataTypes.STRING,
+            allowNull: false, 
         }
 
     },{

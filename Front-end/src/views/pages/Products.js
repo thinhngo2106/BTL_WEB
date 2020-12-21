@@ -202,8 +202,8 @@ export const AddProducts = (props) => {
   }
 
   return (
-    <div className='admin-products'>
-      <form className="form a" onSubmit={submitHandler}> 
+    <div className='admin-products addproduct'>
+      <form className="form a list" onSubmit={submitHandler}> 
         <div>
         <h1>ADD Product</h1>
             <label htmlFor="name">Name</label>
@@ -248,7 +248,7 @@ export const AddProducts = (props) => {
                    {category.categoryName}
                  </option>
               ))) : (
-                <div></div>
+                <option value=""></option>
               )
               }
               </select>
@@ -279,7 +279,9 @@ export const AddProducts = (props) => {
           <label htmlFor="imageFile">Image</label>
           {
               image ? (
-                <img src={subString(replaceStr(image))} alt =""/>
+                <div>
+                <img className="image-input" src={subString(replaceStr(image))} alt =""/>
+                </div>
               ) : (
                 <div></div>
               )

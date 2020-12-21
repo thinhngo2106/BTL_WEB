@@ -6,6 +6,13 @@ import {
   USER_SIGNIN_REQUEST,
   USER_SIGNIN_SUCCESS,
   USER_SIGNOUT,
+  USER_LIST_FAIL,
+  USER_LIST_REQUEST,
+  USER_LIST_SUCCESS,
+  USER_DELETE_SUCCESS,
+  USER_DELETE_FAIL,
+  USER_DELETE_REQUEST,
+  USER_DELETE_RESET,
   } from '../constants/userConstants';
 
   
@@ -36,4 +43,29 @@ export const userRegisterReducer = (state = {}, action) => {
         return state;
     }
 };
-  
+export const userListReducer = (state = { loading: true }, action) => {
+  switch (action.type) {
+    case USER_LIST_REQUEST:
+      return { loading: true };
+    case USER_LIST_SUCCESS:
+      return { loading: false, users: action.payload };
+    case USER_LIST_FAIL:
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+export const userDeleteReducer = (state = {}, action) => {
+  switch (action.type) {
+    case USER_DELETE_REQUEST:
+      return { loading: true };
+    case USER_DELETE_SUCCESS:
+      return { loading: false, success: true };
+    case USER_DELETE_FAIL:
+      return { loading: false, error: action.payload };
+    case USER_DELETE_RESET:
+      return {};
+    default:
+      return state;
+  }
+};

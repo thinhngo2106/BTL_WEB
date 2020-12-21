@@ -11,8 +11,10 @@ orderRouter.post(  '/',
         res.status(400).send({ message: 'Cart is empty' });
       } else {
         const order = await db.orders.create({
+          customerName: req.body.customerName,
           orderDate: req.body.orderDate,
           status: req.body.status,
+          phoneNumber: req.body.phoneNumber,
           shippedDate: req.body.shippedDate,
           address: req.body.shipAddress,
           paymentMethod: req.body.paymentMethod,
@@ -27,6 +29,7 @@ orderRouter.post(  '/',
               idProduct: element.product,
               priceEach: element.price,
               quantityOrder: element.qty,
+              sizeProduct: element.size,
             })
         });
 
@@ -86,7 +89,24 @@ orderRouter.put(
 }));
 
 
-
+orderRouter.delete(
+  '/:id',
+  isAuth,
+  isAdmin,
+  expressAsyncHandler(async (req, res) => {
+    const order = await db.orders.findOne({
+      where:{
+          idOrder: req.params.id
+      }
+  })
+    if (order) {
+      const deleteOrder = await order.destroy();
+      res.send({ message: 'Order Deleted', order: deleteOrder });
+    } else {
+      res.status(404).send({ message: 'Order Not Found' });
+    }
+  })
+);
 
 
 module.exports = orderRouter; 

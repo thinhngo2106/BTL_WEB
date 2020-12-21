@@ -8,11 +8,19 @@ module.exports = (sequelize, DataTypes) => {
             autoIncrement: true,
             primaryKey: true,
         },
+        customerName:{
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
         orderDate:{
             type: DataTypes.DATEONLY,
             allowNull: false,
         },
         status:{
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        phoneNumber:{
             type: DataTypes.STRING,
             allowNull: false,
         },

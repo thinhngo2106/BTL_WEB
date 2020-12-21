@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { saveShippingAddress } from '../actions/cartActions';
 import CheckoutSteps from '../components/CheckoutSteps';
 import { savePaymentMethod } from '../actions/cartActions';
+import './css/ShippingScreen.css'
+
 
 export default function ShippingAddressScreen(props) {
   const userSignin = useSelector((state) => state.userSignin);
@@ -14,6 +16,7 @@ export default function ShippingAddressScreen(props) {
   }
   const [fullName, setFullName] = useState(shippingAddress.fullName);
   const [address, setAddress] = useState(shippingAddress.address);
+  const [phoneNumber, setPhoneNumber] =  useState(shippingAddress.phoneNumber);
   const [district, setDistrict] = useState(shippingAddress.district);
   const [ward, setWard] = useState(shippingAddress.ward);
   const [city, setCity] = useState(shippingAddress.city);
@@ -23,21 +26,22 @@ export default function ShippingAddressScreen(props) {
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(
-      saveShippingAddress({ fullName, address, city, district, ward}, 
-      savePaymentMethod(paymentMethod))
+      saveShippingAddress({fullName, phoneNumber, address, city, district, ward})
     );
+    dispatch(savePaymentMethod(paymentMethod));
     props.history.push('/placeorder');
   };
   return (
     <div>
       <CheckoutSteps step1 step2></CheckoutSteps>
-      <form className="form" onSubmit={submitHandler}>
+      <form className="form" id="form-ship" onSubmit={submitHandler}>
+        <div id="content-form">
         <div className="shipping-address">
           <div>
             <h1>Shipping Address</h1>
           </div> 
           <div>
-            <label htmlFor="fullName">Full Name</label>
+            <label htmlFor="fullName">Họ và tên</label>
             <input
               type="text"
               id="fullName"
@@ -48,18 +52,18 @@ export default function ShippingAddressScreen(props) {
             ></input>
           </div>
           <div>
-            <label htmlFor="address">Address</label>
+            <label htmlFor="phoneNumber">Số điện thoại</label>
             <input
               type="text"
-              id="address"
-              placeholder="Enter address"
-              value={address}
-              onChange={(e) => setAddress(e.target.value)}
+              id="phoneNumber"
+              placeholder="Enter Phone Number"
+              value={phoneNumber}
+              onChange={(e) => setPhoneNumber(e.target.value)}
               required
             ></input>
           </div>
           <div>
-            <label htmlFor="city">City</label>
+            <label htmlFor="city">Tỉnh/ Thành phố</label>
             <input
               type="text"
               id="city"
@@ -81,7 +85,7 @@ export default function ShippingAddressScreen(props) {
             ></input>
           </div>
           <div>
-            <label htmlFor="country">Phường/ Xã </label>
+            <label htmlFor="country">Phường/ Xã</label>
             <input
               type="text"
               id="ward"
@@ -91,10 +95,21 @@ export default function ShippingAddressScreen(props) {
               required
             ></input>
           </div>
+          <div>
+            <label htmlFor="address">Địa chỉ</label>
+            <input
+              type="text"
+              id="address"
+              placeholder="Enter address"
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
+              required
+            ></input>
+          </div>
         </div>
         <div className="payment-method">
           <div>
-          <h1>Phương thức thanh toán</h1>
+          <h3>Phương thức thanh toán</h3>
           </div>
           <div>
             <div>
@@ -115,7 +130,7 @@ export default function ShippingAddressScreen(props) {
               <input
                 type="radio"
                 id="stripe"
-                value="Stripe"
+                value="Tiền mặt"
                 name="paymentMethod"
                 required
                 onChange={(e) => setPaymentMethod(e.target.value)}
@@ -123,6 +138,7 @@ export default function ShippingAddressScreen(props) {
               <label htmlFor="stripe">TIền mặt</label>
             </div>
           </div>
+        </div>
         </div>
         <div>
           <label />

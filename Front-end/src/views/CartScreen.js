@@ -35,8 +35,9 @@ export default function CartScreen(props) {
   
 
     return (
-        <div className="row cart col-md-10">
-            <div className="col-md-12" >
+        <div className="cart">
+            <div  >
+                <br/>
                 <h2>Giỏ hàng</h2>
                     {cartItems.length ===0 ?( 
                     <div className="cart-empty">
@@ -47,104 +48,118 @@ export default function CartScreen(props) {
                     </MessageBox>
                     </div>)
                     : (
-                    <div>
-                        <table className="cart-table">
-                            <thead>
-                                <tr>
-                                <th><input type="checkbox"/></th>
-                                <th>Ảnh</th>
-                                <th>Tên sản phẩm</th>
-                                <th>Kích cỡ</th>
-                                <th>Giá tiền</th>
-                                <th>Số lượng</th>
-                                <th>Thành tiền</th>
-                                <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {cartItems.map((item) => (
-                                <tr>
-                                <td><input type="checkbox"/></td>
+                        <div class="contain">
+                            <div class="container-table">
+                                <div class="wrap-table">
+                                    <br/>
 
-                                <td>
-                                    <Link to={`/product/${item.product}`}>
-                                        <img src={item.image} alt={item.name} className="small"></img>
-                                    </Link>
-                                </td>
+                                    <table className="cart-table">
+                                        <thead className="cart-head">
+                                            <tr>
+                                            <th className="column1"><input type="checkbox"/></th>
+                                            <th className="column2">Ảnh</th>
+                                            <th className="column3">Tên sản phẩm</th>
+                                            <th className="column4">Kích cỡ</th>
+                                            <th className="column5">Giá tiền</th>
+                                            <th className="column6">Số lượng</th>
+                                            <th className="column7">Thành tiền</th>
+                                            <th className="column8"></th>
+                                            <th></th>
+                                            </tr>
+                                        </thead>
 
-                                <td>
-                                    <Link to={`/product/${item.product}`}  style={{textDecoration: 'none'}}>
-                                        <span className="item-attribute-name">{item.name}</span>
-                                    </Link>
-                                </td>
+                                        <tbody className="cart-items">
+                                            {cartItems.map((item) => (
+                                            <tr>
+                                            <td className="column1">
+                                                <input type="checkbox"/>
+                                            </td>
 
-                                <td>
-                                    <span className="item-attribute-name"  style={{textAlign: 'center'}}>{item.size}</span>
-                                </td>
+                                            <td className="column2">
+                                                <Link to={`/product/${item.product}`}>
+                                                    <img src={item.image} alt={item.name} className="small"></img>
+                                                </Link>
+                                            </td>
 
-                                <td>
-                                    <span className="item-attribute" style={{textAlign: 'center'}}>${item.price}  </span>
-                                </td>
+                                            <td className="column3">
+                                                <Link to={`/product/${item.product}`}  style={{color: 'black'}}>
+                                                    <span className="item-attribute-name">{item.name}</span>
+                                                </Link>
+                                            </td>
 
-                                <td>
-                                    <select className="item-quantity"
-                                        value={item.qty}
-                                        onChange={(e) =>
-                                            dispatch(
-                                            addToCart(item.product, Number(e.target.value), idsize)
-                                            )
-                                        }
-                                    >
-                                    {
-                                    [...Array(item.countInStock).keys()].map((x) => (
-                                        <option key={x + 1} value={x + 1}>
-                                        {x + 1}
-                                        </option>
-                                    ))
-                                    }
-                                    </select>
-                                </td>
+                                            <td className="column4">
+                                                <span className="item-attribute-name">{item.size}</span>
+                                            </td>
 
-                                <td>
-                                    Thành tiền nhưng chưa biết để tn
-                                    {cartItems.reduce((a, c) => c.price * c.qty, 0)}
-                                </td>
+                                            <td className="column5">
+                                                <span className="item-attribute">{item.price}  ₫ </span>
+                                            </td>
 
-                                <td>
-                                    <button
-                                        className="remove-item"
-                                        type="button"
-                                        onClick={() => removeFromCartHandler(item.product)}
-                                        >
-                                        Xóa
-                                    </button> 
-                                </td>
-                                </tr>
-                                   ))}
-                            </tbody>
-                        </table>
-                     
-                    </div>
+                                            <td className="column6">
+                                                <select className="item-quantity"
+                                                    value={item.qty}
+                                                    onChange={(e) =>
+                                                        dispatch(
+                                                        addToCart(item.product, Number(e.target.value), idsize)
+                                                        )
+                                                    }
+                                                >
+                                                {
+                                                [...Array(item.countInStock).keys()].map((x) => (
+                                                    <option key={x + 1} value={x + 1}>
+                                                    {x + 1}
+                                                    </option>
+                                                ))
+                                                }
+                                                </select>
+                                            </td>
+
+                                            <td className="column7">
+                                                {cartItems.reduce((a, c) => c.price * c.qty, 0)}
+                                            </td>
+
+                                            <td className="column8">
+                                                <button
+                                                    className="remove-item"
+                                                    type="button"
+                                                    onClick={() => removeFromCartHandler(item.product)}
+                                                    >
+                                                    X
+                                                </button> 
+                                            </td>
+                                            </tr>
+                                            ))}
+                                        </tbody>
+                                    </table>
+                                        
+                                </div>
+                            </div>
+                        </div>
 
                     )
                     }
 
 
         </div>
-        <div className="checkout col-md-5">
-                <span className="total-price"> 
-                            Tổng tiền sản phẩm({cartItems.reduce((a, c) => a + c.qty, 0)} Sản phẩm) : $
-                            {cartItems.reduce((a, c) => a + c.price * c.qty, 0)}
-                </span>
-                        <button
-                            type="button"
-                            id="button-checkout"
-                            onClick={checkoutHandler}
-                            className="primary block"
-                            disabled={cartItems.length === 0}
-                        >
-                        Mua hàng
-                        </button>       
+        <div className="checkout ">
+            <span className="total-price"> 
+                        Tổng tiền sản phẩm ({cartItems.reduce((a, c) => a + c.qty, 0)} Sản phẩm) : &nbsp;
+                        <span className="money">
+                            {cartItems.reduce((a, c) => a + c.price * c.qty, 0)} ₫
+                        </span>
+                        
+                        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+            </span>
+
+            <button
+                type="button"
+                id="button-checkout"
+                onClick={checkoutHandler}
+                className="chot-don"
+                disabled={cartItems.length === 0}
+            >
+            Mua hàng
+            </button>       
                 </div> 
 
         </div>

@@ -17,7 +17,7 @@ export default function CategoryScreen(props) {
     const { loading, error, data, pages} = categorySearch;
     const dispatch = useDispatch();
     useEffect(() => {
-      dispatch(searchCategory(name,page,2));
+      dispatch(searchCategory(name,page,3));
     }, [dispatch, name, page]);
     const getFilterUrl = (filter) => {
         const filterPage = filter.page || page;
@@ -52,9 +52,9 @@ export default function CategoryScreen(props) {
                     to={getFilterUrl({page: x+1})}
                   >
                     <li className='page-item'>
-                        <a>
+                        <span>
                             {x+1}
-                        </a>
+                        </span>
                     </li>
                     
                   </Link>

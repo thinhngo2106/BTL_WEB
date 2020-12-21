@@ -12,6 +12,10 @@
 }
 .checkout-steps{
   max-width:  58rem ;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 25%;
 }
 
 .checkout-steps > div {
@@ -82,13 +86,6 @@ ul {
 .order-title{
   margin-bottom: 10px;
 }
-
-
-
-
-
-
-
 
 
 @media screen and (max-width: 1000px){
