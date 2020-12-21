@@ -29,12 +29,12 @@ export default function NavBar(pros) {
             <div className= "navbarItems">
                 <div className="item-big">
                     {categories.map((category) => (
-                        <Link to={`/category?name=${category.categoryName}`} style={{textDecoration: 'none'}}>
-                          <a key={category.idCategory}> 
+                        <Link key={category.idCategory} to={`/category?name=${category.categoryName}`} style={{textDecoration: 'none'}}>
+                          <span key={category.idCategory}> 
                             <button id="navbar-button"> 
                               {category.categoryName} 
                             </button>
-                          </a>
+                          </span>
                         </Link>
                     ))
                     }

@@ -46,11 +46,11 @@ export default function HomeScreen() {
 
                         <div>
                             {data.map((data) => ( 
-                            <div>  
-                            <div> 
+                            <div  key={data.idCategory}>  
+                            <div key={data.idCategory}> 
                                 <span>{data.categoryName}</span>
                             </div>
-                            <div className="home__row">
+                            <div className="home__row" >
                                 {data.products.map((product) => (
                                  <Product key={product.idProduct} product={product}> </Product>
                             ))}

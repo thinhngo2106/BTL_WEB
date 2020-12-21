@@ -11,8 +11,10 @@ orderRouter.post(  '/',
         res.status(400).send({ message: 'Cart is empty' });
       } else {
         const order = await db.orders.create({
+          customerName: req.body.customerName,
           orderDate: req.body.orderDate,
           status: req.body.status,
+          phoneNumber: req.body.phoneNumber,
           shippedDate: req.body.shippedDate,
           address: req.body.shipAddress,
           paymentMethod: req.body.paymentMethod,
@@ -27,6 +29,7 @@ orderRouter.post(  '/',
               idProduct: element.product,
               priceEach: element.price,
               quantityOrder: element.qty,
+              sizeProduct: element.size,
             })
         });
 

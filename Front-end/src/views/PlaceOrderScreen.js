@@ -33,7 +33,8 @@ export default function PlaceOrderScreen(props) {
   cart.status = 'Đang xử lý';
   cart.shipAddress =  cart.shippingAddress.address + " " +  cart.shippingAddress.ward 
             +" "+ cart.shippingAddress.district + " "+ cart.shippingAddress.city;
-
+  cart.customerName = cart.shippingAddress.fullName;
+  cart.phoneNumber = cart.shippingAddress.phoneNumber;
   const dispatch = useDispatch();
   const placeOrderHandler = () => {
     dispatch(createOrder({ ...cart, orderItems: cart.cartItems }));
@@ -56,6 +57,7 @@ export default function PlaceOrderScreen(props) {
                 <h2>Shipping</h2>
                 <p>
                   <strong>Name:</strong> {cart.shippingAddress.fullName} <br />
+                  <strong>Số điện thoại: </strong> {cart.shippingAddress.phoneNumber} <br />
                   <strong>Address: </strong> {cart.shippingAddress.address}, {cart.shippingAddress.ward},
                    {cart.shippingAddress.district}, {cart.shippingAddress.city}
                 </p>

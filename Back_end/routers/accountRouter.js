@@ -4,7 +4,7 @@ const router = express.Router();
 const data = require('../dataimport');
 const expressAsyncHandler =  require('express-async-handler');
 const bcrypt = require('bcryptjs');
-const {generateToken} = require('../utlis');
+const {generateToken, isAuth, isAdmin} = require('../utlis');
 const userController = require('../controllers/accountController');
 
 
@@ -48,5 +48,36 @@ router.post(
     }
     })
   );
+
+
+router.get(
+    '/',
+    isAuth,
+    isAdmin,
+    expressAsyncHandler(async (req, res) => {
+      const users = await db.users.findAll();
+      res.send(users);
+    })
+  );
+
+
+router.delete(
+    '/:id',
+    isAuth,
+    isAdmin,
+    expressAsyncHandler(async (req, res) => {
+      const user = await User.findById(req.params.id);
+      if (user) {
+        if (user.isAdmin) {
+          res.status(400).send({ message: 'Can Not Delete Admin User' });
+          return;
+        }
+        const deleteUser = await user.destroy();
+        res.send({ message: 'User Deleted', user: deleteUser });
+      } else {
+        res.status(404).send({ message: 'User Not Found' });
+      }
+    })
+  );  
 
 module.exports = router;

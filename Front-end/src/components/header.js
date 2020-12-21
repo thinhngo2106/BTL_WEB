@@ -5,11 +5,9 @@ import { Link } from 'react-router-dom';
 import SearchIcon from "@material-ui/icons/Search";
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import {useDispatch, useSelector} from 'react-redux';
-import { searchKeyword } from '../actions/searchActions';
 import { signout } from '../actions/userActions';
 import { Dropdown } from 'react-bootstrap';
-import SplitButton from 'react-bootstrap/SplitButton';
-import DropdownButton from 'react-bootstrap/DropdownButton'
+
 
 
 function Header(props) {
@@ -24,7 +22,9 @@ function Header(props) {
   
   //var name = userInfo.Fname + userInfo.Lname
   const signoutHandler = () => {
+    
     dispatch(signout());
+    
   };
   const submitAction = (e) =>{
     e.preventDefault();
@@ -86,9 +86,9 @@ function Header(props) {
 
                       <Dropdown.Menu  className="dropdown-signout"> 
                         <Dropdown.Item > 
-                          <Link to="#signout" onClick={signoutHandler} style={{textDecoration: 'none'}}>
+                          <button onClick={signoutHandler} style={{textDecoration: 'none'}}>
                             <span className='dropdown-content'> Đăng xuất </span>
-                            </Link>
+                            </button>
                         </Dropdown.Item>
                       </Dropdown.Menu>
                     </Dropdown>
