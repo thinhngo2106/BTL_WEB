@@ -40,8 +40,8 @@ export default function OrderScreen(props) {
   ) : (
     <div>
       <h1>Order {order.idOrder}</h1>
-      <div className="row top">
-        <div className="col-2">
+      <div className="order-detail row top">
+        <div className="col-md-6">
           <ul>
             <li>
               <div className="card card-body">
@@ -92,7 +92,7 @@ export default function OrderScreen(props) {
             </li>
           </ul>
         </div>
-        <div className="col-1">
+        <div className="col-md-4">
           <div className="card card-body">
             <ul>
               <li>
