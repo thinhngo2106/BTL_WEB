@@ -24,3 +24,10 @@
   left: 45%;
   top: 50%
 }
+
+.nav {
+  width: 15%;
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}

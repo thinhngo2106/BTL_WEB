@@ -34,12 +34,15 @@ export default function SigninScreen(props) {
     <div className="signin-up ">
       <form className="form" onSubmit={submitHandler}>
         <div className="head">
+        <img className="login_image" 
+                    src = "..//../image/logo.png" alt ="" />
           <h1>Đăng nhập</h1>
         </div>
         {loading && <LoadingBox></LoadingBox>}
+        {error && <MessageBox variant="danger">{error}</MessageBox>}
         <div className="info">
           <label htmlFor="email">Email</label>
-          <input
+          <input className="infor"
             type="email"
             id="email"
             placeholder="Email"
@@ -49,7 +52,7 @@ export default function SigninScreen(props) {
         </div>
         <div>
           <label htmlFor="password">Mật khẩu</label>
-          <input
+          <input className="infor"
             type="password"
             id="password"
             placeholder="Mật khẩu"
@@ -57,7 +60,6 @@ export default function SigninScreen(props) {
             onChange={(e) => setPassword(e.target.value)}
           ></input>
         </div>
-        {error && <MessageBox variant="danger">{error}</MessageBox>}
         <div>
           <label />
           <button className="primary" type="submit">

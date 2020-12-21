@@ -6,20 +6,20 @@ import * as RiIcons from 'react-icons/ri';
 
 export const SidebarData = [
   {
-    title: 'Home',
+    title: 'Trang chủ',
     path: '/',
     icon: <AiIcons.AiFillHome />,
     cName: 'nav-text'
   },
   {
     
-    title: 'Orders Manage',
+    title: 'Quản lý đơn hàng',
     path: '/ordersManage',
     icon: <IoIcons.IoIosPaper />,
     cName: 'sub-nav'
   },
   {
-    title: 'Products',
+    title: 'Sản phẩm',
     path: '/products',
     icon: <FaIcons.FaCartPlus />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
@@ -27,13 +27,13 @@ export const SidebarData = [
 
     subNav: [
       {
-        title: 'Products Manage',
+        title: 'Quản lý sản phẩm',
         path: '/products/productsManage',
         icon: <FaIcons.FaCartPlus />,
         cName: 'sub-nav'
       },
       {
-        title: 'Add Products',
+        title: 'Thêm sản phẩm',
         path: '/products/addProducts',
         icon: <FaIcons.FaCartPlus />,
         cName: 'sub-nav'
@@ -41,19 +41,19 @@ export const SidebarData = [
     ]
   },
   {
-    title: 'Users Manage',
+    title: 'Quản lý người dùng',
     path: '/usersManage',
     icon: <IoIcons.IoMdPeople />,
     cName: 'nav-text'
   },
   {
-    title: 'Products Type',
+    title: 'Phân loại sản phẩm',
     path: '/productsType',
     icon: <FaIcons.FaEnvelopeOpenText />,
     cName: 'nav-text'
   },
   {
-    title: 'Brands Manage',
+    title: 'Quản lý nhãn hàng',
     path: '/brandsManage',
     icon: <IoIcons.IoMdHelpCircle />,
     cName: 'nav-text'

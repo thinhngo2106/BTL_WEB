@@ -1,8 +1,17 @@
+
+.login_image {
+    width: 80%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .head {
     text-align: center;
     margin: 0;
     line-height: 1;
     padding-bottom: 20px;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
 }
 
 .signin-up {
@@ -11,8 +20,12 @@
     justify-content: center;
     flex-direction: column;
     text-align: left;
+    font-size: 22px;
 }
-
+.infor {
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-size: 16px;
+}
 .form {
     width: 35%;
     margin: auto;
@@ -37,13 +50,30 @@
 .form label{
     margin: 1rem 0;
     display: block;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 .account {
-    text-align: left;
+    text-align: center;
     font-size: 13px;
     padding-top: 10px;
     color: #7f7d7d;
-    margin: 0;
+    margin: 0;   
+    font-family:'Courier New', Courier, monospace;
 }
 
+.primary {
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    background: linear-gradient(to right, #046c0b 15%, #f7e702 100%);
+    color: rgb(255, 255, 250);
+    border-radius: 10mm;
+    font-size: 20px;
+    
+}
+
+.primary:hover {
+    background: linear-gradient(to right, #05910e 15%, #fbff13 100%);
+}
