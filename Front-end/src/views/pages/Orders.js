@@ -57,13 +57,15 @@ export const OrdersManage = (props) => {
           <thead>
             <tr>
               <th>ID</th>
-              <th>USER</th>
+              <th>Người đặt hàng</th>
               <th>Email</th>
-              <th>DATE</th>
-              <th>TOTAL</th>
-              <th>PAID</th>
-              <th>DELIVERED</th>
-              <th>ACTIONS</th>
+              <th>Khách hàng</th>
+              <th>Ngày đặt hàng</th>
+              <th>Tổng giá tiền</th>
+              <th>Phương thức thanh toán</th>
+              <th>Tình trạng</th>
+              <th>Ngày giao hàng</th>
+              <th>Tùy chỉnh</th>
             </tr>
           </thead>
           <tbody>
@@ -72,11 +74,14 @@ export const OrdersManage = (props) => {
                 <td>{order.idOrder}</td>
                 <td>{order.user.userLname} {order.user.userFname}</td>
                 <td>{order.user.userEmail}</td>
+                <td>{order.customerName}</td>
                 <td>{order.orderDate}</td>
                 <td>{numberWithCommas(order)}</td>
-                <td>{
+                <td>
+                  {
                   order.paymentMethod == 'PayPal' ? "Đã thanh toán" : "Thanh toán khi nhận hàng"
                   }</td>
+                  <td>{order.status}</td>
                 <td>
                   {order.shippedDate}
                 </td>

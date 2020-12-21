@@ -89,7 +89,24 @@ orderRouter.put(
 }));
 
 
-
+orderRouter.delete(
+  '/:id',
+  isAuth,
+  isAdmin,
+  expressAsyncHandler(async (req, res) => {
+    const order = await db.orders.findOne({
+      where:{
+          idOrder: req.params.id
+      }
+  })
+    if (order) {
+      const deleteOrder = await order.destroy();
+      res.send({ message: 'Order Deleted', order: deleteOrder });
+    } else {
+      res.status(404).send({ message: 'Order Not Found' });
+    }
+  })
+);
 
 
 module.exports = orderRouter; 

@@ -35,8 +35,9 @@ try {
   const { data } = await Axios.get('/api/search/categories/', {params:{
     name: nameCategory,
     page: pageNumber ? pageNumber : 0,
-    limit: limitProducts ? limitProducts : 2,
+    limit: limitProducts
   }});
+  console.log(data);
   
   
   dispatch({ type: SEARCH_CATEGORY_SUCCESS, payload: data});

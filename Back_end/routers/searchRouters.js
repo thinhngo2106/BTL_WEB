@@ -38,7 +38,7 @@ router.get('/categories',
     const term = req.query.name
     const page = req.query.page
     const limitProduct = req.query.limit
-    const limit = limitProduct ? parseInt(limitProduct) : 3; 
+    const limit =  parseInt(limitProduct); 
     const offset = page ? page * limit : 0;
     const data = await db.categories.findAll({
         where:{
@@ -48,10 +48,13 @@ router.get('/categories',
             model: db.products,
             include:[{
                 model: db.productdetail,
-                required: true
+                required: true,
+                offset: 0,
+                limit: 1,
             }],
             offset: offset,
             limit: limit,
+ 
         }],
 
     })
