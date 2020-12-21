@@ -38,14 +38,14 @@ export default function ShippingAddressScreen(props) {
         <div id="content-form">
         <div className="shipping-address">
           <div>
-            <h1>Shipping Address</h1>
+            <h1>Địa chỉ giao hàng</h1>
           </div> 
           <div>
             <label htmlFor="fullName">Họ và tên</label>
             <input
               type="text"
               id="fullName"
-              placeholder="Enter full name"
+              placeholder="Nhập họ và tên"
               value={fullName}
               onChange={(e) => setFullName(e.target.value)}
               required
@@ -56,7 +56,7 @@ export default function ShippingAddressScreen(props) {
             <input
               type="text"
               id="phoneNumber"
-              placeholder="Enter Phone Number"
+              placeholder="Nhập số điện thoại"
               value={phoneNumber}
               onChange={(e) => setPhoneNumber(e.target.value)}
               required
@@ -67,7 +67,7 @@ export default function ShippingAddressScreen(props) {
             <input
               type="text"
               id="city"
-              placeholder="Enter city"
+              placeholder="Nhập tên thành phố"
               value={city}
               onChange={(e) => setCity(e.target.value)}
               required
@@ -78,7 +78,7 @@ export default function ShippingAddressScreen(props) {
             <input
               type="text"
               id="district"
-              placeholder="Enter district"
+              placeholder="Nhập tên quận/ huyện"
               value={district}
               onChange={(e) => setDistrict(e.target.value)}
               required
@@ -89,7 +89,7 @@ export default function ShippingAddressScreen(props) {
             <input
               type="text"
               id="ward"
-              placeholder="Enter ward"
+              placeholder="Nhập tên phường/ xã"
               value={ward}
               onChange={(e) => setWard(e.target.value)}
               required
@@ -100,7 +100,7 @@ export default function ShippingAddressScreen(props) {
             <input
               type="text"
               id="address"
-              placeholder="Enter address"
+              placeholder="Nhập địa chỉ nhận hàng"
               value={address}
               onChange={(e) => setAddress(e.target.value)}
               required
