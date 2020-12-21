@@ -281,6 +281,10 @@ img.small {
   width: 100%;
   }
 
+  img.small1 {
+    max-width: fit-content;
+    width: 55%;
+  }
 .column1 {
   width: 50px;
   /* padding-left: 40px; */
