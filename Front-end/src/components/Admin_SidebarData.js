@@ -20,7 +20,6 @@ export const SidebarData = [
   },
   {
     title: 'Sản phẩm',
-    path: '/products',
     icon: <FaIcons.FaCartPlus />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
     iconOpened: <RiIcons.RiArrowUpSFill />,

@@ -21,16 +21,24 @@ orderRouter.post(  '/',
           shippingPrice: req.body.shippingPrice,
           idUser: req.user.id,
         });
+        
         const array = req.body.orderItems;
         res.send({array});
         array.forEach(async(element) => {
-            await db.orderdetail.create({
+          const product = await db.products.findOne({
+            where:{
+              idProduct: element.product,
+            }
+          })
+            const orderdetail = await db.orderdetail.create({
               idOrder: order.idOrder,
               idProduct: element.product,
               priceEach: element.price,
-              quantityOrder: element.qty,
+              quantityOrder: product.quantityInStock - element.qty >= 0 ? product.quantityInStock - element.qty : product.quantityInStock,
               sizeProduct: element.size,
             })
+            product.quantityInStock = product.quantityInStock - element.qty >= 0 ? product.quantityInStock - element.qty : 0;
+            await product.save();
         });
 
       }

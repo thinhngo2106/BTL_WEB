@@ -166,7 +166,7 @@ export default function ProductScreen(props) {
 
                         ) : (
                             <button className="x-cart">
-                            Không thể thêm vào giỏ hàng
+                            Hết hàng
                         </button>
                         )  
                         }
