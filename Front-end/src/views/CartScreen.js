@@ -71,7 +71,7 @@ export default function CartScreen(props) {
 
                                         <tbody className="cart-items">
                                             {cartItems.map((item) => (
-                                            <tr>
+                                            <tr key={item.id}>
                                             <td className="column1">
                                                 <input type="checkbox"/>
                                             </td>

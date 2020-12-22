@@ -22,7 +22,6 @@ orderRouter.post(  '/',
           idUser: req.user.id,
         });
         const array = req.body.orderItems;
-        res.send({array});
         array.forEach(async(element) => {
             await db.orderdetail.create({
               idOrder: order.idOrder,
@@ -31,8 +30,21 @@ orderRouter.post(  '/',
               quantityOrder: element.qty,
               sizeProduct: element.size,
             })
+            const productSizes = await db.productsizes.findOne({
+              where: {
+                idSize: element.idsize,
+                idProduct: element.product,
+              }
+            })
+            const qty = parseInt(element.qty);
+            if(productSizes){
+              productSizes.quantityInStock = productSizes.quantityInStock - qty; 
+              productSizes.save()
+            }
         });
-
+        res
+        .status(201)
+        .send({ message: 'New Order Created'});
       }
       }
   )

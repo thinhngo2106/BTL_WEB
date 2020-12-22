@@ -34,7 +34,6 @@ export const createOrder = (order) => async (dispatch, getState) => {
           Authorization: `Bearer ${userInfo.token}`,
         },
       });
-      console.log(order.orderItems);
       dispatch({ type: ORDER_CREATE_SUCCESS, payload: data.order });
       dispatch({ type: CART_EMPTY });
       localStorage.removeItem('cartItems');
@@ -59,7 +58,7 @@ export const listOrderMine = () => async (dispatch, getState) => {
             Authorization: `Bearer ${userInfo.token}`,
           },
         });
-        
+        console.log(data);
         dispatch({ type: ORDER_MINE_LIST_SUCCESS, payload: data });
       } catch (error) {
         const message =

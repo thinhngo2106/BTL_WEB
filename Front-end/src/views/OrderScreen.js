@@ -67,7 +67,7 @@ export default function OrderScreen(props) {
                 {/* <ul> */}
                   {order.orderdetails.map((item) => (
                     // <li key={item.idProduct}>
-                    <div className="card card-body">
+                    <div key={item.idProduct} className="card card-body">
                       <div className={`row orderItem ${item.product}`}>
                         <div className="col-md-6">
                           <div>
