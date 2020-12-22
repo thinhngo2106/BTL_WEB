@@ -21,13 +21,13 @@ export default function ProductScreen(props) {
     const { loading, error, product } = productDetails;
     
     const [qty, setQty] = useState(1);
-    const [size, setSize] = useState(1);
+    const [size, setSize] = useState(0);
     const incNum = () => {
-        if (qty < product.quantityInStock){
+        if (qty < product.productsizes[size].quantityInStock){
         setQty(qty+1);
         }
         else {
-            setQty(product.quantityInStock);
+            setQty(product.productsizes[size].quantityInStock);
         }
 
     };
@@ -44,7 +44,7 @@ export default function ProductScreen(props) {
 
     useEffect(() => {
       dispatch(detailsProduct(productId));
-    }, [dispatch, productId]);
+    }, [dispatch, productId,size]);
 
     const addToCartHandler = () => {
         dispatch(addToCart(productId,qty,size));
@@ -96,7 +96,7 @@ export default function ProductScreen(props) {
                     </h1>
 
                     <div >
-                        {product.quantityInStock > 0 ?(
+                        {product.productsizes[size].quantityInStock > 0 ?(
                             <span className="productStatus"> Tình trạng: Còn hàng </span>    
                         ) : (
                         <span className="productStatus"> Tình trạng: Hết hàng </span>
@@ -140,7 +140,7 @@ export default function ProductScreen(props) {
                         onChange={(e) => setSize(e.target.value)}
                             >
                                 {product.productsizes.map((x)  => (
-                                  <option key={x.idSize} value={x.idSize}>
+                                  <option key={x.idSize} value={x.idSize-1}>
                                       {x.productSize}
                                   </option>
                                 )
@@ -154,11 +154,10 @@ export default function ProductScreen(props) {
                             <button onClick={decNum} className="dec-Button">  <RemoveIcon/>  </button>
                             <input className="input" type="text" value={qty} onChange={e => setQty(e.target.value)} />
                             <button onClick={incNum} className="inc-Button" > <AddIcon/> </button>
-                        </div>
-
+                    </div>
                         <p/> 
 
-                        {product.quantityInStock > 0 ?(
+                        {product.productsizes[size].quantityInStock > 0 ?(
                             <button onClick={addToCartHandler} className="addtocart">
                                 Thêm vào giỏ hàng
                             </button>

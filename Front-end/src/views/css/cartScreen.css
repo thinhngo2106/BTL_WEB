@@ -194,6 +194,9 @@ transform: translateY(1px);
       max-width: 90%;
   }
 } */
+.cart-empty{
+  height: 400px;
+}
 
 .cart h2 {
   font-weight: bolder;

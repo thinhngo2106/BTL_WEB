@@ -154,7 +154,6 @@ export const AddProducts = (props) => {
       props.history.push('/products/productsManage');
     }
     dispatch(listProductCategories());
-    
     dispatch(listProductBrands())
   }, [dispatch, successCreate, props.history]);
   const submitHandler = (e) => {

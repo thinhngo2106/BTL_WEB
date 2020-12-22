@@ -77,27 +77,40 @@ router.put(
         })
         const productImage = await db.productdetail.findOne({
             where:[{
-                idProduct: productId
-                
-            },{
+                idProduct: productId,
                 idImage: 1
+            }],
+        })
+        const productSize = await db.productsizes.findOne({
+            where:[{
+                idProduct: productId,
+                idSize: req.body.size,
             }]
         })
         if (product) {
             product.productName = req.body.name;
             product.productPrice = req.body.price;
             product.productDescription = req.body.description;
-            product.quantityInStock = req.body.quantityInStock;
             product.idBrand = req.body.brand;
             product.idCategory = req.body.category;
+            await product.save();
         } 
+        
         if (productImage) {
             productImage.image = req.body.image;
+            await productImage.save();
         }
-
-        await product.save();
-        await productImage.save();
-        res.send(product);
+        const count = req.body.qty;
+        const quantity = parseInt(count)
+        if (productSize) {
+            productSize.quantityInStock = quantity;
+            await productSize.save();
+        }
+        if(product){
+        res.send({ message: 'Product Updated'});}
+        else {
+            res.status(404).send({ message: 'Product Not Found' });
+        }
     })
 
 );
