@@ -111,6 +111,7 @@ orderRouter.delete(
 
 orderRouter.get(
   '/detail',
+  isAuth,
   expressAsyncHandler(async (req, res) => {
     const idOrder = req.query.idOrder;
     const idUser = req.query.idUser;

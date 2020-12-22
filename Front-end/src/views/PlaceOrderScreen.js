@@ -25,7 +25,7 @@ export default function PlaceOrderScreen(props) {
     cart.cartItems.reduce((a, c) => a + c.qty * c.price, 0)
   );
   cart.shippingPrice = cart.itemsPrice > 100 ? 200000 : toPrice(0);
-  cart.totalPrice = cart.itemsPrice + cart.shippingPrice + cart.taxPrice;
+  cart.totalPrice = cart.itemsPrice + cart.shippingPrice;
   const today = new Date();
   cart.orderDate =
     today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
@@ -46,7 +46,7 @@ export default function PlaceOrderScreen(props) {
   const dispatch = useDispatch();
   const placeOrderHandler = () => {
     dispatch(createOrder({ ...cart, orderItems: cart.cartItems }));
-    console.log(cart.shippedDate);
+    props.history.push("/")
   };
   useEffect(() => {
     if (success) {
@@ -129,13 +129,13 @@ export default function PlaceOrderScreen(props) {
               <div className="col-md-8">
                 <div className="row">
                   <div>Items</div>
-                  <div>${cart.itemsPrice.toFixed(2)}</div>
+                  <div>${cart.itemsPrice}</div>
                 </div>
                 {/* </li>
               <li> */}
                 <div className="row">
                   <div>Shipping</div>
-                  <div>${cart.shippingPrice.toFixed(2)}</div>
+                  <div> {cart.shippingPrice}</div>
                 </div>
                 {/* </li>
 
@@ -145,7 +145,7 @@ export default function PlaceOrderScreen(props) {
                     <strong> Order Total</strong>
                   </div>
                   <div>
-                    <strong>${cart.totalPrice.toFixed(2)}</strong>
+                    <strong>${cart.totalPrice}</strong>
                   </div>
                   {/* </li>
               <li> */}

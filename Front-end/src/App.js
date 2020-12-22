@@ -46,7 +46,7 @@ function App() {
           </div>
         )}
         <main>
-          <Route path="/order/:id" component={OrderScreen}></Route>
+         
           {userInfo && userInfo.isAdmin ? (
             <>
               <div className="row">
@@ -66,6 +66,7 @@ function App() {
                     <AdminRoute path="/brandsManage" exact component={Brands}></AdminRoute>
                     <AdminRoute path="/brands/brandsManage" exact component={BrandsManage}></AdminRoute>
                     <AdminRoute path="/brands/addBrands" exact component={AddBrands}></AdminRoute>
+                    <Route path="/order/:id" component={OrderScreen}></Route>
                   </Switch>
                 </div>
               </div>
@@ -97,10 +98,12 @@ function App() {
                     component={OrderHistoryScreen}
                   ></Route>
                   <Route path="/category" component={CategoryScreen}></Route>
+                  <Route path="/order/:id" component={OrderScreen}></Route>
                 </Switch>
               </div>
             </>
           )}
+           
         </main>
 
         <Footer />
