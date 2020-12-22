@@ -90,7 +90,7 @@ export const OrdersManage = (props) => {
                     type="button"
                     className="small"
                     onClick={() => {
-                      props.history.push(`/order/${order._id}`);
+                      props.history.push(`/order/${order.idOrder}`);
                     }}
                   >
                     Details

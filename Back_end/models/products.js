@@ -21,10 +21,6 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.TEXT,
             allowNull: false,
         },
-        quantityInStock:{
-            type: DataTypes.INTEGER,
-            allowNull: false,
-        },
         idBrand:{
             type: DataTypes.INTEGER,
             allowNull: false,

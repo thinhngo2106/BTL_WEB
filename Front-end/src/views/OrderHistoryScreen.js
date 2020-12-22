@@ -35,6 +35,7 @@ export default function OrderHistoryScreen(props) {
           <thead>
             <tr>
               <th>Mã đơn hàng</th>
+              <th>Người đặt hàng</th>
               <th>Ngày đặt hàng</th>
               <th>Số tiền</th>
               <th>Ngày giao hàng</th>
@@ -46,7 +47,9 @@ export default function OrderHistoryScreen(props) {
             {orders.map((order) => (
               <tr key={order.idOrder}>
                 <td>{order.idOrder}</td>
+                <td>{order.customerName}</td>
                 <td>{order.orderDate.substring(0, 10)}</td>
+                
                 <td>
                 <span className="total-price"> 
                   {numberWithCommas(order)} ₫
@@ -63,7 +66,7 @@ export default function OrderHistoryScreen(props) {
                     type="button"
                     className="small"
                     onClick={() => {
-                      props.history.push(`/order/${order._id}`);
+                      props.history.push(`/order/${order.idOrder}`);
                     }}
                   >
                     Chi tiết

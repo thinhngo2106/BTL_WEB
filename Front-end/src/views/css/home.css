@@ -30,4 +30,9 @@
   display: flex;
   justify-content: center;
   margin-top: 50px;
+  font-weight: bold;
+  background-color:  #393a44;
+  padding: 25px;
+  color: white;
+  font-size: 20px;
 }

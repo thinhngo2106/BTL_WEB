@@ -10,6 +10,12 @@ module.exports.productdetail = expressAsyncHandler(async( req,res) => {
         },
         {
             model: db.productsizes
+        },
+        {
+            model: db.categories,
+        },
+        {
+            model: db.brands,
         }],
         where:{
             idProduct: req.params.id

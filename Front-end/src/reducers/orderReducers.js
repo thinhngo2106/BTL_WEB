@@ -17,6 +17,9 @@ import {
   ORDER_UPDATE_SUCCESS,
   ORDER_UPDATE_FAIL,
   ORDER_UPDATE_RESET,
+  ORDER_DETAILS_FAIL,
+  ORDER_DETAILS_REQUEST,
+  ORDER_DETAILS_SUCCESS,
 
   } from '../constants/orderConstants';
   
@@ -83,6 +86,19 @@ export const orderUpdateReducer = (state = {}, action) => {
       return { loading: false, error: action.payload };
     case ORDER_UPDATE_RESET:
       return {};
+    default:
+      return state;
+  }
+};
+
+export const orderDetailsReducer = (state = { loading: true }, action) => {
+  switch (action.type) {
+    case ORDER_DETAILS_REQUEST:
+      return { loading: true };
+    case ORDER_DETAILS_SUCCESS:
+      return { loading: false, order: action.payload };
+    case ORDER_DETAILS_FAIL:
+      return { loading: false, error: action.payload };
     default:
       return state;
   }

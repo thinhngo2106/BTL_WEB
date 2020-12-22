@@ -24,9 +24,10 @@ import {OrdersManage} from "./views/pages/Orders";
 import { Products, ProductsManage, AddProducts } from "./views/pages/Products";
 import AdminSidebar from "./components/Admin_Sidebar";
 import Users from "./views/pages/UsersManage";
-import ProductsType from "./views/pages/ProductsType";
-import Brands from "./views/pages/Brands";
+import {ProductsType, ProductsTypeManage, AddProductsType} from "./views/pages/ProductsType";
+import {Brands, BrandsManage, AddBrands} from "./views/pages/Brands";
 import ProductEditScreen from './views/pages/EditProductScreen';
+import OrderScreen from "./views/OrderScreen";
 
 function App() {
   const userSignin = useSelector((state) => state.userSignin);
@@ -45,6 +46,7 @@ function App() {
           </div>
         )}
         <main>
+         
           {userInfo && userInfo.isAdmin ? (
             <>
               <div className="row">
@@ -59,7 +61,12 @@ function App() {
                     <AdminRoute path="/:id/edit" component={ProductEditScreen}></AdminRoute>
                     <AdminRoute path="/usersManage" exact component={Users}></AdminRoute>
                     <AdminRoute path="/productsType" exact component={ProductsType}></AdminRoute>
+                    <AdminRoute path="/productsType/productsTypeManage" exact component={ProductsTypeManage}></AdminRoute>
+                    <AdminRoute path="/productsType/addProductsType" exact component={AddProductsType}></AdminRoute>
                     <AdminRoute path="/brandsManage" exact component={Brands}></AdminRoute>
+                    <AdminRoute path="/brands/brandsManage" exact component={BrandsManage}></AdminRoute>
+                    <AdminRoute path="/brands/addBrands" exact component={AddBrands}></AdminRoute>
+                    <Route path="/order/:id" component={OrderScreen}></Route>
                   </Switch>
                 </div>
               </div>
@@ -91,10 +98,12 @@ function App() {
                     component={OrderHistoryScreen}
                   ></Route>
                   <Route path="/category" component={CategoryScreen}></Route>
+                  <Route path="/order/:id" component={OrderScreen}></Route>
                 </Switch>
               </div>
             </>
           )}
+           
         </main>
 
         <Footer />

@@ -23,7 +23,6 @@ orderRouter.post(  '/',
         });
         
         const array = req.body.orderItems;
-        res.send({array});
         array.forEach(async(element) => {
           const product = await db.products.findOne({
             where:{
@@ -37,10 +36,21 @@ orderRouter.post(  '/',
               quantityOrder: product.quantityInStock - element.qty >= 0 ? product.quantityInStock - element.qty : product.quantityInStock,
               sizeProduct: element.size,
             })
-            product.quantityInStock = product.quantityInStock - element.qty >= 0 ? product.quantityInStock - element.qty : 0;
-            await product.save();
+            const productSizes = await db.productsizes.findOne({
+              where: {
+                idSize: element.idsize,
+                idProduct: element.product,
+              }
+            })
+            const qty = parseInt(element.qty);
+            if(productSizes){
+              productSizes.quantityInStock = productSizes.quantityInStock - qty; 
+              productSizes.save()
+            }
         });
-
+        res
+        .status(201)
+        .send({ message: 'New Order Created'});
       }
       }
   )
@@ -115,6 +125,65 @@ orderRouter.delete(
     }
   })
 );
+
+
+orderRouter.get(
+  '/detail',
+  isAuth,
+  expressAsyncHandler(async (req, res) => {
+    const idOrder = req.query.idOrder;
+    const idUser = req.query.idUser;
+    const user = await db.users.findOne({
+      where:{
+        idUser: idUser,
+      }
+    })
+    if (user.isAdmin) {
+    const order = await db.orders.findOne({
+      where:{
+        idOrder:  idOrder,
+      },
+      include:[{
+        model: db.orderdetail,
+        include:[{
+          model: db.products,
+          include:[{
+            model: db.productdetail,
+          }]
+        }]
+      }]
+    });
+    if (order) {
+      res.send(order);
+    } else {
+      res.status(404).send({ message: 'Order Not Found' });
+    }}
+    else {
+      const order = await db.orders.findOne({
+        where:{
+          idOrder:  idOrder,
+          idUser: idUser,
+        },
+        include:[{
+          model: db.orderdetail,
+          include:[{
+            model: db.products,
+            include:[{
+              model: db.productdetail,
+            }]
+          }]
+        }]
+      });
+      if (order) {
+        res.send(order);
+      } else {
+        res.status(404).send({ message: 'Order Not Found' });
+      }
+    }
+
+  })
+);
+
 
 
 module.exports = orderRouter; 

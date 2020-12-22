@@ -48,9 +48,10 @@ export default function CartScreen(props) {
                     </MessageBox>
                     </div>)
                     : (
-                        <div class="contain">
-                            <div class="container-table">
-                                <div class="wrap-table">
+                        <div>
+                        <div className="contain">
+                            <div className="container-table">
+                                <div className="wrap-table">
                                     <br/>
 
                                     <table className="cart-table">
@@ -70,7 +71,7 @@ export default function CartScreen(props) {
 
                                         <tbody className="cart-items">
                                             {cartItems.map((item) => (
-                                            <tr>
+                                            <tr key={item.id}>
                                             <td className="column1">
                                                 <input type="checkbox"/>
                                             </td>
@@ -136,31 +137,32 @@ export default function CartScreen(props) {
                             </div>
                         </div>
 
+                        <div className="checkout ">
+                            <span className="total-price"> 
+                                        Tổng tiền sản phẩm ({cartItems.reduce((a, c) => a + c.qty, 0)} Sản phẩm) : &nbsp;
+                                        <span className="money">
+                                            {cartItems.reduce((a, c) => a + c.price * c.qty, 0)} ₫
+                                        </span>
+                                        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+                            </span>
+
+                            <button
+                                type="button"
+                                id="button-checkout"
+                                onClick={checkoutHandler}
+                                className="chot-don"
+                                disabled={cartItems.length === 0}
+                            >
+                            Mua hàng
+                            </button>       
+                            </div>                   
+                    </div>
                     )
                     }
 
 
         </div>
-        <div className="checkout ">
-            <span className="total-price"> 
-                        Tổng tiền sản phẩm ({cartItems.reduce((a, c) => a + c.qty, 0)} Sản phẩm) : &nbsp;
-                        <span className="money">
-                            {cartItems.reduce((a, c) => a + c.price * c.qty, 0)} ₫
-                        </span>
-                        
-                        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
-            </span>
 
-            <button
-                type="button"
-                id="button-checkout"
-                onClick={checkoutHandler}
-                className="chot-don"
-                disabled={cartItems.length === 0}
-            >
-            Mua hàng
-            </button>       
-                </div> 
 
         </div>
     );

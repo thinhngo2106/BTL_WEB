@@ -10,7 +10,11 @@ module.exports = (sequelize, DataTypes) => {
         productSize:{
             type: DataTypes.STRING,
             allowNull: false,
-        }
+        },
+        quantityInStock:{
+            type: DataTypes.INTEGER,
+            allowNull: false,
+        },
     },{
         tableName: 'productsizes',
         createdAt: false,

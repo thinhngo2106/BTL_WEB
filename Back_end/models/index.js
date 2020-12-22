@@ -101,13 +101,23 @@ db.orders.hasMany(db.orderdetail, {
       allowNull: false,
     }
 });
-db.products.hasOne(db.orderdetail,{
+db.products.hasMany(db.orderdetail,{
   foreignKey:{
     name:'idProduct',
     primaryKey: true,
     allowNull: false,
   }
 })
+db.orderdetail.belongsTo(db.products,{
+  foreignKey:{
+    name:'idProduct',
+    primaryKey: true,
+    allowNull: false,
+  }
+}
+)
+
+
 db.products.hasMany(db.productsizes,{
   foreignKey:{
     name:'idProduct',

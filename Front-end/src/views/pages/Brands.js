@@ -5,16 +5,7 @@ import LoadingBox from '../../components/LoadingBox';
 import MessageBox from '../../components/MessageBox';
 import {listProductCategories, listProductBrands} from "../../actions/productActions";
 
-function Brands() {
-  
-  const listBrand = useSelector((state) => state.listBrand);
-  const {loading: loadingBrand, error: errorBrand, brands} = listBrand;
-  const dispatch = useDispatch();
-  useEffect(() => {
-  dispatch(listProductBrands());
-  },dispatch)
-
-
+export const Brands = () => {
   return (
     <div className='Admin_Brands'>
         { loadingBrand ? (
@@ -48,4 +39,18 @@ function Brands() {
   );
 }
 
-export default Brands;
+export const BrandsManage = () => {
+  return (
+    <div className='brandsManage'>
+      <h1>Brands Manage</h1>
+    </div>
+  );
+}
+
+export const AddBrands = () => {
+  return (
+    <div className='addBrands'>
+      <h1>Add Brands</h1>
+    </div>
+  );
+}
